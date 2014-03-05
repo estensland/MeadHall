@@ -50,30 +50,6 @@ namespace :generate do
     end
     table_name = name.underscore.match("create_").post_match
 
-        # puts "\t\e[7m\e[32m>>\033[0m Association Creation?"
-    # assoc = []
-
-    # loop do
-    #   puts "\t\e[7m\e[32m>>\033[0m Input 'row' of migration data... eg. 'has_many :users' 'q' to quit"
-    #   print "\t\e[7m\e[5m\e[32m>>\033[0m "
-    #   relation = STDIN.gets.chomp
-    #   break if relation == "q"
-    #   assoc << relation
-    # end
-
-    # puts "\t\e[7m\e[32m>>\033[0m Column Creation?"
-    # column = <<-EOF.strip_heredoc
-
-    # EOF
-
-    # loop do
-    #   puts "\t\e[7m\e[32m>>\033[0m Input 'row' of migration data... eg. 't.string :name' 'q' to quit"
-    #   print "\t\e[7m\e[5m\e[32m>>\033[0m "
-    #   attrib = STDIN.gets.chomp
-    #   break if attrib == "q"
-    #   column << attrib
-    # end
-
     puts "\t\e[7m\e[32m>>\033[0m Creating #{path}"
     File.open(path, 'w+') do |f|
       f.write(<<-EOF.strip_heredoc)
@@ -323,6 +299,7 @@ task "launch" do
     puts "\n\t'q' \e[41m\e[7m->\033[0m quit"
     puts "\t'l' \e[41m\e[7m->\033[0m restart UIR"
     puts "\t'h' \e[41m\e[7m->\033[0m help menu"
+    puts "\t'z' \e[41m\e[7m->\033[0m custom terminal command"
     puts "\t'b' \e[41m\e[7m\e[34m->\033[0m bundle"
     puts "\t'u' \e[41m\e[7m\e[34m->\033[0m bundle update"    
     puts "\t's' \e[7m\e[32m->\033[0m scaffold"
@@ -332,7 +309,7 @@ task "launch" do
     puts "\t'c' \e[45m\e[7m\e[37m->\033[0m exit to console"
     puts "\t'a' \e[47m\e[7m\e[36m->\033[0m git add and commit"
     puts "\t'o' \e[47m\e[7m\e[36m->\033[0m git checkout"
-    puts "\t'ø' \e[47m\e[7m\e[36m->\033[0m git git checkout -b"
+    puts "\t'y' \e[47m\e[7m\e[36m->\033[0m git git checkout -b"
     puts "\t'p' \e[47m\e[7m\e[36m->\033[0m git push origin"
     puts "\t't' \e[47m\e[7m\e[36m->\033[0m git status"
     puts "\n\n"
@@ -349,6 +326,8 @@ task "launch" do
         exec("ECHO quitting")
       when "h"
         help_menu
+      when "z"
+        custom_command
       when "b"
         bundle_command
       when "u"
@@ -418,6 +397,18 @@ def help_menu
   puts "\t\e[41m\e[7m>>\033[0m Press Any Key: "
   print "\t\e[41m\e[5m\e[7m>>\033[0m "
   STDIN.gets.chomp
+end
+
+def custom_command
+  puts "\t\e[41m\e[7m>>\033[0m Insert a Command, 'n' to bypass"
+  print "\t\e[41m\e[5m\e[7m>>\033[0m "
+  input = STDIN.gets.chomp  
+  back_check(input)
+  input = "echo skip" if input == "n"
+  $commands << (<<-EOF
+    #{input}
+    EOF
+    )  
 end
 
 def bundle_command 
