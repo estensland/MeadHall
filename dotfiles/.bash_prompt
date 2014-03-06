@@ -1,0 +1,52 @@
+# GIT_PS1_SHOWDIRTYSTATE=true
+
+RED="\[\033[1;91m\]"
+YELLOW="\[\033[1;93m\]"
+GREEN="\[\033[1;92m\]"
+BLUE="\[\033[1;94m\]"
+WHITE="\[\033[1;97m\]"
+COLOR_RESET="\[\e[0m\]"
+
+function is_git_repository {
+  git branch > /dev/null 2>&1
+}
+
+function set_git_state {
+  git_status="$(git status 2> /dev/null)"
+
+  if [[ ${git_status} =~ "working directory clean" ]]; then
+    GIT_STATE_COLOR="${WHITE}"
+  elif [[ ${git_status} =~ "Changes to be committed" ]]; then
+    GIT_STATE_COLOR="${YELLOW}"
+  else
+    GIT_STATE_COLOR="${RED}"
+  fi
+
+  remote_pattern="# Your branch is (.*) of"
+  if [[ ${git_status} =~ ${remote_pattern} ]]; then
+    if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
+      GIT_REMOTE_STATE=" ↑"
+    else
+      GIT_REMOTE_STATE=" ↓"
+    fi
+  else
+    GIT_REMOTE_STATE=""
+  fi
+
+  diverge_pattern="# Your branch and (.*) have diverged"
+  if [[ ${git_status} =~ ${diverge_pattern} ]]; then
+    GIT_REMOTE_STATE=" ↕"
+  fi
+}
+
+function set_bash_prompt () {
+  if is_git_repository ; then
+    set_git_state
+  else
+    GIT_STATE_COLOR="${WHITE}"
+  fi
+
+  PS1="${WHITE}\@${COLOR_RESET} \w\$(__git_ps1 ' ${GIT_STATE_COLOR}(%s)${GIT_REMOTE_STATE}${COLOR_RESET}') $ "
+}
+
+PROMPT_COMMAND=set_bash_prompt

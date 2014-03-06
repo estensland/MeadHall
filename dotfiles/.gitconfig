@@ -1,0 +1,31 @@
+[user]
+	name = Eric Stensland
+	email = estensland88@gmail.com
+[github]
+  user = estensland
+[alias]
+  co = checkout
+  cob = checkout -b
+  st = status
+  br = branch
+  a = add .
+  ci = commit -a -m
+  pu = push
+  pl = pull
+  pom = push origin master
+  phm = push heroku master
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+[web]
+  browser = open
+[core]
+  excludesfile = ~/.gitignore
+  editor = subl 
+  l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+  ll = log --stat --abbrev-commit
+  d = diff --color-words
+[color]
+  branch = auto
+  diff = auto
+  status = auto

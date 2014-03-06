@@ -1,0 +1,27 @@
+alias reload='source ~/.bash_profile'
+
+alias meadhall='cd ~/MeadHall'
+alias rproj='cd ~/rails_projects'
+
+alias be="bundle exec"
+alias u='rake u'
+
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l logfile start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+
+
+# Git Aliases
+alias gs='git status'
+alias ga='git add --all'
+alias gap='git add --all -p'
+alias gc='git commit -m'
+alias gl='git lga'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gp='git push'
+alias gr='git pull --rebase'
+alias gv='git remote -v'
+alias gb='git branch'
