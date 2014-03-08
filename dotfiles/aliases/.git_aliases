@@ -1,0 +1,35 @@
+# Git Aliases
+alias g='git'
+alias gi='git init'
+alias ga='git add .'
+alias gap='git add --all -p'
+alias gc='git commit -m'
+alias gb='git branch'
+alias gco="git checkout"
+alias gs='git status'
+alias gss='git status -s'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gp='git push'
+alias gr='git pull --rebase'
+alias gv='git remote -v'
+
+git-help () {
+  echo "Git Aliases"
+  echo
+  echo "g= git"
+  echo "gi= git init"
+  echo "ga= git add ."
+  echo "gap= git add --all -p"
+  echo "gc= git commit -m"
+  echo "gb= git branch"
+  echo "gco- git checkout"
+  echo "gs= git status"
+  echo "gss= git status -s"
+  echo "gd= git diff"
+  echo "gdc= git diff --cached"
+  echo "gp= git push"
+  echo "gr= git pull --rebase"
+  echo "gv= git remote -v"
+  echo
+}
