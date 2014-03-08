@@ -17,18 +17,38 @@ alias -- -='cd -'
 # Git Aliases
 alias g='git'
 alias gi='git init'
-alias gs='git status'
-alias gss='git status -s'
 alias ga='git add .'
 alias gap='git add --all -p'
 alias gc='git commit -m'
-alias gl='git lga'
+alias gb='git branch'
+alias gco="git checkout"
+alias gs='git status'
+alias gss='git status -s'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gp='git push'
 alias gr='git pull --rebase'
 alias gv='git remote -v'
-alias gb='git branch'
+
+git-help () {
+  echo "Git Aliases"
+  echo
+  echo "g= git"
+  echo "gi= git init"
+  echo "ga= git add ."
+  echo "gap= git add --all -p"
+  echo "gc= git commit -m"
+  echo "gb= git branch"
+  echo "gco- git checkout"
+  echo "gs= git status"
+  echo "gss= git status -s"
+  echo "gd= git diff"
+  echo "gdc= git diff --cached"
+  echo "gp= git push"
+  echo "gr= git pull --rebase"
+  echo "gv= git remote -v"
+  echo
+}
 
 # Rails
 alias reset='echo dropping db && rake db:drop && echo creating db && rake db:create && echo migrating db  && rake db:migrate && echo seeding db && rake db:seed'
@@ -38,7 +58,7 @@ alias rn='rails new'
 alias rs='rails s'
 
 rails-help () {
-  echo "Rails Alias Usage"
+  echo "Rails Aliases"
   echo
   echo "reset  = rake db:reset"
   echo
@@ -61,7 +81,7 @@ alias brinf="brew info"
 alias brdr="brew doctor"
 
 brew-help () {
-  echo "Homebrew Alias Usage"
+  echo "Homebrew Aliases"
   echo
   echo "brup  = brew update && brew upgrade"
   echo "brout = brew outdated"
@@ -83,7 +103,7 @@ alias bu="bundle update"
 alias bp="bundle package"
 
 bundler-help () {
-  echo "Bundler Aliases Usage"
+  echo "Bundler Aliases"
   echo
   echo " b     = bundle"
   echo " bi    = bundle install --path vendor"
@@ -107,6 +127,58 @@ alias lo='ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g
 alias recent='ls -lAt | head'
 alias old='ls -lAt | tail'
 
+ heroku
+alias hl='heroku list'
+alias hi='heroku info'
+alias ho='heroku open'
+
+# rake console
+alias hr='heroku rake'
+alias hcon='heroku console'
+
+# new and restart
+alias hnew='heroku create'
+alias hrestart='heroku restart'
+
+# logs
+alias hlog='heroku logs'
+
+# maint
+alias hon='heroku maintenance:on'
+alias hoff='heroku maintenance:off'
+
+# heroku configs
+alias hc='heroku config'
+alias hca='heroku config:add'
+alias hcr='heroku config:remove'
+alias hcc='heroku config:clear'
+
+alias hp="git push heroku"
+alias hpm="git push heroku master"
+
+
+heroku-help () {
+  echo "Heroku Aliases Usage"
+  echo
+  echo "  h           = heroku"
+  echo "  hl          = heroku list"
+  echo "  hi          = heroku info"
+  echo "  ho          = heroku open"
+  echo "  hr          = heroku rake"
+  echo "  hcon        = heroku console"
+  echo "  hnew        = heroku create"
+  echo "  hrestart    = heroku restart"
+  echo "  hlog        = heroku logs"
+  echo "  hon         = heroku maintenance:on"
+  echo "  hoff        = heroku maintenance:off"
+  echo "  hc          = heroku config"
+  echo "  hca         = heroku config:add"
+  echo "  hcr         = heroku config:remove"
+  echo "  hcc         = heroku config:clear"
+  echo "  hp          = git push heroku"
+  echo "  hpm         = git push heroku master"
+  echo
+}
 
 
 
