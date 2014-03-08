@@ -15,6 +15,8 @@ alias gdc='git diff --cached'
 alias gp='git push'
 alias gr='git pull --rebase'
 alias gv='git remote -v'
+alias gro='git remote rm origin'
+
 
 git-help () {
   echo "Git Aliases"
@@ -24,6 +26,8 @@ git-help () {
   echo "ga= git add ."
   echo "gap= git add --all -p"
   echo "gc= git commit -m"
+  echo "gac= git add . && git commit -m"
+  echo "gapc= git add . && git commit -m"
   echo "gb= git branch"
   echo "gco- git checkout"
   echo "gs= git status"
