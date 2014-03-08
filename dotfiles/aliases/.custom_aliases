@@ -4,9 +4,12 @@ alias rp='cd ~/rails_projects'
 alias u='rake u'
 
 
-inspiration() {
+inspire() {
   shuffle
+  echo
+  echo "Quote:"
   echo "${array[1]}"
+  echo
 }
 
 
@@ -23,5 +26,5 @@ shuffle() {
    done
 }
 
-array=( 'Get that shit out of you, and get that motivation to not give up and not be a quitter, no matter how much you just want to fall flat on your face' 'These are the times that try mens souls, the summer soldier and the sunshine patriot will, in this crisis, shrink from the service of their country, but he  that stands by it now, deserves the love and thanks of man and woman. Tyranny, like hell, is not easily conquered, yet we have this consolation with us, that the harder the conflict, the more glorious the triumph. What we obtain too cheap, we esteem too lightly, it is dearness only that gives every thing its value. Heaven knows how to put a proper price upon its goods' 'Nothing is eaten as hot as it is cooked' 'Sometimes even to live is an act of courage' 'Ships are safe in harbor, but that is not what they were made for' 'All I know is that I know nothing' )
+array=( 'Get that shit out of you, and get that motivation to not give up and not be a quitter, no matter how much you just want to fall flat on your face' 'These are the times that try mens souls...Tyranny, like hell, is not easily conquered...the harder the conflict, the more glorious the triumph' 'Nothing is eaten as hot as it is cooked' 'Sometimes even to live is an act of courage' 'Ships are safe in harbor, but that is not what they are made for' 'All I know is that I know nothing' 'The best revenge is massive success' 'People often say that motivation doesn’t last. Well, neither does bathing.  That’s why we recommend it daily' 'Fall seven times and stand up eight' 'If the wind will not serve, take to the oars' 'ASTRA INCLINANT NON OBLIGANT' 'When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.' 'Nothing is impossible, the word itself says, I’m possible!' 'Give me six hours to chop down a tree and I will spend the first four sharpening the axe' 'Common looking people are the best in the world: that is the reason the Lord makes so many of them' 'If I were two-faced, would I be wearing this one?')
 
