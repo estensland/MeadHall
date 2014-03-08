@@ -14,6 +14,7 @@ alias ...='cd ../..'
 alias -- -='cd -'
 
 
+
 # Git Aliases
 alias g='git'
 alias gi='git init'
@@ -50,6 +51,8 @@ git-help () {
   echo
 }
 
+
+
 # Rails
 alias reset='echo dropping db && rake db:drop && echo creating db && rake db:create && echo migrating db  && rake db:migrate && echo seeding db && rake db:seed'
 
@@ -67,6 +70,8 @@ rails-help () {
   echo "rs  = rails s"
   echo
 }
+
+
 
 # Homebrew
 
@@ -93,6 +98,8 @@ brew-help () {
   echo "brdr  = brew doctor"
   echo
 }
+
+
 
 # Bundler Commands
 alias b="bundle"
@@ -127,7 +134,8 @@ alias lo='ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g
 alias recent='ls -lAt | head'
 alias old='ls -lAt | tail'
 
- heroku
+
+# heroku
 alias hl='heroku list'
 alias hi='heroku info'
 alias ho='heroku open'
@@ -165,6 +173,8 @@ heroku-help () {
   echo "  hnew        = heroku create"
   echo "  hrestart    = heroku restart"
   echo "  hlog        = heroku logs"
+  echo "  hon         = heroku maintenance:on"
+  echo "  hoff        = heroku maintenance:off"
   echo "  hc          = heroku config"
   echo "  hca         = heroku config:add"
   echo "  hcr         = heroku config:remove"
