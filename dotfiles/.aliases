@@ -143,10 +143,6 @@ alias hrestart='heroku restart'
 # logs
 alias hlog='heroku logs'
 
-# maint
-alias hon='heroku maintenance:on'
-alias hoff='heroku maintenance:off'
-
 # heroku configs
 alias hc='heroku config'
 alias hca='heroku config:add'
@@ -169,8 +165,6 @@ heroku-help () {
   echo "  hnew        = heroku create"
   echo "  hrestart    = heroku restart"
   echo "  hlog        = heroku logs"
-  echo "  hon         = heroku maintenance:on"
-  echo "  hoff        = heroku maintenance:off"
   echo "  hc          = heroku config"
   echo "  hca         = heroku config:add"
   echo "  hcr         = heroku config:remove"
