@@ -15,7 +15,7 @@ function set_git_state {
   git_status="$(git status 2> /dev/null)"
 
   if [[ ${git_status} =~ "working directory clean" ]]; then
-    GIT_STATE_COLOR="${GREEn}"
+    GIT_STATE_COLOR="${GREEN}"
   elif [[ ${git_status} =~ "Changes to be committed" ]]; then
     GIT_STATE_COLOR="${YELLOW}"
   else
