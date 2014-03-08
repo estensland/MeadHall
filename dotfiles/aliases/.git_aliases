@@ -20,7 +20,6 @@ alias gv='git remote -v'
 git-help () {
   echo "Git Aliases"
   echo
-  echo "garbage"
   echo "g= git"
   echo "gi= git init"
   echo "ga= git add ."
