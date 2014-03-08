@@ -46,7 +46,7 @@ function set_bash_prompt () {
     GIT_STATE_COLOR="${WHITE}"
   fi
 
-  PS1="${WHITE}\@${COLOR_RESET} \w\$(__git_ps1 ' ${GIT_STATE_COLOR}(%s)${GIT_REMOTE_STATE}${COLOR_RESET}') $ "
+  PS1="${RED}\h:${COLOR_RESET} ${WHITE}\@${COLOR_RESET} \w\$(__git_ps1 ' ${GIT_STATE_COLOR}(%s)${GIT_REMOTE_STATE}${COLOR_RESET}') $ "
 }
 
 PROMPT_COMMAND=set_bash_prompt

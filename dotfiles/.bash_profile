@@ -7,12 +7,12 @@ alias edit='subl'
 
 
 
-source ~/.aliases
+source ~/MeadHall/dotfiles/.aliases
 
 if [ -f ~/.bash_prompt ]; then
-  source ~/.bash_prompt
+  source ~/MeadHall/dotfiles/.bash_prompt
 fi
 
 if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
+  source ~/MeadHall/dotfiles/.git-prompt.sh
 fi
