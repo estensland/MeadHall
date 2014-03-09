@@ -1,7 +1,7 @@
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+PATH="~/.rbenv/shims:$PATH"
 
 # Enable Options:
 shopt -s cdspell
@@ -19,3 +19,6 @@ fi
 if [ -f ~/.git-prompt.sh ]; then
   source ~/MeadHall/dotfiles/.git-prompt.sh
 fi
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

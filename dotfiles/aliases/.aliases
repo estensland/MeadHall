@@ -27,29 +27,29 @@ alias old='ls -lAt | tail'
 
 # Grab from other alias files
 
-if [ -f ~/MeadHall/dotfiles/aliases/.bundler_aliases ]; then
-  source ~/MeadHall/dotfiles/aliases/.bundler_aliases
+if [ -f ~/coding/MeadHall/dotfiles/aliases/.bundler_aliases ]; then
+  source ~/coding/MeadHall/dotfiles/aliases/.bundler_aliases
 fi
 
-if [ -f ~/MeadHall/dotfiles/aliases/.custom_aliases ]; then
-  source ~/MeadHall/dotfiles/aliases/.custom_aliases
+if [ -f ~/coding/MeadHall/dotfiles/aliases/.custom_aliases ]; then
+  source ~/coding/MeadHall/dotfiles/aliases/.custom_aliases
 fi
 
-if [ -f ~/MeadHall/dotfiles/aliases/.homebrew_aliases ]; then
-  source ~/MeadHall/dotfiles/aliases/.homebrew_aliases
+if [ -f ~/coding/MeadHall/dotfiles/aliases/.homebrew_aliases ]; then
+  source ~/coding/MeadHall/dotfiles/aliases/.homebrew_aliases
 fi
 
-if [ -f ~/MeadHall/dotfiles/aliases/.heroku_aliases ]; then
-  source ~/MeadHall/dotfiles/aliases/.heroku_aliases
+if [ -f ~/coding/MeadHall/dotfiles/aliases/.heroku_aliases ]; then
+  source ~/coding/MeadHall/dotfiles/aliases/.heroku_aliases
 fi
 
-if [ -f ~/MeadHall/dotfiles/aliases/.git_aliases ]; then
-  source ~/MeadHall/dotfiles/aliases/.git_aliases
+if [ -f ~/coding/MeadHall/dotfiles/aliases/.git_aliases ]; then
+  source ~/coding/MeadHall/dotfiles/aliases/.git_aliases
 fi
 
 
-if [ -f ~/MeadHall/dotfiles/aliases/.rails_aliases ]; then
-  source ~/MeadHall/dotfiles/aliases/.rails_aliases
+if [ -f ~/coding/MeadHall/dotfiles/aliases/.rails_aliases ]; then
+  source ~/coding/MeadHall/dotfiles/aliases/.rails_aliases
 fi
 
 
