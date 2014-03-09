@@ -1,8 +1,11 @@
-alias mh='cd ~/MeadHall'
-alias rp='cd ~/rails_projects'
+alias coding='cd ~/coding'
+alias mh='cd ~/coding/MeadHall'
+alias rp='cd ~/coding/rails_projects'
+alias rfiles='cd ~/coding/ruby_files'
+alias wp='cd ~/coding/web_projects'
+
 
 alias u='rake u'
-
 
 inspire() {
   shuffle

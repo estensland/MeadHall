@@ -1,7 +1,7 @@
 # Rails
 alias reset='echo Resetting the Fraking db && echo dropping db && rake db:drop && echo creating db && rake db:create && echo migrating db  && rake db:migrate && echo seeding db && rake db:seed'
 
-alias reset='echo seeding db && rake db:seed'
+alias seed='echo seeding db && rake db:seed'
 
 alias rc='rails c'
 alias rgm='rails generate model'
@@ -12,7 +12,7 @@ rails-help () {
   echo "Rails Aliases"
   echo
   echo "reset= rake db:reset"
-  echo "reset= rake db:seed"
+  echo "seed= rake db:seed"
   echo  
   echo "rc   = rails c"
   echo "rgm  = rails generate model"
