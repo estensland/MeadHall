@@ -5,6 +5,7 @@ alias fuck_it='echo Resetting the Fraking db && echo dropping db && rake db:drop
 
 alias rr='rake routes'
 alias test='rspec spec --format documentation'
+alias t='rspec spec --format documentation'
 
 
 alias seed='echo seeding db && rake db:seed'
@@ -21,6 +22,7 @@ rails-help () {
   echo "reset= rake db:reset"
   echo "seed= rake db:seed"
   echo "test= rspec spec --format documentation"
+  echo "t= rspec spec --format documentation"
   echo  
   echo "rc   = rails c"
   echo "rgm  = rails generate model"
