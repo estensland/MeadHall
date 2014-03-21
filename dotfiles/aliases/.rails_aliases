@@ -1,7 +1,7 @@
 # Rails
 alias reset='echo Resetting the Fraking db && echo dropping db && rake db:drop && echo creating db && rake db:create && echo migrating db  && rake db:migrate && echo seeding db && rake db:seed'
 
-alias fuck_it='echo Killing server db && killall ruby && echo Resetting the Fraking db && echo dropping db && rake db:drop && echo creating db && rake db:create && echo migrating db  && rake db:migrate && echo seeding db && rake db:seed '
+alias fuck_it='echo Resetting the Fraking db && echo dropping db && rake db:drop && echo creating db && rake db:create && echo migrating db  && rake db:migrate && echo seeding db && rake db:seed '
 
 alias rr='rake routes'
 
