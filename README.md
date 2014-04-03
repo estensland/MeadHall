@@ -5,4 +5,4 @@ MeadHall
 
 A custom Sinatra Rake file
 
-A collection of dotfiles
+A collection of files that bash_profile pulls in
