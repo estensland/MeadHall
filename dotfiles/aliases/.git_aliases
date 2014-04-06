@@ -17,6 +17,7 @@ alias gr='git pull --rebase'
 alias gv='git remote -v'
 
 alias mikedrop='git push origin master'
+alias choochoo='git push origin master --force'
 alias hitme='git pull origin master'
 
 git-help () {
