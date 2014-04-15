@@ -7,10 +7,7 @@ alias wp='cd ~/coding/web_projects'
 
 alias gogit='open http://www.github.com/estensland'
 
-
-
 alias u='rake u'
-
 
 gorepo() {
   URL=$(git --git-dir=.git config --get remote.origin.url)
@@ -24,7 +21,6 @@ inspire() {
   echo "${array[1]}"
   echo
 }
-
 
 shuffle() {
    local i tmp size max rand
