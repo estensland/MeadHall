@@ -12,7 +12,7 @@ alias gs='git status'
 alias gss='git status -s'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias gph='git push origin HEAD'
+alias gph='git push origin HEAD && gobranch'
 alias gr='git pull --rebase'
 alias gv='git remote -v'
 
