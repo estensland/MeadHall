@@ -10,8 +10,14 @@ alias gogit='open http://www.github.com/estensland'
 alias u='rake u'
 
 gorepo() {
-  URL=$(git --git-dir=.git config --get remote.origin.url)
-  open "$URL"
+  url=$(git --git-dir=.git config --get remote.origin.url)
+  open "$url"
+}
+
+gobranch() {
+  url=$(git --git-dir=.git config --get remote.origin.url)
+  url=$(awk '{gsub(/\.git/,"/branches")}1' <<< $url) 
+  open "$url"
 }
 
 inspire() {
