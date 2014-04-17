@@ -4,10 +4,12 @@ alias mh='cd ~/coding/MeadHall'
 alias rp='cd ~/coding/rails_projects'
 alias rfiles='cd ~/coding/ruby_files'
 alias wp='cd ~/coding/web_projects'
+alias u='rake u'
 
 alias gogit='open http://www.github.com/estensland'
+alias goexer='open http://www.exercism.io/estensland'
+alias goeuler='open http://projecteuler.net/problems'
 
-alias u='rake u'
 
 gorepo() {
   url=$(git --git-dir=.git config --get remote.origin.url)
