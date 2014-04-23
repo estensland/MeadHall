@@ -19,8 +19,7 @@ gorepo() {
 
 gobranch() {
   URL=$(git --git-dir=.git config --get remote.origin.url)
-  URL=$(awk '{gsub(/\.git/,"/branches")}1' <<< $url) 
-  echo "$URL"
+  URL=$(awk '{gsub(/\.git/,"/branches")}1' <<< $URL)
   open "$URL"
 }
 
