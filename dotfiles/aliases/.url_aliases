@@ -1,0 +1,17 @@
+alias gogit='open http://www.github.com/estensland'
+
+gorepo() {
+  URL=$(git --git-dir=.git config --get remote.origin.url)
+  open "$URL"
+}
+
+gobranch() {
+  URL=$(git --git-dir=.git config --get remote.origin.url)
+  URL=$(awk '{gsub(/\.git/,"/branches")}1' <<< $URL)
+  open "$URL"
+}
+
+alias goexer='open http://www.exercism.io/estensland'
+
+alias goeuler='open http://projecteuler.net/problems'
+
