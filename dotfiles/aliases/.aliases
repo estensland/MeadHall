@@ -52,12 +52,6 @@ if [ -f ~/coding/MeadHall/dotfiles/aliases/.rails_aliases ]; then
   source ~/coding/MeadHall/dotfiles/aliases/.rails_aliases
 fi
 
-
-
-
-
-
-
-
-
-
+if [ -f ~/coding/MeadHall/dotfiles/aliases/.url_aliases ]; then
+  source ~/coding/MeadHall/dotfiles/aliases/.url_aliases
+fi
