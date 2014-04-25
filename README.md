@@ -1,10 +1,12 @@
 MeadHall
 ========
 
-#This repo contains:
+###This repo contains:
 
--A collection of dotfiles including bash aliases
+1. A collection of dotfiles including bash aliases
 
--A collection of other micro-projects including:
---A Ruby Benchmarker for easy comparison of running times
---A Rake File for a Custom Sinatra Skeleton
+2. A folder of other micro-projects including:
+
+  - A Ruby Benchmarker for easy comparison of running times
+
+  - A Rake File for a Custom Sinatra Skeleton
