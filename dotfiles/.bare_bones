@@ -1,24 +1,16 @@
-
 alias reload='source ~/.bash_profile'
-
 
 alias proj='cd ~/projects'
 alias wow='cd ~/projects/wowzers_repo'
 
-
-
 alias ..='cd ..'
 alias ...='cd ../..'
-alias -- -='cd -'
-
+alias -='cd -'
 
 
 alias ls='ls -G'        # Compact view, show colors
 
 
-
-alias g='git'
-alias gi='git init'
 alias ga='git add .'
 alias gap='git add --all -p'
 alias gc='git commit -m'
