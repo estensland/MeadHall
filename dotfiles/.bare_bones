@@ -1,14 +1,15 @@
 alias reload='source ~/.bash_profile'
 
-alias proj='cd ~/projects'
-alias wow='cd ~/projects/wowzers_repo'
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -='cd -'
 
 
 alias ls='ls -G'        # Compact view, show colors
+
+alias zs='zeus start'
+
+alias rr='rake routes'
 
 
 alias ga='git add .'
