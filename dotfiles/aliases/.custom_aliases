@@ -1,5 +1,6 @@
 alias coding='cd ~/coding'
 alias exer='cd ~/coding/exercism.io'
+alias euler='cd ~/coding/project_euler'
 alias mh='cd ~/coding/MeadHall'
 alias rp='cd ~/coding/rails_projects'
 alias rfiles='cd ~/coding/ruby_files'
