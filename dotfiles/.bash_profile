@@ -10,15 +10,23 @@ shopt -s checkwinsize
 
 
 
-source ~/MeadHall/dotfiles/aliases/.aliases
+source ~/coding/MeadHall/dotfiles/aliases/.aliases
 
 if [ -f ~/.bash_prompt ]; then
-  source ~/MeadHall/dotfiles/.bash_prompt
+  source ~/coding/MeadHall/dotfiles/.bash_prompt
 fi
 
 if [ -f ~/.git-prompt.sh ]; then
-  source ~/MeadHall/dotfiles/.git-prompt.sh
+  source ~/coding/MeadHall/dotfiles/.git-prompt.sh
 fi
 
+if [ -f /etc/bash_completion ]; then
+ . /etc/bash_completion
+fi
+
+export PATH=/usr/local/share/npm/bin:$PATH
+# export LD_LIBRARY_PATH=/home/$USER/.rbenv/versions/2.1.1/lib:$LD_LIBRARY_PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+
 eval "$(rbenv init -)"
