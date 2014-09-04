@@ -6,5 +6,37 @@ Heorot = {
       return (vA < vB) ? -1 : (vA > vB) ? 1 : 0;
     });
     $(parent).append(sections);
+  },
+  
+  scrollHelper = {
+    scrollCheck: function(stationaryElement, event, amount){
+      if (this.insideXAxisCheck(stationaryElement, event)) {
+        var topOfElement = stationaryElement.offset().top
+
+        if (topOfElement > event.pageY){
+          this.scrollListUp(stationaryElement, amount);
+        }
+
+        else if (topOfElement + stationaryElement.height() < event.pageY) {
+          this.scrollListDown(stationaryElement, amount);
+        }
+      }
+    },
+
+    insideXAxisCheck: function(stationaryElement, event) {
+      var offset = stationaryElement.offset()
+      var leftOfElement = offset.left
+      var rightOfElement = offset.left + stationaryElement.width()
+
+      return (event.pageX < rightOfElement && event.pageX > leftOfElement)
+    },
+
+    scrollListUp: function(stationaryElement, amount) {
+      stationaryElement.scrollTop(stationaryElement.scrollTop() - amount)
+    },
+
+    scrollListDown: function(stationaryElement, amount) {
+      stationaryElement.scrollTop(stationaryElement.scrollTop() + amount)
+    }
   }
 }
