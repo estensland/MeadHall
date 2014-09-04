@@ -8,7 +8,7 @@ Heorot = {
     $(parent).append(sections);
   },
   
-  scrollHelper = {
+  scrollHelper : {
     scrollCheck: function(stationaryElement, event, amount){
       if (this.insideXAxisCheck(stationaryElement, event)) {
         var topOfElement = stationaryElement.offset().top
@@ -38,5 +38,23 @@ Heorot = {
     scrollListDown: function(stationaryElement, amount) {
       stationaryElement.scrollTop(stationaryElement.scrollTop() + amount)
     }
+  },
+  
+  browserSubmit: function (action, method, input) {
+    var form = $('<form />', {
+        action: action,
+        method: method,
+        style: 'display: none;'
+    });
+    if (typeof input !== 'undefined') {
+        $.each(input, function (name, value) {
+            $('<input />', {
+                type: 'hidden',
+                name: name,
+                value: value
+            }).appendTo(form);
+        });
+    }
+    form.appendTo('body').submit();
   }
 }
