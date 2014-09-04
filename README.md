@@ -10,5 +10,4 @@ MeadHall
   - A Ruby Benchmarker for easy comparison of running times
 
   - A Rake File for a Custom Sinatra Skeleton
-
 3. Some JS I have created and saved for furue use
