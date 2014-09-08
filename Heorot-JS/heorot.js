@@ -1,4 +1,20 @@
 Heorot = {
+  
+  each: function(array, func){
+    for (var i=0, ii = array.length; i < ii; i ++) {
+      func(array[i])
+    }
+  },
+
+  map: function(array, func){
+    returnArray = []
+    for (var i=0, ii = array.length; i < ii; i ++) {
+      console.log(i)
+      returnArray.push(func(array[i]))
+    }
+    return returnArray
+  },
+  
   sortBySortAttr: function (parent, sortedSelector, keySelector) {
     var sections = $(parent).find(sortedSelector).sort(function(a, b) {
       var vA = Paths.grabTextParseInt($(keySelector, a));
