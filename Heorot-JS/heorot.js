@@ -18,11 +18,11 @@ window.heorot = (function(){
     },
 
     map: function(array, func){
-      returnArray = []
+      returnArray = [];
       for (var i=0, ii = array.length; i < ii; i ++) {
         returnArray.push(func(array[i]));
       }
-      return returnArray
+      return returnArray;
     },
 
     stringMap: function(array, i, deal) {
@@ -67,7 +67,7 @@ window.heorot = (function(){
     scrollHelper : {
       scrollCheck: function(stationaryElement, event, amount){
         if (this.insideXAxisCheck(stationaryElement, event)) {
-          var topOfElement = stationaryElement.offset().top
+          var topOfElement = stationaryElement.offset().top;
 
           if (topOfElement > event.pageY){
             this.scrollListUp(stationaryElement, amount);
@@ -80,19 +80,19 @@ window.heorot = (function(){
       },
 
       insideXAxisCheck: function(stationaryElement, event) {
-        var offset = stationaryElement.offset()
-        var leftOfElement = offset.left
-        var rightOfElement = offset.left + stationaryElement.width()
+        var offset = stationaryElement.offset();
+        var leftOfElement = offset.left;
+        var rightOfElement = offset.left + stationaryElement.width();
 
-        return (event.pageX < rightOfElement && event.pageX > leftOfElement)
+        return (event.pageX < rightOfElement && event.pageX > leftOfElement);
       },
 
       scrollListUp: function(stationaryElement, amount) {
-        stationaryElement.scrollTop(stationaryElement.scrollTop() - amount)
+        stationaryElement.scrollTop(stationaryElement.scrollTop() - amount);
       },
 
       scrollListDown: function(stationaryElement, amount) {
-        stationaryElement.scrollTop(stationaryElement.scrollTop() + amount)
+        stationaryElement.scrollTop(stationaryElement.scrollTop() + amount);
       }
     },
     
@@ -117,10 +117,6 @@ window.heorot = (function(){
 
   Heorot.prototype.each = function (callback) {
     return heorot.each(this, callback);
-  };
-
-  Heorot.f = function (callback) {
-    return 5;
   };
 
   Heorot.prototype.map = function (callback) {
