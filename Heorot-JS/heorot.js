@@ -128,3 +128,14 @@ window.heorot = (function(){
   return heorot;
 }());
 H = heorot;
+
+
+//  var map = function(array, i, deal) {
+//    var func = new Function(i, deal);
+//    rA = [];
+//    for (var i = 0, ii = array.length; i < ii;){
+//      rA.push(func(array[i]));
+//      i ++;
+//    }
+//    return rA;
+//  }
