@@ -50,6 +50,17 @@ window.heorot = (function(){
       }
       return returnArray
     },
+    
+    stringSelect: function(array, i, deal) {
+      var func = new Function(i, deal);
+      rA = [];
+      for (var i = 0, ii = array.length; i < ii; i++){
+        if (func(array[i])){
+          rA.push(array[i]);
+        }
+      }
+      return rA;
+    },
 
     reject: function(array, func){
       returnArray = []
@@ -59,6 +70,17 @@ window.heorot = (function(){
         }
       }
       return returnArray;
+    },
+    
+    stringReject: function(array, i, deal) {
+      var func = new Function(i, deal);
+      rA = [];
+      for (var i = 0, ii = array.length; i < ii; i++){
+        if (!func(array[i])){
+          rA.push(array[i]);
+        }
+      }
+      return rA;
     },
     
     sortBySortAttr: function (parent, sortedSelector, keySelector) {
@@ -156,9 +178,33 @@ window.heorot = (function(){
   Heorot.prototype.select = function (callback) {
     return heorot.select(this, callback);
   };
+  
+  Heorot.prototype.iSelect = function (callback) {
+    return heorot.stringSelect(this, 'i', callback);
+  };
+
+  Heorot.prototype.xSelect = function (callback) {
+    return heorot.stringSelect(this, 'x', callback);
+  };
+
+  Heorot.prototype.ySelect = function (callback) {
+    return heorot.stringSelect(this, 'y', callback);
+  };
 
   Heorot.prototype.reject = function (callback) {
     return heorot.reject(this, callback);
+  };
+  
+  Heorot.prototype.iReject = function (callback) {
+    return heorot.stringReject(this, 'i', callback);
+  };
+
+  Heorot.prototype.xReject = function (callback) {
+    return heorot.stringReject(this, 'x', callback);
+  };
+
+  Heorot.prototype.ySelect = function (callback) {
+    return heorot.stringReject(this, 'y', callback);
   };
 
   return heorot;
