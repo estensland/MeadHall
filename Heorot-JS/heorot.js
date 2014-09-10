@@ -16,6 +16,13 @@ window.heorot = (function(){
         func(array[i]);
       }
     },
+    
+    stringEach: function(array, i, deal) {
+      var func = new Function(i, deal);
+      for (var i = 0, ii = array.length; i < ii; i++){
+        func(array[i]);
+      }
+    },
 
     map: function(array, func){
       returnArray = [];
@@ -28,9 +35,8 @@ window.heorot = (function(){
     stringMap: function(array, i, deal) {
       var func = new Function(i, deal);
       rA = [];
-      for (var i = 0, ii = array.length; i < ii;){
+      for (var i = 0, ii = array.length; i < ii; i++){
         rA.push(func(array[i]));
-        i ++;
       }
       return rA;
     },
@@ -118,7 +124,19 @@ window.heorot = (function(){
   Heorot.prototype.each = function (callback) {
     return heorot.each(this, callback);
   };
+  
+  Heorot.prototype.iEach = function (callback) {
+    return heorot.stringEach(this, 'i', callback);
+  };
 
+  Heorot.prototype.xEach = function (callback) {
+    return heorot.stringEach(this, 'x', callback);
+  };
+
+  Heorot.prototype.yEach = function (callback) {
+    return heorot.stringEach(this, 'y', callback);
+  };
+  
   Heorot.prototype.map = function (callback) {
     return heorot.map(this, callback);
   };
