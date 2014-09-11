@@ -1,4 +1,5 @@
-# Bundler Commands
+# Bundler Aliases
+
 alias b="bundle"
 alias bi="b install --path vendor"
 alias be="bundle exec"
