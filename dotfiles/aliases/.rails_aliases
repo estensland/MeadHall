@@ -23,7 +23,7 @@ rails-help () {
   echo "seed= rake db:seed"
   echo "test= bundle exec rspec spec --format documentation"
   echo "t= bundle exec rspec spec --format documentation"
-  echo  
+  echo
   echo "rc   = rails c"
   echo "rgm  = rails generate model"
   echo "rn   = rails new"

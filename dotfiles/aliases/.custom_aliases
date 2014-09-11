@@ -1,13 +1,28 @@
+# Quick Ins to Coding Directories
+
 alias coding='cd ~/coding'
-alias exer='cd ~/coding/exercism.io'
-alias euler='cd ~/coding/project_euler'
 alias mh='cd ~/coding/MeadHall'
-alias rp='cd ~/coding/rails_projects'
-alias rpg='cd ~/coding/rails_projects/gems'
-alias gene='cd ~/coding/rails_projects/genealogy_test'
 alias rfiles='cd ~/coding/ruby_files'
 alias wp='cd ~/coding/web_projects'
-alias u='rake u'
+
+# Repos of Challenges
+
+alias exer='cd ~/coding/exercism.io'
+alias euler='cd ~/coding/project_euler'
+
+# Web Dev Projects by Language
+
+alias emberp='cd ~/coding/ember_projects'
+alias phpp='cd ~/coding/php_projects'
+alias rp='cd ~/coding/rails_projects'
+
+# Local Ruby Gems
+
+alias rpg='cd ~/coding/rails_projects/gems'
+
+alias gene='cd ~/coding/rails_projects/genealogy_test'
+
+# Nothing but random:
 
 inspire() {
   shuffle
