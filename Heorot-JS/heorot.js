@@ -32,7 +32,7 @@ window.heorot = (function(){
       else if (input.heorotKind==='object'){
         for (var key in input) {
           if (input.hasOwnProperty(key) && key !== 'heorotKind') {
-            func(input[key]);
+            func(key, input[key]);
           }
         }
       }
@@ -54,7 +54,7 @@ window.heorot = (function(){
       else if (input.heorotKind==='object'){
         for (var key in input) {
           if (input.hasOwnProperty(key) && key !== 'heorotKind') {
-            returnArray.push(func(input[key]));
+            returnArray.push(func(key, input[key]));
           }
         }
       }
