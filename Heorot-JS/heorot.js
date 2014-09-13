@@ -1,86 +1,100 @@
 window.heorot = (function(){
-  var Heorot = function (array) {
-    for(var i = 0; i < array.length; i++ ) {
-      this[i] = array[i];
+  var Heorot = function (input) {
+    if (input instanceof Array){
+      this.heorotKind = 'array'
+      for(var i = 0; i < input.length; i++ ) {
+        this[i] = input[i];
+      }
+      this.length = input.length;
     }
-    this.length = array.length;
+
+    else{
+      this.heorotKind = 'object';
+      for (var key in input) {
+        if (input.hasOwnProperty(key)) {
+          this[key] = input[key]
+        }
+      }
+    }
   }
 
   var heorot = {
-    t: function(array){
-      return new Heorot(array);
+    t: function(input){
+      return new Heorot(input);
     },
 
-    each: function(array, func){
-      for (var i=0, ii = array.length; i < ii; i ++) {
-        func(array[i]);
+    each: function(input, func){
+      if (input.heorotKind ==='array'){
+        for (var i=0, ii = input.length; i < ii; i ++) {
+          func(input[i]);
+        }
+      }
+      else if (input.heorotKind==='object'){
+        for (var key in input) {
+          if (input.hasOwnProperty(key) && key !== 'heorotKind') {
+            func(input[key]);
+          }
+        }
       }
     },
-    
-    stringEach: function(array, i, deal) {
+
+    stringEach: function(input, i, deal) {
       var func = new Function(i, deal);
-      for (var i = 0, ii = array.length; i < ii; i++){
-        func(array[i]);
-      }
+      return heorot.each(input, func);
     },
 
-    map: function(array, func){
+    map: function(input, func){
       returnArray = [];
-      for (var i=0, ii = array.length; i < ii; i ++) {
-        returnArray.push(func(array[i]));
+
+      if (input.heorotKind ==='array'){
+        for (var i=0, ii = input.length; i < ii; i ++) {
+          returnArray.push(func(input[i]));
+        }
+      }
+      else if (input.heorotKind==='object'){
+        for (var key in input) {
+          if (input.hasOwnProperty(key) && key !== 'heorotKind') {
+            returnArray.push(func(input[key]));
+          }
+        }
       }
       return returnArray;
+
     },
 
-    stringMap: function(array, i, deal) {
+    stringMap: function(input, i, deal) {
       var func = new Function(i, deal);
-      rA = [];
-      for (var i = 0, ii = array.length; i < ii; i++){
-        rA.push(func(array[i]));
-      }
-      return rA;
+      return heorot.map(input, func);
     },
 
-    select: function(array, func){
+    select: function(input, func){
       returnArray = []
-      for (var i=0, ii = array.length; i < ii; i ++) {
-        if (func(array[i])){
-          returnArray.push(array[i]);
+      for (var i=0, ii = input.length; i < ii; i ++) {
+        if (func(input[i])){
+          returnArray.push(input[i]);
         }
       }
       return returnArray
     },
     
-    stringSelect: function(array, i, deal) {
+    stringSelect: function(input, i, deal) {
       var func = new Function(i, deal);
-      rA = [];
-      for (var i = 0, ii = array.length; i < ii; i++){
-        if (func(array[i])){
-          rA.push(array[i]);
-        }
-      }
-      return rA;
+      return heorot.select(input, func);
     },
 
-    reject: function(array, func){
+    reject: function(input, func){
       returnArray = []
-      for (var i=0, ii = array.length; i < ii; i ++) {
-        if (!func(array[i])){
-          returnArray.push(array[i]);
+      for (var i=0, ii = input.length; i < ii; i ++) {
+        if (!func(input[i])){
+          returnArray.push(input[i]);
         }
       }
       return returnArray;
     },
     
-    stringReject: function(array, i, deal) {
+    stringReject: function(input, i, deal) {
       var func = new Function(i, deal);
-      rA = [];
-      for (var i = 0, ii = array.length; i < ii; i++){
-        if (!func(array[i])){
-          rA.push(array[i]);
-        }
-      }
-      return rA;
+      return heorot.reject(input, func);
     },
     
     sortBySortAttr: function (parent, sortedSelector, keySelector) {
