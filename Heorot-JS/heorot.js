@@ -1,7 +1,7 @@
 window.heorot = (function(){
   var Heorot = function (input) {
     if (input instanceof Array){
-      this.heorotKind = 'array'
+      this.heorotKind = 'array';
       for(var i = 0; i < input.length; i++ ) {
         this[i] = input[i];
       }
@@ -12,7 +12,7 @@ window.heorot = (function(){
       this.heorotKind = 'object';
       for (var key in input) {
         if (input.hasOwnProperty(key)) {
-          this[key] = input[key]
+          this[key] = input[key];
         }
       }
     }
@@ -68,7 +68,7 @@ window.heorot = (function(){
     },
 
     select: function(input, func){
-      returnArray = []
+      returnArray = [];
       for (var i=0, ii = input.length; i < ii; i ++) {
         if (func(input[i])){
           returnArray.push(input[i]);
@@ -83,7 +83,7 @@ window.heorot = (function(){
     },
 
     reject: function(input, func){
-      returnArray = []
+      returnArray = [];
       for (var i=0, ii = input.length; i < ii; i ++) {
         if (!func(input[i])){
           returnArray.push(input[i]);
