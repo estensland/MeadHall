@@ -332,37 +332,6 @@ class Die
   end
 end
 
-# METHOD TO PAD ARRAY
-
-class Array 
-  def pad!(min_size, value = nil)
-    x = min_size - self.length
-    if x <= 0
-      return self
-    else 
-      x.times do
-      self << value
-      end
-      return self
-    end
-  end
-
-  def pad(min_size, value = nil)
-    y = self.clone
-    x = min_size - self.length
-    if x <= 0
-      return y
-    else 
-      x.times do
-      y.push << value
-      end
-      return y
-    end
-  end
-
-end
-
-
 
 # METHOD TO ADD COMMAS, # REGULAR
 
