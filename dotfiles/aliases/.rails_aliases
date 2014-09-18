@@ -3,7 +3,11 @@
 alias rc='rails c'
 alias rgm='rails generate model'
 alias rn='rails new'
-alias rr='rake routes'
+
+function rr(){
+  rake routes | grep $1
+}
+
 alias rs='rails s'
 alias rt='bundle exec rspec spec --format documentation'
 
@@ -21,7 +25,7 @@ rails-help () {
   echo "rc   = rails c"
   echo "rgm  = rails generate model"
   echo "rn   = rails new"
-  echo "rr   = rake routes"
+  echo "rr() = rake routes | grep ()"
   echo "rs   = rails s"
   echo "rt   = bundle exec rspec spec --format documentation"
   echo

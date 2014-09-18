@@ -15,15 +15,16 @@ alias gs='git status'
 alias gss='git status -s'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias gph='git push origin HEAD && gobranch'
+alias ggph='git push origin HEAD && gobranch'
+alias gph='git push origin HEAD'
 alias gr='git pull --rebase'
 alias gv='git remote -v'
 
 # Shorthands
 
-alias mikedrop='git push origin master'
 alias choochoo='git push origin master --force'
 alias hitme='git pull origin master'
+alias mikedrop='git push origin master'
 
 git-help () {
   echo " Git Aliases"
@@ -44,6 +45,7 @@ git-help () {
   echo " gd  = git diff"
   echo " gdc = git diff --cached"
   echo " gph = git push origin HEAD"
+  echo " ggph = git push origin HEAD && gobranch"
   echo " gr  = git pull --rebase"
   echo " gv  = git remote -v"
   echo
