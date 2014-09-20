@@ -1,17 +1,16 @@
 module StatisticsJunk
+  # Monkey patch this onto class Array
 
   # MEAN
-
-  def average(array)
-    array.inject(:+)/array.length
+  def average
+    self.inject(:+)/self.length
   end
 
   # MODE
-
-  def mode(array)
+  def mode
     counter = Hash.new(0) # Create an empty hash to place numbers from array in
 
-    array.each do |i| # Iterate over each element of the array and place in the hash.
+    self.each do |i| # Iterate over each element of the array and place in the hash.
       counter[i] += 1 # Every time a key comes up, add 1 to the value to count the occurences
     end
 
@@ -27,9 +26,8 @@ module StatisticsJunk
   end
 
   # MEDIAN
-
-  def median(array)
-    sorted = array.sort
+  def median
+    sorted = self.sort
     x = sorted.length
     (sorted[(x - 1) / 2] + sorted[x / 2]) / 2.0
   end
