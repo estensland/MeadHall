@@ -1,0 +1,19 @@
+# DevOps Aliases
+
+function hop_to(){
+  echo ssh -p $1 $2@$3
+  echo ''
+  ssh -p $1 $2@$3;
+}
+
+bundler-help () {
+  echo "Bundler Aliases"
+  echo
+  echo " b     = bundle"
+  echo " bi    = bundle install --path vendor"
+  echo " be    = bundle exec"
+  echo " bl    = bundle list"
+  echo " bu    = bundle update"
+  echo " bp    = bundle package"
+  echo
+}
