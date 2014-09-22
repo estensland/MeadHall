@@ -49,4 +49,15 @@ module WordPrintOut
     end
     return answer
   end
+
+  def separate_comma
+    number = self
+    if number.is_a?(Float)                                            #Checks if it is a float
+      number.to_s                                                     #Turns it into a string
+      num = /\./.match(number.to_s)                                   #Finds the decimal point, sets equal to num
+      int= num.pre_match.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse #Does the .gsub only on the integer side of the float
+      int << num.to_s << num.post_match                               #Pushes the pieces back together
+    else number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse     #The .gsub for integers
+    end
+  end 
 end
