@@ -1,42 +1,3 @@
-# PASSWORD VALIDATION REGEX
-
-
-def check_password input
-  
-  return "Password too short, must be 6 or more" unless input.length >= 6 
-
-  return "Password too long, no more than 20 characters" unless input.length <= 20
-
-  return "Need at least one capital letter" unless input =~ /[A-Z]/
-
-  special_characters = "!, @, #, $, %, &, *, +, :, ?"
-  array = [("A".."Z").to_a + ("a".."z").to_a + ([" "]) + ("1".."9").to_a + special_characters.split(", ")]
-
-  unless input =~ /\d/ || input.split('').any? { |i|  special_characters.split(", ").include?(i) }
-    return "Need at least one number or one special character (#{special_characters})"
-  end
-
-  unless input.split('').all? { |i|  array.flatten.include?(i) }
-    return "Invalid character, must be alphanumeric of an allowed special character (#{special_characters})"
-  end
-
-    return "Valid Password"  # If it has made it this far without being returned, it is true
-
-end
-
-
-p "false on short" if check_password("bo") != "Password too short, must be 6 or more"
-p "false on long" if check_password("this is far too long for this exercise, please say it is") != "Password too long, no more than 20 characters"
-p "false on capital" if check_password("1234567") != "Need at least one capital letter"
-p "false on capital" if check_password("12b45a7") != "Need at least one capital letter"
-p "false on number/special" if check_password("Aaaaaaaaaaa") != "Need at least one number or one special character (!, @, #, $, %, &, *, +, :, ?)"
-p "not true on number" if check_password("Aaaaa2aaaaa") != "Valid Password"
-p "not true on ?" if check_password("Aaaaa?aaaaa") != "Valid Password"
-p "not true on #" if check_password("Aaaaa#aaaaa") != "Valid Password"
-p "not true on legit password 1" if check_password("Thisispassword56") != "Valid Password"
-p "not true on legit password 2" if check_password("Imade p@ssword") != "Valid Password"
-p "gives false true for ^" if check_password("Imade p@sswo^&rd") == "Valid Password"
-
 # VALID NESTING OF ()[]{}
 
 def valid_string? input
@@ -80,7 +41,6 @@ def valid_string? input
   end
   
 end
-
 
 
 # FIND MISSING NUMBER
@@ -218,24 +178,6 @@ class GuessingGame            # Create a new class "GuessingGame"
   end
 end
 
-# LABELED DIE CLASS, #RANDOM
-
-class Die
-  def initialize(labels)                      # Creates a new "Die" with input "labels"
-    raise ArgumentError if labels.length < 1  # Raises argument error is labels is empty
-    @labels = labels                          # Makes input = to an instance variable
-  end
- 
-  def sides                                   # Returns the length of labels (How many sides of this "die")
-    @labels.length
-  end
- 
-  def roll
-    @labels.sample                            # Pulls a random value from labels (A roll of this "die")
-  end
-end
-
-
 # RPN CALCULATOR
 
 class RPNCalculator           # Create new class
@@ -276,74 +218,6 @@ def is_fibonacci?(i, prev =0, fib =1)
     return is_fibonacci?(i, fib, fib += prev)
   end
 end
-
-# CIPPHER METHOD, NORTH KOREAN REFACTORING CHALLENGE
- 
-def north_korean_cipher(coded_message)
-  input = coded_message.downcase        # Creates variable input equal to code_message with all characters in downcase
-  decoded =[]                           # Creates empty array
-  input.each_byte do |c|                # Convert each character to ascii then for each one:
-    if c == 64 || c == 32 || c == 35 || c == 36 || c == 37 || c == 94 || c == 38 || c == 42 
-       decoded << " "                   # If it is one of the "space" codes add a space
-    elsif c > 96                        # If c is higher than 96  (a lower case letter)               
-          ascii = c -=4                 # Make equal to var ascii c-4
-          if ascii < 97                 # If this pushed c below the value of "a" it takes it back to the end
-          ascii += 26                   
-          end
-        decoded << ascii.chr            # Push ascii, converted into a character, into decoded
-    else 
-      decoded << c.chr                  # If non "space" code or non-letter, just push original character into decoded
-    end
-  end  
-    decoded2= decoded.join("")          # Make decoded2 variable decoded joined togeher
-  if decoded2.match(/\d+/)              # Find any number
-    decoded2.gsub!(/\d+/) { |num| num.to_i / 100 } #Divide any number by 100
-  end  
-  return decoded2                       # Return decoded2
-end 
-p north_korean_cipher("m^aerx%e&gsoi!") == "i want a coke!"
-p north_korean_cipher("syv@tistpi$iex#xli*qswx*hipmgmsyw*erh*ryxvmxmsyw%jsshw^jvsq^syv#1000000#tvsjmxefpi$jevqw.") == "our people eat the most delicious and nutritious foods from our 10000 profitable farms."
-p north_korean_cipher("syv%ryoiw#evi#liph^xskixliv@fc^kveti-jpezsvih@xsjjii.*hsr'x%xipp&xli#yw!") == "our nukes are held together by grape-flavored toffee. don't tell the us!"
-p north_korean_cipher("mj^csy&qeoi^sri*qmwxeoi,%kir.*vm@csrk-kmp,&csy^ampp*fi&vitpegih*fc@hirrmw&vshqer.") == "if you make one mistake, gen. ri yong-gil, you will be replaced by dennis rodman."
-p north_korean_cipher("ribx^wxst:$wsyxl%osvie,$xlir$neter,#xlir%xli%asvph!") == "next stop: south korea, then japan, then the world!"
-p north_korean_cipher("ger^wsqifshc*nywx^kix^qi&10000*fekw@sj$gssp%vergl@hsvmxsw?") == "can somebody just get me 100 bags of cool ranch doritos?"
-
-
-# NUMERIC DIE CLASS, RANDOM
-
-class Die
-  def initialize(sides)
-    if sides.is_a?(String) || sides.is_a?(Float)  # Deals with string of float inputs
-      puts "Integer Please"
-      return nil
-    end 
-    if sides < 1
-      raise ArgumentError.new
-    end
-    @sides = sides
-  end
-  
-  def sides
-    return @sides
-  end
-  
-  def roll
-    return (rand(@sides)+1)
-  end
-end
-
-
-# METHOD TO ADD COMMAS, # REGULAR
-
-def separate_comma(number)
-  if number.is_a?(Float)                                            #Checks if it is a float
-    number.to_s                                                     #Turns it into a string
-    num = /\./.match(number.to_s)                                   #Finds the decimal point, sets equal to num
-    int= num.pre_match.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse #Does the .gsub only on the integer side of the float
-    int << num.to_s << num.post_match                               #Pushes the pieces back together
-  else number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse     #The .gsub for integers
-  end
-end 
 
 # SSN METHODS
 # 
