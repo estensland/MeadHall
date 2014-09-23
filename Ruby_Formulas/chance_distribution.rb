@@ -1,10 +1,6 @@
-class WeightedDistribution
-  def initialize(opts)
-    @opts = opts
-  end
-
-  def value_of(input)
-    @opts.each do |key, value|
+module ChanceDistribution
+  def self.value_of(input, opts)
+    opts.each do |key, value|
       if value.is_a?(Range)
         test_value = value.first.is_a?(Integer) ? input.to_i : input.to_s
         return key if value.include?(test_value)
@@ -17,24 +13,28 @@ class WeightedDistribution
     end
   end
 
-  def random_value
-    rand_value = rand(@opts.values.first.min..@opts.values.last.max)
-    self.value_of(rand_value)
+  def self.random_value(opts)
+    min = opts.values.first.is_a?(Range) ? (opts.values.first.min) : opts.values.first.to_i
+    max = opts.values.last.is_a?(Range) ? (opts.values.last.max) : opts.values.last.to_i
+    rand_value = rand(min..max)
+    value_of(rand_value, opts)
   end
 end
+p ChanceDistribution.class
 
+include ChanceDistribution
 
-percent_per_continent = WeightedDistribution.new({
-                                                  'Africa' => 1..23,
-                                                  'Asia' => '24'..'80',
-                                                  'Europe' => 81..85,
-                                                  'Americas' => 86..99,
-                                                  'Oceania' => 100
-                                                })
+continents =
+  { 'Africa'   => 1..23,
+    'Asia'     => '24'..'80',
+    'Europe'   => 81..85,
+    'Americas' => 86..99,
+    'Oceania'  => 100 }
 
-p percent_per_continent.value_of(5) == 'Africa'
-p percent_per_continent.value_of('5') == 'Africa'
-p percent_per_continent.value_of(24) == 'Asia'
-p percent_per_continent.value_of('77') == 'Asia'
-p percent_per_continent.value_of(100) == 'Oceania'
-p percent_per_continent.value_of('100') == 'Oceania'
+  p ChanceDistribution.value_of(5, continents)     == 'Africa'
+  p ChanceDistribution.value_of('5', continents)   == 'Africa'
+  p ChanceDistribution.value_of(24, continents)    == 'Asia'
+  p ChanceDistribution.value_of('77', continents)  == 'Asia'
+  p ChanceDistribution.value_of(100, continents)   == 'Oceania'
+  p ChanceDistribution.value_of('100', continents) == 'Oceania'
+  p continents.keys.include?(ChanceDistribution.random_value(continents))
