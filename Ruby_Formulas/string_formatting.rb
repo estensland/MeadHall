@@ -33,7 +33,7 @@ module WordPrintOut
       newnumber = 0
       newnumber += array[0].to_i + (array[1].to_i*10)
       if newnumber == 0
-        answer << ones[hundreds-1] + " hundred"
+        answer << ones[hundreds] + " hundred"
       else
         answer << ones[hundreds] + " hundred and " + in_words(newnumber.to_i)
       end
