@@ -20,21 +20,18 @@ module ChanceDistribution
     value_of(rand_value, opts)
   end
 end
-p ChanceDistribution.class
 
-include ChanceDistribution
+# continents =
+#   { 'Africa'   => 1..23,
+#     'Asia'     => '24'..'80',
+#     'Europe'   => 81..85,
+#     'Americas' => 86..99,
+#     'Oceania'  => 100 }
 
-continents =
-  { 'Africa'   => 1..23,
-    'Asia'     => '24'..'80',
-    'Europe'   => 81..85,
-    'Americas' => 86..99,
-    'Oceania'  => 100 }
-
-  p ChanceDistribution.value_of(5, continents)     == 'Africa'
-  p ChanceDistribution.value_of('5', continents)   == 'Africa'
-  p ChanceDistribution.value_of(24, continents)    == 'Asia'
-  p ChanceDistribution.value_of('77', continents)  == 'Asia'
-  p ChanceDistribution.value_of(100, continents)   == 'Oceania'
-  p ChanceDistribution.value_of('100', continents) == 'Oceania'
-  p continents.keys.include?(ChanceDistribution.random_value(continents))
+# p ChanceDistribution.value_of(5, continents)     == 'Africa'
+# p ChanceDistribution.value_of('5', continents)   == 'Africa'
+# p ChanceDistribution.value_of(24, continents)    == 'Asia'
+# p ChanceDistribution.value_of('77', continents)  == 'Asia'
+# p ChanceDistribution.value_of(100, continents)   == 'Oceania'
+# p ChanceDistribution.value_of('100', continents) == 'Oceania'
+# p continents.keys.include?(ChanceDistribution.random_value(continents))
