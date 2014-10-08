@@ -1,11 +1,18 @@
 module Rubymathics
 
-  def is_fibonacci?(i, prev =0, fib =1, recur=false)
+  def prime?(number)
+    2.upto(number**0.5) do |i|
+      return false if number%i == 0
+    end
+    true
+  end
+
+  def fibonacci?(i, prev =0, fib =1, recur=false)
     if recur # FIBONACCI NUM RECURSION
       return false if i.is_a?(String)
       return true  if  i == fib || i == 0
       return false if fib > i
-      is_fibonacci?(i, fib, fib += prev, true)
+      fibonacci?(i, fib, fib += prev, true)
     else # FIBONACCI NUM ITERATION
       if i.is_a?(String)
         return false
@@ -14,7 +21,7 @@ module Rubymathics
       elsif fib > i
         return false
       else
-        return is_fibonacci?(i, fib, fib += prev)
+        return fibonacci?(i, fib, fib += prev)
       end
     end
   end
