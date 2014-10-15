@@ -1,5 +1,9 @@
 module Rubymathics
 
+  def factorial(num)
+    (1..num).to_a.inject(&:*)
+  end
+
   def collatz_sequence(num)
     sequence = [num]
     until num == 1
