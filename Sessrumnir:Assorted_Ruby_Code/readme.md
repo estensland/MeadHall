@@ -6,5 +6,6 @@ Sessrúmnir was Freyja's mead hall located in Fólkvangr, a sort of opposition t
 
 1. chance_distribution.rb -> Distribution case-statements, ie. Percent to Grade or RPG roll action
 1. random_ruby_files.rb -> Non-sorted junk
+2. rubymathics.rb -> Ruby methods used in math challenges
 1. statistics_junk.rb -> Array Module for Mean, Mode, Median, etc
 1. string_formatting.rb -> Formatting numbers either to words or with commas

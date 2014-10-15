@@ -1,5 +1,20 @@
 module Rubymathics
 
+  def collatz_sequence(num)
+    sequence = [num]
+    until num == 1
+      if num.even?
+        num = num/2
+      else
+        num = (3 * num) + 1
+      end
+      sequence << num
+    end
+    sequence
+  end
+
+  # FIBONACCI
+
   def is_fibonacci?(i, prev =0, fib =1)
     return false if i.is_a?(String)
     return true  if  i == fib || i == 0
@@ -26,18 +41,13 @@ module Rubymathics
     fib
   end
 
+  # PRIMES
 
-  def collatz_sequence(num)
-    sequence = [num]
-    until num == 1
-      if num.even?
-        num = num/2
-      else
-        num = (3 * num) + 1
-      end
-      sequence << num
+  def prime?(number)
+    2.upto(number**0.5) do |i|
+      return false if number%i == 0
     end
-    sequence
+    true
   end
 
   def find_biggest_prime_factor(number)
@@ -55,6 +65,8 @@ module Rubymathics
     prime_factor
   end
 
+
+  # PALLINDROME
 
   def pallindrome_finder(low, high)
     pallindromes = []
