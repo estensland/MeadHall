@@ -1,4 +1,4 @@
-    
+
 require 'benchmark'
 
 # Fill as many are to be used. There are ten, but only those not empty will be run.
@@ -21,7 +21,7 @@ ninth_name = "Ninth"
 tenth_name = "Tenth"
 
 first = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -33,7 +33,7 @@ first = Benchmark.measure {
 if quantitiy >= 2
 
   second = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -44,7 +44,7 @@ end
 
 if quantitiy >= 3
   third = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -55,7 +55,7 @@ end
 
 if quantitiy >= 4
   fourth = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -66,7 +66,7 @@ end
 
 if quantitiy >= 5
   fifth = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -77,7 +77,7 @@ end
 
 if quantitiy >= 6
   sixth = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -88,7 +88,7 @@ end
 
 if quantitiy >= 7
   seventh = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -98,7 +98,7 @@ end
 
 if quantitiy >= 8
   eighth = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -109,7 +109,7 @@ end
 
 if quantitiy >= 9
   ninth = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
@@ -120,7 +120,7 @@ end
 
 if quantitiy >= 10
   tenth = Benchmark.measure {
-  TIMES.times do 
+  TIMES.times do
 
 
   end
