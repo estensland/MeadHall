@@ -9,6 +9,16 @@
 # Miss = 8
 # ???? = 9
 
+COLORS = {
+  red: "\033[1;91m",
+  yellow: "\033[1;93m",
+  green: "\033[1;92m",
+  cyn: "\033[36m",
+  blue: "\033[1;94m",
+  white: "\033[1;97m",
+  color_reset: "\e[0m"
+}
+
 p1_blank_board=
 [[0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0],
@@ -237,7 +247,7 @@ class Board
       p "You Shot There! at  #{view_change}"
     elsif @board[row][column] == 1 || @board[row][column] == 1.1 || @board[row][column] == 2.1 || @board[row][column] == 2 || @board[row][column] == 3 || @board[row][column] == 4 || @board[row][column] == 5
       @copy[row][column] = 6
-      alter_view(row,column, " HIT")
+      alter_view(row,column, "#{COLORS[:red]} HIT#{COLORS[:color_reset]}")
       p "HIT! at  #{view_change}"
       @target = view_change
       if @board[row][column] == 1
@@ -258,7 +268,7 @@ class Board
     elsif @board[row][column] == 0
       p "Miss at #{view_change}"
       @copy[row][column] = 8
-        alter_view(row,column, "MISS")
+        alter_view(row,column, "#{COLORS[:white]}MISS#{COLORS[:color_reset]}")
     end
     sink_check
     view_render
@@ -348,7 +358,7 @@ class Board
         if @board[row][column] == ship
           view_change = board_to_view(row,column)
           @copy[row][column] = 7
-          alter_view(row,column,"SUNK")
+          alter_view(row,column,"#{COLORS[:red]}SUNK#{COLORS[:color_reset]}")
         end
         column +=1
       end
@@ -424,12 +434,9 @@ class Board
       end
       character += 1
     end
-    index =0
-    until index == 4
-      @view[character] = text[index]
-      character += 1
-      index += 1
-    end
+
+    4.times {@view[character] = ''}
+    @view.insert(character, text)
   end
 
   def skynet_protocol_search(input)
