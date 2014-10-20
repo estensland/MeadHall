@@ -203,15 +203,16 @@ class Board
     ships.each do |ship|
       full_print(@board)
       puts "#{ship} Placement"
-      x = 0
-      until x == 100
+      direction = ''
+      loop do
         puts "Vertical or Horizontal?"
         direction = gets.chomp
         if direction.downcase == "vertical" || direction.downcase == "horizontal" || direction.downcase == "v" || direction.downcase == "h" 
           break
         end
       end
-      until x == 100
+      input = ''; row = ''; column = ''
+      loop do
         puts "Coordinate for bow of your #{ship.downcase}?"
         input = gets.chomp
         input = view_to_board(input)
@@ -347,6 +348,7 @@ class Board
     end
     if @sub1 == "true" && @sub2 == "true" && @des1 == "true" && @des2 == "true" && @cru == "true" && @bs == "true" && @ac == "true"
       puts "\n\n\n\n\n\n\n\n\n  All ships have been sunk, this battle is finished \n\n\n\n\n\n\n\n\n\n\n"
+      exec('echo Game Complete')
     end
   end
 
@@ -358,7 +360,7 @@ class Board
         if @board[row][column] == ship
           view_change = board_to_view(row,column)
           @copy[row][column] = 7
-          alter_view(row,column,"#{COLORS[:red]}SUNK#{COLORS[:color_reset]}")
+          alter_view(row,column,"#{COLORS[:blue]}SUNK#{COLORS[:color_reset]}", true)
         end
         column +=1
       end
@@ -425,7 +427,7 @@ class Board
     puts @view
   end
 
-  def alter_view(row, column, text)
+  def alter_view(row, column, text, sunk = nil)
     counter = (row) * 22 + column + 1
     character = 0
     while counter > 0
@@ -435,7 +437,9 @@ class Board
       character += 1
     end
 
-    4.times {@view[character] = ''}
+    spaces = sunk ? 15 : 4
+    spaces.times {@view[character] = ''}
+
     @view.insert(character, text)
   end
 
