@@ -147,13 +147,13 @@ class Board
     @board = board
     @copy = copy
     @view = view
-    @sub1 = "false"
-    @sub2 = "false"
-    @des1 = "false"
-    @des2 = "false"
-    @cru = "false"
-    @bs = "false"
-    @ac = "false"
+    @sub1 = false
+    @sub2 = false
+    @des1 = false
+    @des2 = false
+    @cru = false
+    @bs = false
+    @ac = false
     @submarine1 = 0
     @submarine2 = 0
     @destroyer1 = 0
@@ -278,9 +278,9 @@ class Board
   def sink_check
     if @submarine1 == 1
       unless @copy.flatten.include?(1)
-        unless @sub1 == "true"
+        unless @sub1 == true
           p "First submarine sunk!"
-          @sub1 = "true"
+          @sub1 = true
           turn_to_sink(1)
           @submarine1 += 1
         end
@@ -288,9 +288,9 @@ class Board
     end
     if @submarine2 == 1
       unless @copy.flatten.include?(1.1)
-        unless @sub2 == "true"
+        unless @sub2 == true
           p "Second submarine sunk!"
-          @sub2 = "true"
+          @sub2 = true
           turn_to_sink(1.1)
           @submarine2 += 1
         end
@@ -298,9 +298,9 @@ class Board
     end
     if @destroyer1 == 2
       unless @copy.flatten.include?(2)
-        unless @des1 == "true"
+        unless @des1 == true
           p "First destroyer sunk!"
-          @des1 = "true"
+          @des1 = true
           turn_to_sink(2)
           @destroyer1 += 1
         end
@@ -308,9 +308,9 @@ class Board
     end
     if @destroyer2 == 2
       unless @copy.flatten.include?(2.1)
-        unless @des2 == "true"
+        unless @des2 == true
           p "Second destroyer sunk!"
-          @des2 = "true"
+          @des2 = true
           turn_to_sink(2.1)
           @destroyer2 += 1
         end
@@ -318,9 +318,9 @@ class Board
     end
     if @cruiser == 3
       unless @copy.flatten.include?(3)
-        unless @cru == "true"
+        unless @cru == true
           p "Cruiser Under the Waves!"
-          @cru = "true"
+          @cru = true
           turn_to_sink(3)
           @cruiser += 1
         end
@@ -328,9 +328,9 @@ class Board
     end
     if @battleship == 4
       unless @copy.flatten.include?(4)
-        unless @bs == "true"
+        unless @bs == true
           p "You Sunk My Battleship!"
-          @bs = "true"
+          @bs = true
           turn_to_sink(4)
           @battleship += 1
         end
@@ -338,15 +338,15 @@ class Board
     end
     if @carrier == 5
       unless @copy.flatten.include?(5)
-        unless @ac == "true"
+        unless @ac == true
           p "Aircraft Carrier Be Down At Davy Jone's Locker!"
-          @ac = "true"
+          @ac = true
           turn_to_sink(5)
           @carrier += 1
         end
       end
     end
-    if @sub1 == "true" && @sub2 == "true" && @des1 == "true" && @des2 == "true" && @cru == "true" && @bs == "true" && @ac == "true"
+    if @sub1 == true && @sub2 == true && @des1 == true && @des2 == true && @cru == true && @bs == true && @ac == true
       puts "\n\n\n\n\n\n\n\n\n  All ships have been sunk, this battle is finished \n\n\n\n\n\n\n\n\n\n\n"
       exec('echo Game Complete')
     end
@@ -425,6 +425,38 @@ class Board
 
   def view_render
     puts @view
+    puts ships_sunk
+  end
+
+  def prep_screen
+    self.clear_screen!
+    self.move_to_home!
+  end
+
+  def clear_screen!
+    print "\e[2J"
+  end
+   
+  # Moves cursor to the top left of the terminal
+  def move_to_home!
+    print "\e[H"
+  end
+
+  def ships_sunk
+    at_least_one = false
+    sunken = ''
+    puts "- - - - - SHIPS SUNK: - - - - -"
+    {'Aircraft Carrier' => @ac,  'Battleship' => @bs,  'Cruiser' => @cru,  'Destroyer 1' => @des1, 'Destroyer 2' => @des2, 'Submarine 1' => @sub1, 'Submarine 2' => @sub2 }.each do |ship, check|
+      if check
+        if sunken.length > 1
+          sunken << " | "
+        end
+        at_least_one = true
+        sunken << "#{COLORS[:red]}#{ship}#{COLORS[:color_reset]}"
+      end
+    end
+    puts at_least_one ? sunken : "NONE"
+    puts "- - - - - - - - - - - - - - - -"
   end
 
   def alter_view(row, column, text, sunk = nil)
@@ -833,8 +865,15 @@ if p1 == "h" && p2 == "h"
     player2.view_render
     input = player2.view_to_board(input)
     player2.attack(input)
-    p "ENTER FOR TURN SWITCH"
+
+    p "ENTER WHEN DONE"
     gets.chomp
+    player1.prep_screen
+
+    p "ENTER WHEN READY"
+    gets.chomp
+    player1.prep_screen
+
     player1.view_render
     puts "Where To Strike #{player2.name}?"
     input = gets.chomp
@@ -860,6 +899,7 @@ if p1 == "h" && p2 == "h"
 elsif p1 == "h" && p2 == "c"
   x = 0
   while x < 200
+    player2.prep_screen
     player2.view_render
     puts "Where To Strike #{player1.name}?"
     input = gets.chomp
@@ -878,11 +918,15 @@ elsif p1 == "h" && p2 == "c"
     player2.view_render
     input = player2.view_to_board(input)
     player2.attack(input)
+    
     p "ENTER FOR TURN SWITCH"
     gets.chomp
+
+    player2.prep_screen
     player1.view_render
     puts "#{player2.name} is ready, ENTER to see"
     input = gets.chomp
+    player2.prep_screen
     x += 5000 if input == "q"
     player1.skynet_protocol_alpha
     p "ENTER FOR TURN SWITCH"
@@ -893,13 +937,18 @@ elsif p1 == "h" && p2 == "c"
 elsif p1 == "c" && p2 == "h"
   x = 0
   while x < 200
+    player2.prep_screen
     player2.view_render
     puts "#{player1.name} is ready, ENTER to see"
+    player2.prep_screen
     input = gets.chomp
     x += 5000 if input == "q"
     player2.skynet_protocol_alpha
+    
     p "ENTER FOR TURN SWITCH"
     gets.chomp
+
+    player2.prep_screen
     player1.view_render
     puts "Where To Strike #{player2.name}?"
     input = gets.chomp
@@ -912,19 +961,28 @@ elsif p1 == "c" && p2 == "h"
   end
 
 elsif p1 == "c" && p2 == "c"
-  player2.view_render
-  puts "#{player1.name} is ready, ENTER to see"
-  input = gets.chomp
-  x += 5000 if input == "q"
-  player2.skynet_protocol_alpha
-  p "ENTER FOR TURN SWITCH"
-  gets.chomp
-  player1.view_render
-  puts "#{player2.name} is ready, ENTER to see"
-  input = gets.chomp
-  x += 5000 if input == "q"
-  player1.skynet_protocol_alpha
-  p "ENTER FOR TURN SWITCH"
-  gets.chomp
-  x += 1
+  x = 0
+  while x < 200
+    player2.prep_screen
+    player2.view_render
+    puts "#{player1.name} is ready, ENTER to see"
+    input = gets.chomp
+    player2.prep_screen
+    x += 5000 if input == "q"
+    player2.skynet_protocol_alpha
+    
+    p "ENTER FOR TURN SWITCH"
+    gets.chomp
+    
+    player2.prep_screen
+    player1.view_render
+    puts "#{player2.name} is ready, ENTER to see"
+    input = gets.chomp
+    player2.prep_screen
+    x += 5000 if input == "q"
+    player1.skynet_protocol_alpha
+    p "ENTER FOR TURN SWITCH"
+    gets.chomp
+    x += 1
+  end
 end
