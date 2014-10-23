@@ -1,5 +1,11 @@
 module Rubymathics
 
+  def repeating?(num)
+    num.to_s.split('').each do |digit|
+      
+    end
+  end
+
   def factorial(num)
     (1..num).to_a.inject(&:*)
   end

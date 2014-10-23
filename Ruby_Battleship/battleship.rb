@@ -918,7 +918,7 @@ elsif p1 == "h" && p2 == "c"
     player2.view_render
     input = player2.view_to_board(input)
     player2.attack(input)
-    
+
     p "ENTER FOR TURN SWITCH"
     gets.chomp
 
@@ -944,7 +944,7 @@ elsif p1 == "c" && p2 == "h"
     input = gets.chomp
     x += 5000 if input == "q"
     player2.skynet_protocol_alpha
-    
+
     p "ENTER FOR TURN SWITCH"
     gets.chomp
 
@@ -970,10 +970,10 @@ elsif p1 == "c" && p2 == "c"
     player2.prep_screen
     x += 5000 if input == "q"
     player2.skynet_protocol_alpha
-    
+
     p "ENTER FOR TURN SWITCH"
     gets.chomp
-    
+
     player2.prep_screen
     player1.view_render
     puts "#{player2.name} is ready, ENTER to see"
