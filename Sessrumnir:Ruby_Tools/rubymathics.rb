@@ -1,9 +1,21 @@
 module Rubymathics
 
-  def repeating?(num)
-    num.to_s.split('').each do |digit|
-      
+  def repeating_cycle_length(num)
+    count = 0
+    denominator = 1
+    res = 0.1
+    remainders = []
+
+    loop do
+      denominator = res * 10
+      res = denominator % num
+      return count - remainders.index(res) if remainders.include?(res)
+      remainders << res
+      count += 1
+      return false if count == num || res == 0
     end
+
+    count - remainders.index(res)
   end
 
   def factorial(num)
