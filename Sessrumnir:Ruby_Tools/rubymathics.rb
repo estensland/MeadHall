@@ -12,7 +12,7 @@ module Rubymathics
       return count - remainders.index(res) if remainders.include?(res)
       remainders << res
       count += 1
-      return false if count == num || res == 0
+      return 0 if count == num || res == 0
     end
 
     count - remainders.index(res)
