@@ -1,5 +1,23 @@
 module Rubymathics
 
+  def repeating_decimal?(num)
+    count = 0
+    denominator = 1
+    res = 0.1
+    remainders = []
+
+    loop do
+      denominator = res * 10
+      res = denominator % num
+      return count - remainders.index(res) if remainders.include?(res)
+      remainders << res
+      count += 1
+      return false if count == num || res == 0
+    end
+
+    true
+  end
+  
   def repeating_cycle_length(num)
     count = 0
     denominator = 1
