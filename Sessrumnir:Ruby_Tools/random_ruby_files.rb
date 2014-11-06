@@ -64,84 +64,6 @@ def find_missing_number(input)
   counter
 end
 
-
-
-# PRODUCT OF AN ARRAY
-
-def calculate_product (array)
-  array.inject(:*) 
-end
-
-# ARRAY PRODUCT ODD NUMBERS ONLY
-
-def calculate_product_odd (array)
-  array.select{|x| x.odd?}.inject(:*)
-end
-
-
-# NUMBERS TO WORDS
- 
-def in_words number
-  ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-  tens = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy',   'eighty', 'ninety']
-  teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
-
-  array = []
-  array = number.to_s.split("")
-  array.reverse!
-  
-  answer = ""
-
-  if array.length == 1
-    answer << ones[number]
-  elsif array.length == 2
-    if array[1] == "1"
-        answer << teens[number-10]
-    else
-      newnumber = 0
-      newnumber += array[0].to_i 
-      if 
-        newnumber == 0
-        answer << tens[number/10-1]
-      else 
-        answer << tens[number/10-1] + "-" + in_words(newnumber.to_i)
-      end
-    end
-  elsif array.length == 3
-    hundreds = array[2].to_i
-    newnumber = 0
-    newnumber += array[0].to_i + (array[1].to_i*10)
-    if newnumber == 0
-        answer << ones[hundreds-1] + " hundred"         
-    else
-      answer << ones[hundreds] + " hundred and " + in_words(newnumber.to_i)
-    end
-  elsif array.length == 4
-    thousands = array[3].to_i
-    newnumber = 0
-    newnumber += array[0].to_i + (array[1].to_i*10) + (array[2].to_i*100)
-    if newnumber == 0
-        answer << ones[thousands] + " thousand"         
-    else
-      answer << ones[thousands] + " thousand, " + in_words(newnumber.to_i)
-    end
-  end
-  return answer
-end
-
-p in_words(0) == "zero"
-p in_words(1) == "one" 
-p in_words(10) == "ten" 
-p in_words(11) == "eleven" 
-p in_words(20) == "twenty" 
-p in_words(29) == "twenty-nine"
-p in_words(30) == "thirty" 
-p in_words(119) == "one hundred and nineteen"
-p in_words(1000) == "one thousand"
-p in_words(1559) == "one thousand, five hundred and fifty-nine"
-p in_words(9999) == "nine thousand, nine hundred and ninety-nine"
-
-
 # CREDIT CARD VALIDATOR METHOD
 
 class CreditCard  
@@ -206,20 +128,6 @@ def is_fibonacci?(i, prev =0, fib =1)
   return false if fib > i             # False if fib is more than i, so if i is smaller than the true value
   is_fibonacci?(i, fib, fib += prev)  # Runs is_fibonacci? again if no criteria are met, however it advances 
 end                                   # both prev and fib along the chain of true values before it is run again
-
-# FIBONACCI NUM ITERATION
-
-def is_fibonacci?(i, prev =0, fib =1)
-  if i.is_a?(String)   # Added this to submit false if the input is a string
-    return false    
-  elsif  i == fib || i == 0
-    return true 
-  elsif fib > i  
-    return false 
-  else
-    return is_fibonacci?(i, fib, fib += prev)
-  end
-end
 
 # SSN METHODS
 # 
