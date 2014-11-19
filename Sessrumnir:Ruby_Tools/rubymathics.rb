@@ -17,7 +17,7 @@ module Rubymathics
 
     true
   end
-  
+
   def repeating_cycle_length(num)
     count = 0
     denominator = 1

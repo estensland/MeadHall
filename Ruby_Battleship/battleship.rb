@@ -207,7 +207,7 @@ class Board
       loop do
         puts "Vertical or Horizontal?"
         direction = gets.chomp
-        if direction.downcase == "vertical" || direction.downcase == "horizontal" || direction.downcase == "v" || direction.downcase == "h" 
+        if direction.downcase == "vertical" || direction.downcase == "horizontal" || direction.downcase == "v" || direction.downcase == "h"
           break
         end
       end
@@ -436,7 +436,7 @@ class Board
   def clear_screen!
     print "\e[2J"
   end
-   
+
   # Moves cursor to the top left of the terminal
   def move_to_home!
     print "\e[H"
@@ -621,16 +621,16 @@ class Board
         hits.each do |x|
           row = x[0].to_i
           column = x[1].to_i
-          if  (row + 1) < 10 && (column + 1 ) < 10 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row + 1][column + 1] == 9 
+          if  (row + 1) < 10 && (column + 1 ) < 10 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row + 1][column + 1] == 9
             skynet_targets << ("#{row + 1}#{column + 1}").to_i
           end
-          if  (row - 1) > -1 && (column - 1 ) > -1 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row - 1][column - 1] == 9 
+          if  (row - 1) > -1 && (column - 1 ) > -1 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row - 1][column - 1] == 9
             skynet_targets << ("#{row - 1}#{column - 1}").to_i
           end
-          if  (row + 1) < 10 && (column - 1 ) > -1 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row + 1][column - 1] == 9 
+          if  (row + 1) < 10 && (column - 1 ) > -1 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row + 1][column - 1] == 9
             skynet_targets << ("#{row + 1}#{column - 1}").to_i
           end
-          if  (row - 1) > -1 && (column + 1 ) < 10 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row - 1][column + 1] == 9 
+          if  (row - 1) > -1 && (column + 1 ) < 10 && skynet_protocol_neighboring_miss_direction(row, column) && @copy[row - 1][column + 1] == 9
             skynet_targets << ("#{row - 1}#{column + 1}").to_i
           end
         end
@@ -718,7 +718,7 @@ class Board
       until x == 100
         direction_array = ["v","h"]
         direction = direction_array.sample
-        if direction.downcase == "vertical" || direction.downcase == "horizontal" || direction.downcase == "v" || direction.downcase == "h" 
+        if direction.downcase == "vertical" || direction.downcase == "horizontal" || direction.downcase == "v" || direction.downcase == "h"
           break
         end
       end

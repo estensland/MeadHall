@@ -1,9 +1,14 @@
+
 module StatisticsJunk
   # Monkey patch this onto class Array
 
   # MEAN
-  def average
+  def mean
     self.inject(:+)/self.length
+  end
+
+  def average
+    self.mean
   end
 
   # MODE
@@ -30,6 +35,13 @@ module StatisticsJunk
     sorted = self.sort
     x = sorted.length
     (sorted[(x - 1) / 2] + sorted[x / 2]) / 2.0
+  end
+
+  # STANDARD DEVIATION
+  def standard_deviation
+    u = self.mean #cache the mean
+    result = self.inject(0){|sum, num| sum + ((num - u) ** 2)} # sum of the squared variance for each item
+    Math.sqrt((result.to_f / self.length)) # Get the the square root of the mean of the sumed squared variance
   end
 
 end
