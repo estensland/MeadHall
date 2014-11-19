@@ -3,6 +3,7 @@
 RED="\[\033[1;91m\]"
 YELLOW="\[\033[1;93m\]"
 GREEN="\[\033[1;92m\]"
+CYN="\[\033[36m\]"
 BLUE="\[\033[1;94m\]"
 WHITE="\[\033[1;97m\]"
 COLOR_RESET="\[\e[0m\]"
@@ -46,7 +47,7 @@ function set_bash_prompt () {
     GIT_STATE_COLOR="${WHITE}"
   fi
 
-  PS1="${RED}\h:${COLOR_RESET} ${WHITE}\@${COLOR_RESET} \w\$(__git_ps1 ' ${GIT_STATE_COLOR}(%s)${GIT_REMOTE_STATE}${COLOR_RESET}') $ "
+  PS1="${RED}\h:${COLOR_RESET} ${WHITE}\@${COLOR_RESET} ${CYN}\w${COLOR_RESET}\$(__git_ps1 ' ${GIT_STATE_COLOR}(%s)${GIT_REMOTE_STATE}${COLOR_RESET}') ${CYN}⌘${COLOR_RESET}  "
 }
 
 PROMPT_COMMAND=set_bash_prompt

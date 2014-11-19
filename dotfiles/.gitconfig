@@ -1,8 +1,6 @@
 [user]
 	name = Eric Stensland
 	email = estensland88@gmail.com
-[github]
-  user = estensland
 [alias]
   co = checkout
   cob = checkout -b
@@ -21,7 +19,7 @@
   browser = open
 [core]
   excludesfile = ~/.gitignore
-  editor = subl 
+  editor = subl
   l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
   ll = log --stat --abbrev-commit
   d = diff --color-words

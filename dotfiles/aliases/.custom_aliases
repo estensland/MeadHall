@@ -1,11 +1,31 @@
+# Custom Aliases
+
+# Quick Ins to Coding Directories
+
 alias coding='cd ~/coding'
-alias exer='cd ~/coding/exercism.io'
-alias euler='cd ~/coding/project_euler'
 alias mh='cd ~/coding/MeadHall'
-alias rp='cd ~/coding/rails_projects'
 alias rfiles='cd ~/coding/ruby_files'
 alias wp='cd ~/coding/web_projects'
-alias u='rake u'
+
+# Repos of Challenges
+
+alias exer='cd ~/coding/exercism.io'
+alias euler='cd ~/coding/project_euler'
+
+# Web Dev Projects by Language
+
+alias emberp='cd ~/coding/ember_projects'
+alias jsp='cd ~/coding/js_projects'
+alias phpp='cd ~/coding/php_projects'
+alias rp='cd ~/coding/rails_projects'
+
+# Local Ruby Gems
+
+alias rpg='cd ~/coding/rails_projects/gems'
+
+alias gene='cd ~/coding/rails_projects/genealogy_test'
+
+# Nothing but random:
 
 inspire() {
   shuffle
@@ -30,3 +50,32 @@ shuffle() {
 
 array=( 'Get that shit out of you, and get that motivation to not give up and not be a quitter, no matter how much you just want to fall flat on your face' 'These are the times that try mens souls...Tyranny, like hell, is not easily conquered...the harder the conflict, the more glorious the triumph' 'Nothing is eaten as hot as it is cooked' 'Sometimes even to live is an act of courage' 'Ships are safe in harbor, but that is not what they are made for' 'All I know is that I know nothing' 'The best revenge is massive success' 'People often say that motivation doesn’t last. Well, neither does bathing.  That’s why we recommend it daily' 'Fall seven times and stand up eight' 'If the wind will not serve, take to the oars' 'ASTRA INCLINANT NON OBLIGANT' 'When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.' 'Nothing is impossible, the word itself says, I’m possible!' 'Give me six hours to chop down a tree and I will spend the first four sharpening the axe' 'Common looking people are the best in the world: that is the reason the Lord makes so many of them' 'If I were two-faced, would I be wearing this one?')
 
+custom-help () {
+  echo " Custom Aliases"
+  echo
+  echo " Quick Ins to Coding Directories"
+  echo " coding = cd ~/coding"
+  echo " mh     = cd ~/coding/MeadHall"
+  echo " rfiles = cd ~/coding/ruby_files"
+  echo " webp   = cd ~/coding/web_projects"
+  echo
+  echo " Repos of Challenges"
+  echo
+  echo " exer  = cd ~/coding/exercism.io"
+  echo " euler = cd ~/coding/project_euler"
+  echo
+  echo " Web Dev Projects by Language"
+  echo
+  echo " emberp = cd ~/coding/ember_projects"
+  echo " phpp   = cd ~/coding/php_projects"
+  echo " rp     = cd ~/coding/rails_projects"
+  echo
+  echo " Local Ruby Gems"
+  echo
+  echo " rpg  = cd ~/coding/rails_projects/gems"
+  echo " gene = cd ~/coding/rails_projects/genealogy_test"
+  echo
+  echo " Heights of Randomness"
+  echo " inspire = ?"
+  echo
+} 
