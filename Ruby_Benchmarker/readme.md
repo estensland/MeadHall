@@ -5,7 +5,7 @@ Ruby Benchmarker
 
 1. Make "quantitiy" the number of comparisons to make
 
-1. Adjust the number of "TIMES" to run each 
+1. Adjust the number of "TIMES" to run each
 
 1. OPTIONAL: Give a descriptive name to each instead of "First" or "Second"
 

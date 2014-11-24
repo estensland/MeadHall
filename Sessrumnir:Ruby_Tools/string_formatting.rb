@@ -59,5 +59,5 @@ module WordPrintOut
       int << num.to_s << num.post_match                               #Pushes the pieces back together
     else number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse     #The .gsub for integers
     end
-  end 
+  end
 end
