@@ -128,17 +128,14 @@ module Rubymathics
 
   def pallindrome_finder(low, high)
     pallindromes = []
-    low.upto(high).map do |x|
-      low.upto(high).each do |y|
-        z = x * y
-        pallindromes << z if pallindrome?(z)
-      end
+    low.upto(high).map do |num|
+      pallindromes << num if pallindrome?(num)
     end
-    pallindromes.sort
+    pallindromes
   end
 
-  def pallindrome?(num)
-    num = num.to_s
+  def pallindrome?(num, base = 2)
+    num = base ? num.to_s : num.to_s(base)
     num == num.reverse
   end
 end
