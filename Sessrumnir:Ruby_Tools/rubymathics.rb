@@ -1,6 +1,5 @@
 module Rubymathics
 
-
   def number_split(num)
     num.to_s.split(//).map(&:to_i)
   end
@@ -58,9 +57,18 @@ module Rubymathics
     sequence
   end
 
+  # PANDIGITAL
+
+  def pandigital?(number)
+    splitted = number_split(number)
+    split_uniq = splitted.uniq.reject(&:zero?)
+    return false if split_uniq.length != splitted.length
+    split_uniq.inject(:+) == 45
+  end
+
   # FIBONACCI
 
-  def is_fibonacci?(i, prev =0, fib =1)
+  def is_fibonacci?(i, prev = 0, fib = 1)
     return false if i.is_a?(String)
     return true  if  i == fib || i == 0
     return false if fib > i
