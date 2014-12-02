@@ -57,6 +57,16 @@ module Rubymathics
     sequence
   end
 
+  # RIGHT TRIANGLE
+
+  def right_triangle?(a,b,c)
+    (a**2 + b**2) == c ** 2
+  end
+
+  def right_get_c(a,b)
+    (a**2 + b**2) ** 0.5
+  end
+
   # PANDIGITAL
 
   def pandigital?(number)
