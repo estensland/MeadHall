@@ -1,8 +1,12 @@
 module Rubymathics
 
+  # UTILITY METHODS
+
   def number_split(num)
     num.to_s.split(//).map(&:to_i)
   end
+
+  # REPEATING DECIMALS
 
   def repeating_decimal?(num)
     count = 0
@@ -40,9 +44,13 @@ module Rubymathics
     count - remainders.index(res)
   end
 
+  # FACTORIAL
+
   def factorial(num)
     (1..num).to_a.inject(&:*)
   end
+
+  # COLLATZ SEQUENCE
 
   def collatz_sequence(num)
     sequence = [num]
