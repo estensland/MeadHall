@@ -1,11 +1,15 @@
-# Chunk table data into a hash
+# For translating data from an html table into a hash
 
-table_data = ""
-
-x = table_data.gsub(/(<tr>|<td>)/, '').split('</tr>').map do |row|
-  traits = row.split('</td>').map(&:strip)
-  {"" => traits[0], "" => traits[1]}
+def table_parse(table_data, attrs)
+  table_data.gsub(/(<tr>|<td>)/, '').split('</tr>').map do |row|
+    traits = row.split('</td>').map(&:strip)
+    result = {}
+    
+    attrs.each.with_index do |attrib, index|
+      result[attrib] = traits[index]
+    end
+    
+    result
+  end
 end
-
-p x
 
