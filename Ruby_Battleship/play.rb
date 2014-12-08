@@ -1,4 +1,4 @@
-require_relative 'board'
+require_relative 'orig_board'
 
 # Empty = 0
 # Sub = 1

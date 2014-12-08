@@ -13,7 +13,7 @@ class Ship
   end
 
   def hit(letter, number)
-    cells = cells.delete([letter, number])
+    cells = self.cells.delete([letter, number])
     sink_check
   end
 
@@ -21,16 +21,16 @@ class Ship
     if @cells.length > 0
       'Hit!'
     else
-      status = 'sunk'
+      self.status = 'sunk'
       sunk_message
     end
   end
 
   def sunk_message
-    if type == 'battleship'
+    if self.type == 'battleship'
       "You sunk my Battleship!"
     else
-      "#{player.name}'s #{type.capitalize} was sunk!"
+      "#{self.player.name}'s #{self.type.capitalize} was sunk!"
     end
   end
 end

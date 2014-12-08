@@ -10,20 +10,20 @@ class Cell
 
   def shot
     if has_ship?
-      peg = 'red'
-      contains.hit(@letter, @number)
+      self.peg = 'red'
+      self.contains.hit(@letter, @number)
       'Hit'
     else
-      peg = 'white'
+      self.peg = 'white'
       'Miss'
     end
   end
 
   def has_peg?
-    !!peg
+    !!self.peg
   end
 
   def has_ship?
-    contains != 'empty'
+    self.contains != 'empty'
   end
 end
