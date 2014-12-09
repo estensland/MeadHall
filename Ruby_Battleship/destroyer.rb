@@ -1,0 +1,3 @@
+class Destroyer << Ship
+
+end
