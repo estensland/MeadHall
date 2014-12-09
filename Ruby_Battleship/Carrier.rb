@@ -1,0 +1,3 @@
+class Carrier << Ship
+
+end
