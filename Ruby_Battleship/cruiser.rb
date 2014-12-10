@@ -1,3 +1,3 @@
-class Cruiser << Ship
+class Cruiser < Ship
 
 end

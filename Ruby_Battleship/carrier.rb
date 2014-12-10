@@ -1,3 +1,3 @@
-class Carrier << Ship
+class Carrier < Ship
 
 end

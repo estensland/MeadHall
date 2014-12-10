@@ -1,3 +1,3 @@
-class Destroyer << Ship
+class Destroyer < Ship
 
 end

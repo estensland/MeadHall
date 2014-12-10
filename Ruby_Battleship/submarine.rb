@@ -1,3 +1,3 @@
-class Submarine << Ship
+class Submarine < Ship
 
 end

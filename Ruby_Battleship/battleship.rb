@@ -1,3 +1,3 @@
-class Battleship << Ship
+class Battleship < Ship
 
 end

@@ -1,3 +1,3 @@
 class Board
-  
+
 end
