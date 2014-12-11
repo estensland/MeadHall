@@ -1,3 +1,5 @@
+require_relative 'requirement'
+
 class Player
 
   def initialize(opts = {})
@@ -6,7 +8,8 @@ class Player
   end
 
   def gen_fleet
-
+    Ship::SHIP_CLASSES
+    @fleet
   end
 
 end

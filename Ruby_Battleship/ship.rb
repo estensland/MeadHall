@@ -1,4 +1,7 @@
+require_relative 'requirement'
+
 class Ship
+  SHIP_CLASSES = [Carrier, Battleship, Cruiser, Submarine, Destroyer]
   attr_accessor :player, :type, :status, :cells
 
   def initialize(opts)

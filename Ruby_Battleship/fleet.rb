@@ -1,3 +1,5 @@
+require_relative 'requirement'
+
 class Fleet
   attr_accessor :ships
 

@@ -1,3 +1,5 @@
+require_relative 'requirement'
+
 class Cell
   attr_accessor :letter, :number, :contains, :peg
 
