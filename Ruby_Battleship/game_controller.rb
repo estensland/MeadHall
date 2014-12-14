@@ -8,46 +8,45 @@ class GameController
   end
 
   def players_setup
-    res = [1,2].map do |i|
-      @player1 = player_setup(i)
-    end
+    @player1 = player_setup
+    @player2 = player_setup
   end
 
   def player_setup_questions
+
   end
 
   def player_setup(num)
-    puts "Player #{num} Setup"
-    puts ""
-
-    name = player_name_setup
+    name = Views::PlayerSetup.name
+    fleet = fleet_setup
+    Player.new(name: name, fleet: fleet)
   end
 
-  def player_name_setup
-    puts 'Rock Your Name:'
-    name = gets.chomp
-  end
+  def fleet_setup
+    setup_choice = Views::PlayerSetup.setup_choice
 
-    puts '1. Manual setup
-          2. Auto Setup'
-    name = gets.chomp
-
-    if input
-      player_setup
+    if setup_choice.to_i == 1
+      player_set_up
     else
-      auto_set_up
-    end
-  end
-
-
-    DEFAULT_SETUP.each do |ship, coordinates|
-      ship_place(ship, coordinates)
+      default_set_up
     end
   end
 
   def player_set_up
     Ship::SHIP_CLASSES.each do |ship|
-      puts
+
     end
+  end
+
+  def default_set_up
+    fleet = []
+    DEFAULT_SETUP.each do |ship, coordinates|
+      ship = ship_place(ship, coordinates)
+      fleet << ship
+    end
+  end
+
+  def ship_place(ship)
+
   end
 end
