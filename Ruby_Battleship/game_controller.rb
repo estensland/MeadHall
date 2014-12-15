@@ -32,21 +32,31 @@ class GameController
     end
   end
 
-  def player_set_up
+  def player_ship_set_up
     Ship::SHIP_CLASSES.each do |ship|
 
     end
   end
 
-  def default_set_up
+  def default_ship_set_up
     fleet = []
+
     DEFAULT_SETUP.each do |ship, coordinates|
       ship = ship_place(ship, coordinates)
       fleet << ship
     end
+
+    fleet
+  end
+
+  def manual_ship_placing(ship)
+    Views::PlayerSetup.ship_intro(ship)
+    vertical = Views::PlayerSetup.select_row
+    horizontal = Views::PlayerSetup.select_column
+    ship = Views::PlayerSetup.ship_placing(ship)
   end
 
   def ship_place(ship)
-
+    ship =
   end
 end
