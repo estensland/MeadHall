@@ -51,6 +51,8 @@ class GameController
 
   def manual_ship_placing(ship)
     Views::PlayerSetup.ship_intro(ship)
+    alignment = Views::PlayerSetup.select_alignment
+    Views::PlayerSetup.position_intro(ship)
     vertical = Views::PlayerSetup.select_row
     horizontal = Views::PlayerSetup.select_column
     ship = Views::PlayerSetup.ship_placing(ship)

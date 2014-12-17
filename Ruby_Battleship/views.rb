@@ -21,9 +21,24 @@ module Views
     end
 
     def ship_intro(ship)
-      puts '----------------'
+      blank_line
+      puts "--------------------"
+      puts "Placing #{ship.to_s} :"
+      blank_line
+    end
+
+    def select_alignment
+      blank_line
+      puts "Pick Alignment For Ship:"
+      puts "Horizontal or Vetical? ('h' or 'v'):"
+      blank_line
+      gets.chomp
+    end
+
+    def coordinates_intro(ship)
+      blank_line
       puts "Place #{ship.to_s} :"
-      puts 'Select Coordinates for bow of the ship'
+      puts 'Select Coordinates for Bow of the Ship'
       blank_line
     end
 
@@ -40,5 +55,6 @@ module Views
       blank_line
       gets.chomp
     end
+
   end
 end
