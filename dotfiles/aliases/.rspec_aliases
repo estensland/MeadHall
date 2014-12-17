@@ -1,2 +1,12 @@
+# Rspec Aliases
  
- 
+
+rspec-help () {
+  echo "Rspec Aliases"
+  echo
+  echo "rtm() = rake SPEC='spec/models/$1_spec.rb:$2'"
+  echo "rtc() = rake SPEC='spec/controllers/$1_controller_spec.rb:$2'"
+  echo
+  echo "fuck_it = kill server, db:reset, rails s"
+  echo
+}
