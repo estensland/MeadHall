@@ -1,6 +1,8 @@
 Ruby Benchmarker
 ========
 
+IN NEED OF WORK
+
 ####Use this to compare times of ruby code
 
 1. Make "quantitiy" the number of comparisons to make
