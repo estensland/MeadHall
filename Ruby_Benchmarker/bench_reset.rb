@@ -1,10 +1,19 @@
-code = {}
+code = []
 
 puts "How many tests?"
 number = gets.chomp
 
+puts " "
+puts "=========="
+puts " "
+
 number.to_s.times do |n|
-  code[n]
+  puts "----"
+  code[n]={}
+  puts "Name for #{n} test"
+  code[n][:name] = gets.chomp 
+  puts "Code for #{n} test"
+  code[n][:code] = gets.chomp 
 end
 
 File.open('benchmarker.rb', 'w+') do |f|
