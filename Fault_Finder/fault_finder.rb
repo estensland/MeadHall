@@ -1,0 +1,3 @@
+class FaultFinder
+
+end
