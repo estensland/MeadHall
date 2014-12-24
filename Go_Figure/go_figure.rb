@@ -33,4 +33,4 @@ def go_figure(nums, operators, answers)
   end
 end
 
-go_figure(numbers, ops, results)
+# go_figure(numbers, ops, results)

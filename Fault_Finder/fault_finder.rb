@@ -12,7 +12,8 @@ end
 EOF
 
 rogue_comma_array = <<-EOF
-[1,2,3,4,5,]
+[1,2,3,4,5,
+]
 EOF
 
 rogue_comma_hash = <<-EOF
@@ -51,8 +52,8 @@ def indent_finder(row, line)
   unless count % 2
     return "Non-Even indentation at line #{line}"
   end
-f
+
   count / 2
 end
 
-puts extra_comma(rogue_comma_hash)
+puts extra_comma(rogue_comma_array)
