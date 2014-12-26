@@ -34,3 +34,14 @@ def go_figure(nums, operators, answers)
 end
 
 # go_figure(numbers, ops, results)
+
+p "Numbers? (an array of the available numbers)"
+numbers = gets.input
+
+p "Operators? (an array of symbols left ot right on each row top to bottom)"
+ops = gets.input
+
+p "Answers? (an array of numbers, top to bottom then right to left)"
+results = gets.input
+
+go_figure(numbers, ops, results)
