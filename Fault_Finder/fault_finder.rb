@@ -4,6 +4,24 @@ if quantitiy >= 9
 end
 EOF
 
+bad_indentation = <<-EOF
+if quantitiy >= 9
+ split.split
+  array .join
+end
+EOF
+
+missing_end = <<-EOF
+if quantitiy >= 9
+  split.split
+  array .join
+if 'chicken'
+  return 5
+else
+  return '5'
+end
+EOF
+
 busted_period = <<-EOF
 if quantitiy >= 9
   split.split
