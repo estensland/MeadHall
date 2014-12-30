@@ -6,7 +6,7 @@ def pg_table_sizes
     FROM information_schema.tables
     ORDER BY
         pg_total_relation_size('"' || table_schema || '"."' || table_name || '"') DESC
-    EOF
+EOF
     
     result = ActiveRecord::Base.connection.execute(query)
     
