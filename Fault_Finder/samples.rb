@@ -1,4 +1,4 @@
-sample = <<-EOF
+good_sample = <<-EOF
 if quantitiy >= 9
   puts "bob"
 end
@@ -22,7 +22,14 @@ else
 end
 EOF
 
-busted_period = <<-EOF
+busted_period_space_after = <<-EOF
+if quantitiy >= 9
+  split.split
+  array. join
+end
+EOF
+
+busted_period_space_before = <<-EOF
 if quantitiy >= 9
   split.split
   array .join
@@ -36,4 +43,11 @@ EOF
 
 rogue_comma_hash = <<-EOF
 {cheese: 5, 'barth' => 'kool', foo: 'bar', 5 => 17,}
+EOF
+
+rogue_new_line = <<-EOF
+{cheese: 5, 'barth' => 'kool', foo: 'bar', 5 => 17
+,
+  
+}
 EOF
