@@ -1,3 +1,5 @@
+require_relative 'samples'
+
 def rogue_period(file)
   if file =~ (/\.(\s|\z|$)|(\s|\A|^)\./)
     file.split("\n").each_with_index do |row, index|
