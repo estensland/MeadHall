@@ -1,16 +1,16 @@
 ops = [   :-, :*,
-        :*, :+,  :+,
-          :+, :+,
-        :-, :/,  :*,
-          :+, :-
+        :*, :*,  :*,
+          :*, :-,
+        :-, :+,  :+,
+          :+, :*
       ]
 
-results = [         7,
-                    20,
-                    9,
-          10,  2, 20]
+results = [         30,
+                    29,
+                    12,
+          27,  21,  20]
 
-numbers = [1,2,2,3,5,6,7,8,9]
+numbers = [1,2,2,3,4,5,6,7,8]
 
 def go_figure(nums, operators, answers)
   nums.permutation.each do |i|
@@ -33,4 +33,4 @@ def go_figure(nums, operators, answers)
   end
 end
 
-# go_figure(numbers, ops, results)
+go_figure(numbers, ops, results)
