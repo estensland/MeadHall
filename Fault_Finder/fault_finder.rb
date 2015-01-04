@@ -1,25 +1,4 @@
-sample = <<-EOF
-if quantitiy >= 9
-  puts "bob"
-end
-EOF
-
-busted_period = <<-EOF
-if quantitiy >= 9
-  split.split
-  array .join
-end
-EOF
-
-rogue_comma_array = <<-EOF
-[1,2,3,4,5,
-]
-EOF
-
-rogue_comma_hash = <<-EOF
-{cheese: 5, 'barth' => 'kool', foo: 'bar', 5 => 17,}
-EOF
-
+require_relative 'samples'
 
 def rogue_period(file)
   if file =~ (/\.(\s|\z|$)|(\s|\A|^)\./)
