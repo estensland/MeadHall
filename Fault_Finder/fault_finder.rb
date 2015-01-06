@@ -1,5 +1,17 @@
 require_relative 'samples'
 
+def simple_def_end_check(file)
+  def_count = file.scan(/def/).count
+  end_count = file.scan(/end/).count
+  return false if def_count > end_count
+end
+
+def simple_do_end_check(file)
+  do_count = file.scan(/do/).count
+  end_count = file.scan(/end/).count
+  return false if do_count > end_count
+end
+
 def rogue_period(file)
   if file =~ (/\.(\s|\z|$)|(\s|\A|^)\./)
     file.split("\n").each_with_index do |row, index|
