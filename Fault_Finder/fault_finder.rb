@@ -1,15 +1,26 @@
 require_relative 'samples'
 
 def simple_def_end_check(file)
-  def_count = file.scan(/def/).count
-  end_count = file.scan(/end/).count
+  def_count = get_count('def')
+  end_count = get_count('end')
   return false if def_count > end_count
 end
 
 def simple_do_end_check(file)
-  do_count = file.scan(/do/).count
-  end_count = file.scan(/end/).count
+  do_count = get_count('do')
+  end_count = get_count('end')
   return false if do_count > end_count
+end
+
+def basic_end_check(file)
+  def_count = get_count('def')
+  do_count = get_count('do')
+  end_count = get_count('end')
+  return false if def_count + do_count > end_count
+end
+
+def get_count(string)
+  file.scan(string).count
 end
 
 def rogue_period(file)
