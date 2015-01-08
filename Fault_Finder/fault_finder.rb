@@ -1,25 +1,41 @@
 require_relative 'samples'
 
 def simple_def_end_check(file)
-  def_count = get_count('def')
-  end_count = get_count('end')
+  def_count = get_count(file, 'def')
+  end_count = get_count(file, 'end')
   return false if def_count > end_count
 end
 
 def simple_do_end_check(file)
-  do_count = get_count('do')
-  end_count = get_count('end')
+  do_count = get_count(file, 'do')
+  end_count = get_count(file, 'end')
   return false if do_count > end_count
 end
 
 def basic_end_check(file)
-  def_count = get_count('def')
-  do_count = get_count('do')
-  end_count = get_count('end')
+  def_count = get_count(file, 'def')
+  do_count = get_count(file, 'do')
+  end_count = get_count(file, 'end')
   return false if def_count + do_count > end_count
 end
 
-def get_count(string)
+def bracket_check(file)
+  get_count(file, '[') == get_count(file, ']')
+end
+
+def parens_check(file)
+  get_count(file, '(') == get_count(file, ')')
+end
+
+def curly_check(file)
+  get_count(file, '{') == get_count(file, '}')
+end
+
+def order_op_sign_counts_check(file) 
+  bracket_check(file) && parens_check(file) && curly_check(file)
+end
+
+def get_count(file, string)
   file.scan(string).count
 end
 
