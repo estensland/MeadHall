@@ -113,13 +113,22 @@ window.heorot = (function(){
         style: 'display: none;'
       });
       if (typeof input !== 'undefined') {
-        $.each(input, function (name, value) {
+        if (typeof input === 'string'){
           $('<input />', {
             type: 'hidden',
-            name: name,
-            value: value
+            name: 'submittedParams',
+            value: input
           }).appendTo(form);
-        });
+        }
+        else{
+          $.each(input, function (name, value) {
+            $('<input />', {
+              type: 'hidden',
+              name: name,
+              value: value
+            }).appendTo(form);
+          });
+        }
       }
       form.appendTo('body').submit();
     }
