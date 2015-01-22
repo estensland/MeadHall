@@ -21,4 +21,12 @@ EOF
   def drop_single_table(table)
     ActiveRecord::Base.connection.execute("DROP TABLE #{table}")
   end
+  
+  def ids_between(low, high)
+    self.where(id: low..high)
+  end
+  
+  def ids_under(num)
+    self.where('id < ?', num)
+  end
 end
