@@ -22,8 +22,18 @@ class FaultFile
   def basic_end_check
     def_count = get_count('def')
     do_count = get_count('do')
+    begin_count = get_count('begin')
+    class_count = get_count('class')
+    module_count = get_count('module')
+    while_count = get_count('while')
+    until_count = get_count('until')
+    unless_count = get_count('unless')
+    if_count = get_count('if')
+    case_count = get_count('case')
+
     end_count = get_count('end')
-    return false if def_count + do_count > end_count
+    open_counts = def_count + do_count + begin_count + class_count + module_count + while_count + until_count + if_count
+    return false if open_counts > end_count
   end
   
   def bracket_check
