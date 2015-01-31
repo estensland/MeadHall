@@ -78,17 +78,21 @@ class FaultFile
     end
   end
   
-  def indent_finder(row, line)
+  def indent_finder(row, line_number)
     count = 0
     until row[count] != ' '
       count += 1
     end
   
     unless count % 2
-      return "Non-Even indentation at line #{line}"
+      puts "Non-Even indentation at line #{line_number}"
     end
   
     count / 2
+  end
+
+  def proper_indent?(row, line_number, number)
+    indent_finder(row, line_number) == number
   end
 
 end
