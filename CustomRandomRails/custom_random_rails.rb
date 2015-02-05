@@ -11,11 +11,7 @@ EOF
     
     result = ActiveRecord::Base.connection.execute(query)
     
-    if display
-      puts result.to_a
-    else
-      result.to_a 
-    end
+    display ? puts result.to_a : result.to_a 
   end
 
   def drop_single_table(table)
