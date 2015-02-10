@@ -131,6 +131,20 @@ window.heorot = (function(){
         }
       }
       form.appendTo('body').submit();
+    },
+    
+    fileOpen: function (inputFile){
+      // http://www.webdeveloper.com/forum/showthread.php?261923-how-to-use-javascript-in-html-to-read-txt-file-and-display-it
+      var reader = new FileReader();
+      if(inputFile.files && inputFile.files[0]){
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var output=e.target.result.split("\n");
+  
+          document.getElementById('main').innerHTML= output;
+        };
+        reader.readAsText(inputFile.files[0]);
+      }
     }
   }
 
