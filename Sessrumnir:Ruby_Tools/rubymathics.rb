@@ -90,7 +90,7 @@ module Rubymathics
     return false if i.is_a?(String)
     return true  if  i == fib || i == 0
     return false if fib > i
-    is_fibonacci?(i, fib, fib += prev, true)
+    is_fibonacci?(i, fib, fib += prev)
   end
 
   def fibonacci_at(opts = {})
@@ -110,6 +110,21 @@ module Rubymathics
     return nth_term if opts[:display] == 'nth_term'
 
     fib
+  end
+
+  def fibonacci_below(number)
+    prev = 0
+    fib = 1
+    nums = []
+  
+    until fib >= number
+      store = fib
+      fib += prev
+      prev = store
+      nums << fib
+    end
+
+    nums
   end
 
   # PRIMES
