@@ -6,14 +6,9 @@ function hop_to(){
   ssh -p $1 $2@$3;
 }
 
-bundler-help () {
-  echo "Bundler Aliases"
+devops-help () {
+  echo "DevOps Aliases"
   echo
-  echo " b     = bundle"
-  echo " bi    = bundle install --path vendor"
-  echo " be    = bundle exec"
-  echo " bl    = bundle list"
-  echo " bu    = bundle update"
-  echo " bp    = bundle package"
+  echo " hop_to(port, user, ip) = ssh -p $1 $2@$3"
   echo
 }
