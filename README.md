@@ -13,7 +13,7 @@ This is a collection of code I reuse/random coding projects that I do not want t
 4. Ruby_Benchmarker -> A set up Ruby Benchmarking suite
 5. Sessrumnir:Ruby_Tools -> Ruby bits of code that I have saved. The code to help with math solutions mostly was inspired by project euler.
 6. Sinatra_Rake_File -> A customized Sinatra Rake File (Basic rake experimentation, not touched since before I learned Rails)
-7. dotfiles -> A collection of dotfiles including my bash aliases for my local machine
+7. dotfiles -> A collection of dotfiles including my bash aliases for my local machine and servers
 
 
 
