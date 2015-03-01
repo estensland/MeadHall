@@ -5,7 +5,6 @@
 alias goexer='open http://www.exercism.io/estensland'
 alias goeuler='open http://projecteuler.net/problems'
 alias gogit='open http://www.github.com/estensland'
-alias gosoc='open http://www.gmail.com && open http://www.facebook.com && open http://www.twitter.com'
 
 # Dynamic
 

@@ -1,5 +1,5 @@
 # Rails Aliases
- 
+
 alias rc='rails c'
 alias rgm='rails generate model'
 alias rn='rails new'
@@ -32,6 +32,6 @@ rails-help () {
   echo "seed    = rake db:seed"
   echo "reset   = rake db:reset"
   echo
-  echo "fuck_it = kill server, db:reset, rails s"
+  echo "fuck_it = db:reset, rails s"
   echo
 }

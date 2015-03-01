@@ -18,7 +18,7 @@ function rtm(){
    echo testing all of $1 model
    rake SPEC='spec/models/$1_spec.rb';
   fi
-} 
+}
 
 rspec-help () {
   echo "Rspec Aliases"

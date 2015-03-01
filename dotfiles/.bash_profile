@@ -10,7 +10,7 @@ shopt -s checkwinsize
 
 
 
-source ~/coding/MeadHall/dotfiles/aliases/.aliases
+source ~/coding/MeadHall/dotfiles/aliases/.aliases.sh
 
 if [ -f ~/.bash_prompt ]; then
   source ~/coding/MeadHall/dotfiles/.bash_prompt

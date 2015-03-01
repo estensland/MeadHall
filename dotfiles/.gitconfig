@@ -1,6 +1,6 @@
 [user]
-	name = Eric Stensland
-	email = estensland88@gmail.com
+	user.name=Eric Stensland
+  user.email=estensland88@gmail.com
 [alias]
   co = checkout
   cob = checkout -b
