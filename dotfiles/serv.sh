@@ -14,6 +14,21 @@ rc(){
   rails c production
 }
 
+db_create(){
+  goapp
+  rake db:create RAILS_ENV=production
+}
+
+db_seed(){
+  goapp
+  rake db:seed RAILS_ENV=production
+}
+
+migrate(){
+  goapp
+  rake db:migrate RAILS_ENV=production
+}
+
 rerock() {
   echo
   echo "pulling code from master then restarting unicorn"
