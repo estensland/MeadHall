@@ -1,4 +1,4 @@
-alias reload='source ~/.bash_profile'
+alias reshell='source ~/.bash_profile'
 
 alias ..='cd ..'
 alias ...='cd ../..'
