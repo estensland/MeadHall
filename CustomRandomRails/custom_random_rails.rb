@@ -1,5 +1,5 @@
 module CustomRandomRails
-  def pg_table_sizes(display = false)
+  def pg_table_sizes
     query = <<EOF
     SELECT
       table_schema || '.' || table_name AS table_full_name,
@@ -11,7 +11,7 @@ EOF
     
     result = ActiveRecord::Base.connection.execute(query)
     
-    display ? puts result.to_a : result.to_a 
+    result.to_a
   end
 
   def drop_single_table(table)
