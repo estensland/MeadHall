@@ -9,9 +9,7 @@ module CustomRandomRails
       pg_total_relation_size('"' || table_schema || '"."' || table_name || '"') DESC
 EOF
     
-    result = ActiveRecord::Base.connection.execute(query)
-    
-    result.to_a
+    ActiveRecord::Base.connection.execute(query).to_a
   end
 
   def drop_single_table(table)
