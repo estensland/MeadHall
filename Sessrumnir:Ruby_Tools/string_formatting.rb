@@ -21,8 +21,7 @@ module WordPrintOut
       else
         newnumber = 0
         newnumber += array[0].to_i
-        if
-          newnumber == 0
+        if newnumber == 0
           answer << tens[number/10-1]
         else
           answer << tens[number/10-1] + "-" + in_words(newnumber.to_i)

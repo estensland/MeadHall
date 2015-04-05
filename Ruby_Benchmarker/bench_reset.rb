@@ -11,9 +11,9 @@ number.to_s.times do |n|
   puts "----"
   code[n]={}
   puts "Name for #{n} test"
-  code[n][:name] = gets.chomp 
+  code[n][:name] = gets.chomp
   puts "Code for #{n} test"
-  code[n][:code] = gets.chomp 
+  code[n][:code] = gets.chomp
 end
 
 File.open('benchmarker.rb', 'w+') do |f|

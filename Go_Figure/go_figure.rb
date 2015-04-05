@@ -29,7 +29,7 @@ def go_figure(nums, operators, answers)
       end
     end
   end
-  
+
   res.uniq.each do |result|
     p result[0..2]
     p result[3..5]
