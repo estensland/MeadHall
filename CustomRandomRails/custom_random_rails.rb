@@ -12,6 +12,7 @@ EOF
     ActiveRecord::Base.connection.execute(query).to_a
   end
 
+  # not tied to a class
   def drop_single_table(table)
     ActiveRecord::Base.connection.execute("DROP TABLE #{table}")
   end
