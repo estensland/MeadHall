@@ -1,4 +1,3 @@
-
 require 'benchmark'
 
 # Adjust times run here
@@ -130,10 +129,3 @@ end
 
 ############################################
 
-linguify ={1 => "first", 2 => "second", 3 => "third", 4 => "fourth", 5 => "fifth", 6 => "sixth", 7 => "seventh", 8 => "eighth", 9 => "ninth", 10 => "tenth"}
-
-(1..quantitiy).each do |number|
-  word = linguify[number]
-  p eval("#{word}_name") +":"
-  puts eval("#{word}")
-end

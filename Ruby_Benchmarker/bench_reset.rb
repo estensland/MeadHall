@@ -1,21 +1,3 @@
-code = []
-
-puts "How many tests?"
-number = gets.chomp
-
-puts " "
-puts "=========="
-puts " "
-
-number.to_s.times do |n|
-  puts "----"
-  code[n]={}
-  puts "Name for #{n} test"
-  code[n][:name] = gets.chomp
-  puts "Code for #{n} test"
-  code[n][:code] = gets.chomp
-end
-
 File.open('benchmarker.rb', 'w+') do |f|
   f.write <<-EOF
 require 'benchmark'
@@ -149,12 +131,5 @@ end
 
 ############################################
 
-linguify ={1 => "first", 2 => "second", 3 => "third", 4 => "fourth", 5 => "fifth", 6 => "sixth", 7 => "seventh", 8 => "eighth", 9 => "ninth", 10 => "tenth"}
-
-(1..quantitiy).each do |number|
-  word = linguify[number]
-  p eval("#{word}_name") +":"
-  puts eval("#{word}")
-end
   EOF
 end
