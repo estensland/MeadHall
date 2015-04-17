@@ -15,16 +15,39 @@ alias gs='git status'
 alias gss='git status -s'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias ggph='git push origin HEAD && gobranch'
-alias gph='git push origin HEAD'
+function gph() {
+  BRANCH=$(git symbolic-ref HEAD)
+
+  MASTER="refs/heads/master"
+  echo "Trying to Push Branch"
+  echo "Checking if on master..."
+  if  [[ "$BRANCH" == "$MASTER" ]]; then
+    echo 'YOU ARE ON MASTER BRACNH!'
+  else
+    echo "Passed check"
+    git push origin HEAD
+  fi
+}
+alias ggph='gph && gobranch'
 alias gr='git pull --rebase'
 alias gv='git remote -v'
 
 # Shorthands
 
 alias choochoo='git push origin master --force'
-alias hitme='git pull origin master'
 alias mikedrop='git push origin master'
+
+alias hitme='git pull origin master'
+
+function graft(){ #Git pull origin on current branch
+  BRANCH=$(git symbolic-ref HEAD)
+  echo ""
+  echo "Pulling Down Origin Branch"
+  echo "git push origin $BRANCH"
+  echo ""
+  git push origin HEAD
+  echo ""
+}
 
 git-help () {
   echo " Git Aliases"
@@ -44,7 +67,7 @@ git-help () {
   echo " gss = git status -s"
   echo " gd  = git diff"
   echo " gdc = git diff --cached"
-  echo " gph = git push origin HEAD"
+  echo " gph = git push origin HEAD (If Not Master)"
   echo " ggph = git push origin HEAD && gobranch"
   echo " gr  = git pull --rebase"
   echo " gv  = git remote -v"
@@ -54,5 +77,6 @@ git-help () {
   echo " mikedrop = git push origin master"
   echo " choochoo = git push origin master --force"
   echo " hitme    = git pull origin master"
+  echo " graft    = git pull origin (Current Branch)"
   echo
 }
