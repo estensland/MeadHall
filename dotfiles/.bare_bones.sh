@@ -71,7 +71,7 @@ function graft(){
   BRANCH=$(git symbolic-ref HEAD)
   echo ""
   echo "Pulling Down Origin Branch"
-  echo "git push origin $BRANCH"
+  echo "git pull origin $BRANCH"
   echo ""
   git push origin HEAD
   echo ""
