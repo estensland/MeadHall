@@ -1,4 +1,4 @@
-module CustomRandomRails
+module CustomRandomRailsa
   def pg_table_sizes
     query = <<EOF
     SELECT
