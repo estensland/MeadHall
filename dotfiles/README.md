@@ -3,12 +3,11 @@ Dotfiles
 
 ####This is a custom bash environment
 
-The .bash_profle here is a copy of the actual one in the user directory. Notice it sources the other files from their directory.
+The .bash_profle here is a copy of the actual one in the user directory. Notice it sources the other files from their directory. This way the dotfiles can stay in this repo.
 
-- .bare_bones is a file thrown together of things I have grown dependent on
 
-- .aliases contains different files for bundler, git, heroku, homebrew, rails, and other aliases including custom ones, all in the name of increasing the speed of coding
+- /aliases contains different files for bundler, git, heroku, homebrew, rails, and other aliases including custom ones, all in the name of increasing the speed of coding. Some are basic aliases, but I have tried to include some logic and make them more and more into functions.
 
-- .bash-prompt customizes the display prompt (as the name suggests)
+- .bare_bones contains bash alias that I am most dependent on
 
-- The git files are for git versioning
+- .serv is an ongoing project of bash scripts I want in my servers
