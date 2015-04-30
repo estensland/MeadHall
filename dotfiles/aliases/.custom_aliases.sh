@@ -10,7 +10,7 @@ alias wp='cd ~/coding/web_projects'
 # Repos of Challenges
 
 alias exer='cd ~/coding/exercism.io'
-alias euler='cd ~/coding/project_euler'
+alias euler='cd ~/coding/euler'
 
 # Web Dev Projects by Language
 
@@ -79,4 +79,4 @@ custom-help () {
   echo " Heights of Randomness"
   echo " inspire = ?"
   echo
-} 
+}
