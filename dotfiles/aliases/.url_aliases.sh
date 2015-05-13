@@ -25,7 +25,6 @@ url-help () {
   echo
   echo " Dynamic"
   echo " gorepo   = open 'current repo url'"
-  echo " gobranch = open 'current branch url'"
   echo
   echo
 }
