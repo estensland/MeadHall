@@ -9,13 +9,8 @@ alias gogit='open http://www.github.com/estensland'
 # Dynamic
 
 gorepo() {
-  URL=$(git --git-dir=.git config --get remote.origin.url)
-  open "$URL"
-}
-
-gobranch() {
-  URL=$(git --git-dir=.git config --get remote.origin.url)
-  URL=$(awk '{gsub(/\.git/,"/branches")}1' <<< $URL)
+  URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
+  URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
   open "$URL"
 }
 
