@@ -30,54 +30,50 @@ namespace :apiify do |args|
         #{if opts[:routes].include?('i')
           <<-eos
 
-            def index
-              render json: #{opts[:camel_name]}.all, status: 200
-            end
+          def index
+            render json: #{opts[:camel_name]}.all, status: 200
+          end
           eos
           end
         }
-
         #{if opts[:routes].include?('s')
           <<-eos
 
-            def show
-              render json: #{opts[:camel_name]}.find(params['id'], status: 200
-            end
+          def show
+            render json: #{opts[:camel_name]}.find(params['id'], status: 200
+          end
           eos
           end
         }
-
         #{if opts[:routes].include?('c')
           <<-eos
 
-            def create
-              #{opts[:model]} = #{opts[:camel_name]}.create(safe_params)
-              render json: #{opts[:model]}, status: 201
-            end
+          def create
+            #{opts[:model]} = #{opts[:camel_name]}.create(safe_params)
+            render json: #{opts[:model]}, status: 201
+          end
           eos
           end
         }
-
         #{if opts[:routes].include?('u')
           <<-eos
 
-            def update
-              #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
-              #{opts[:model]}.update_attributes(safe_params)
-              render nothing: true, status: 204
-            end
+          def update
+            #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
+            #{opts[:model]}.update_attributes(safe_params)
+            render nothing: true, status: 204
+          end
           eos
           end
         }
-
         #{if opts[:routes].include?('d')
           <<-eos
 
-            def destroy
-              #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
-              #{opts[:model]}.destroy
-              render nothing: true, status: 204
-            end
+          def destroy
+            #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
+            #{opts[:model]}.destroy
+            render nothing: true, status: 204
+          end
           eos
           end
         }
@@ -88,16 +84,45 @@ namespace :apiify do |args|
         end
     EOF
 
-      # ADD ROUTES
+      # CHECK FOR ROUTES
 
       model_filename   = opts[:model] + '.rb'
-      model_path       = Rails.root.join('app', 'models', filename)
+      model_path       = Rails.root.join('app', 'models', model_filename)
 
       unless File.exist?(model_path)
-        # CREATE MODEL
+        File.open(model_path, 'w+') do |f|
+          f.write(<<-EOF.strip_heredoc)
+            class #{opts[:camel_name]} < ActiveRecord::Base
+              # has_many
+              # belongs_to
+            end
+          EOF
+        end
       end
 
-      # CHECK FOR MIGRATION
+      require 'find'
+
+      migration_exist = false
+      Find.find("#{Rails.root.join('db', 'migrate')}/") do |filer|
+        migration_exist = true if filer.include?(opts[:model].pluralize)
+      end
+
+      unless migration_exist
+        filename     = "%s_%s.rb" % [Time.now.strftime('%Y%m%d%H%M%S'), opts[:camel_name].underscore]
+        mig_path     = Rails.root.join('db', 'migrate', filename)
+
+        File.open(mig_path, 'w+') do |f|
+          f.write(<<-EOF.strip_heredoc)
+            class Create#{opts[:camel_name]} < ActiveRecord::Migration
+              def change
+                create_table :#{opts[:camel_name].underscore.pluralize} do |t|
+                  t.timestamps
+                end
+              end
+            end
+          EOF
+        end
+      end
     end
   end
 end
