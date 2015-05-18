@@ -11,80 +11,106 @@ end
 namespace :apiify do |args|
   desc "rock a controller that does api calls"
   task :controller => :environment do
+
+    require 'fileutils'
+
+    tempfile=File.open(Rails.root.join('config', 'temp.rb'), 'w')
+    f=File.new(Rails.root.join('config', 'routes.rb'))
+
+    insert_next = false
+
+    f.each do |line|
+      if insert_next
+        insert_next = false
+        routes_key = {'i' => :index, 's' => :show, 'u' => :update, 'c' => :create, 'd' => :destroy}
+
+        tempfile << "\t\tresources :#{opts[:camel_name].underscore.pluralize}, only: #{opts[:routes].map{|r| routes_key[r]}}\n"
+      end
+
+      if line=~ /namespace \:api/
+        insert_next = true
+      end
+
+      tempfile<<line
+    end
+
+    f.close
+    tempfile.close
+
+    FileUtils.mv(Rails.root.join('config', 'temp.rb'), Rails.root.join('config', 'routes.rb'))
+
+
     filename   = opts[:model].pluralize.underscore + '_controller.rb'
     path       = Rails.root.join('app', 'controllers', 'api', filename)
 
-    if File.exist?(path)
-      raise "ERROR: File '#{path}' already exists"
+    unless File.exist?(path)
+      methods = ""
+
+      File.open(path, 'w+') do |f|
+        f.write(<<-EOF.strip_heredoc)
+          class Api::#{opts[:camel_name]}Controller < ApplicationController
+            # Prevent CSRF attacks by raising an exception.
+            # For APIs, you may want to use :null_session instead.
+            # protect_from_forgery with: :exception
+
+          #{if opts[:routes].include?('i')
+            <<-eos
+
+            def index
+              render json: #{opts[:camel_name]}.all, status: 200
+            end
+            eos
+            end
+          }
+          #{if opts[:routes].include?('s')
+            <<-eos
+
+            def show
+              render json: #{opts[:camel_name]}.find(params['id'], status: 200
+            end
+            eos
+            end
+          }
+          #{if opts[:routes].include?('c')
+            <<-eos
+
+            def create
+              #{opts[:model]} = #{opts[:camel_name]}.create(safe_params)
+              render json: #{opts[:model]}, status: 201
+            end
+            eos
+            end
+          }
+          #{if opts[:routes].include?('u')
+            <<-eos
+
+            def update
+              #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
+              #{opts[:model]}.update_attributes(safe_params)
+              render nothing: true, status: 204
+            end
+            eos
+            end
+          }
+          #{if opts[:routes].include?('d')
+            <<-eos
+
+            def destroy
+              #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
+              #{opts[:model]}.destroy
+              render nothing: true, status: 204
+            end
+            eos
+            end
+          }
+
+            def safe_params
+              params.require(:#{opts[:model]}).permit(#{opts[:safe_params]})
+            end
+          end
+      EOF
     end
 
-    methods = ""
-
-    File.open(path, 'w+') do |f|
-      f.write(<<-EOF.strip_heredoc)
-        class Api::#{opts[:camel_name]}Controller < ApplicationController
-          # Prevent CSRF attacks by raising an exception.
-          # For APIs, you may want to use :null_session instead.
-          # protect_from_forgery with: :exception
-
-        #{if opts[:routes].include?('i')
-          <<-eos
-
-          def index
-            render json: #{opts[:camel_name]}.all, status: 200
-          end
-          eos
-          end
-        }
-        #{if opts[:routes].include?('s')
-          <<-eos
-
-          def show
-            render json: #{opts[:camel_name]}.find(params['id'], status: 200
-          end
-          eos
-          end
-        }
-        #{if opts[:routes].include?('c')
-          <<-eos
-
-          def create
-            #{opts[:model]} = #{opts[:camel_name]}.create(safe_params)
-            render json: #{opts[:model]}, status: 201
-          end
-          eos
-          end
-        }
-        #{if opts[:routes].include?('u')
-          <<-eos
-
-          def update
-            #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
-            #{opts[:model]}.update_attributes(safe_params)
-            render nothing: true, status: 204
-          end
-          eos
-          end
-        }
-        #{if opts[:routes].include?('d')
-          <<-eos
-
-          def destroy
-            #{opts[:model]} = #{opts[:camel_name]}.find(params['id'])
-            #{opts[:model]}.destroy
-            render nothing: true, status: 204
-          end
-          eos
-          end
-        }
-
-          def safe_params
-            params.require(:#{opts[:model]}).permit(#{opts[:safe_params]})
-          end
-        end
-    EOF
-
-      # CHECK FOR ROUTES
 
       model_filename   = opts[:model] + '.rb'
       model_path       = Rails.root.join('app', 'models', model_filename)
@@ -104,11 +130,11 @@ namespace :apiify do |args|
 
       migration_exist = false
       Find.find("#{Rails.root.join('db', 'migrate')}/") do |filer|
-        migration_exist = true if filer.include?(opts[:model].pluralize)
+        migration_exist = true if filer.include?("#{opts[:model].pluralize}.rb")
       end
 
       unless migration_exist
-        filename     = "%s_%s.rb" % [Time.now.strftime('%Y%m%d%H%M%S'), opts[:camel_name].underscore]
+        filename     = "%s_%s.rb" % [Time.now.strftime('%Y%m%d%H%M%S'), "create_#{opts[:camel_name].underscore.pluralize}"]
         mig_path     = Rails.root.join('db', 'migrate', filename)
 
         File.open(mig_path, 'w+') do |f|
