@@ -4,7 +4,23 @@ if ARGV[0] == "apiify:controller"
   opts[:model] = ARGV[1]
   opts[:camel_name] = ARGV[1].camelize
   opts[:routes] = ARGV[2].split('')
-  opts[:safe_params] = ARGV[3].split(',').map{|param| ":#{param}"}.join(',')
+
+  opts[:params] = []
+  opts[:safe_params] = []
+
+  ARGV[3].split(',').each_with_index do |element, index|
+    if index.even?
+      opts[:params] << {name: element}
+
+      if element[0] == ':'
+        opts[:safe_params] << element
+      end
+    else
+      opts[:params].last[:type] = element
+    end
+  end
+
+  opts[:safe_params] = opts[:safe_params].join(',')
 end
 
 
@@ -142,6 +158,7 @@ namespace :apiify do |args|
             class Create#{opts[:camel_name]} < ActiveRecord::Migration
               def change
                 create_table :#{opts[:camel_name].underscore.pluralize} do |t|
+                  #{opts[:params].map.with_index {|param, index| "#{index > 0 ? "\t\t\t\t\t\t\t\t" : ''}t.#{param[:type]}  :#{param[:name]}"}.join("\n")}
                   t.timestamps
                 end
               end
