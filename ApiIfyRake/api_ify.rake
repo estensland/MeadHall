@@ -153,20 +153,19 @@ namespace :apiify do |args|
         filename     = "%s_%s.rb" % [Time.now.strftime('%Y%m%d%H%M%S'), "create_#{opts[:camel_name].underscore.pluralize}"]
         mig_path     = Rails.root.join('db', 'migrate', filename)
         arrayified_params = opts[:params].map.with_index {|param, index| "#{param[:type]}  :#{param[:name]}"}
-                  q = <<-EOF
-                  EOF
 
-                  arrayified_params.each do |p|
-                    q << "\t\t\t\t\t\t" + p + "\n"
-                  end
-
+        arrayified_params.unshift('')
 
         File.open(mig_path, 'w+') do |f|
           f.write(<<-EOF.strip_heredoc)
             class Create#{opts[:camel_name]} < ActiveRecord::Migration
               def change
                 create_table :#{opts[:camel_name].underscore.pluralize} do |t|
-                                          #{q}
+                  #{arrayified_params.map do |parameter|
+                    <<-INNEREOF
+                  #{parameter}
+                    INNEREOF
+                    end.join("").strip}
                   t.timestamps
                 end
               end
