@@ -25,35 +25,8 @@ end
 
 
 namespace :apiify do |args|
-  desc "rock a controller that does api calls"
+  desc "create a controller for api calls with routes, then check for a migration and a model"
   task :controller => :environment do
-
-    require 'fileutils'
-
-    tempfile=File.open(Rails.root.join('config', 'temp.rb'), 'w')
-    f=File.new(Rails.root.join('config', 'routes.rb'))
-
-    insert_next = false
-
-    f.each do |line|
-      if insert_next
-        insert_next = false
-        routes_key = {'i' => :index, 's' => :show, 'u' => :update, 'c' => :create, 'd' => :destroy}
-
-        tempfile << "\t\tresources :#{opts[:camel_name].underscore.pluralize}, only: #{opts[:routes].map{|r| routes_key[r]}}\n"
-      end
-
-      if line=~ /namespace \:api/
-        insert_next = true
-      end
-
-      tempfile<<line
-    end
-
-    f.close
-    tempfile.close
-
-    FileUtils.mv(Rails.root.join('config', 'temp.rb'), Rails.root.join('config', 'routes.rb'))
 
 
     filename   = opts[:model].pluralize.underscore + '_controller.rb'
@@ -124,8 +97,36 @@ namespace :apiify do |args|
               params.require(:#{opts[:model]}).permit(#{opts[:safe_params]})
             end
           end
-      EOF
-    end
+        EOF
+      end
+
+      require 'fileutils'
+
+      tempfile=File.open(Rails.root.join('config', 'temp.rb'), 'w')
+      f=File.new(Rails.root.join('config', 'routes.rb'))
+
+      insert_next = false
+
+      f.each do |line|
+        if insert_next
+          insert_next = false
+          routes_key = {'i' => :index, 's' => :show, 'u' => :update, 'c' => :create, 'd' => :destroy}
+
+          tempfile << "\t\tresources :#{opts[:camel_name].underscore.pluralize}, only: #{opts[:routes].map{|r| routes_key[r]}}\n"
+        end
+
+        if line=~ /namespace \:api/
+          insert_next = true
+        end
+
+        tempfile<<line
+      end
+
+      f.close
+      tempfile.close
+
+      FileUtils.mv(Rails.root.join('config', 'temp.rb'), Rails.root.join('config', 'routes.rb'))
+
 
 
       model_filename   = opts[:model] + '.rb'
