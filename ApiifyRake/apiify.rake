@@ -8,7 +8,9 @@ if ARGV[0] == "apiify:controller"
   opts[:params] = []
   opts[:safe_params] = []
 
-  ARGV[3].split(',').each_with_index do |element, index|
+  ARGV[3] = ARGV[3] ? ARGV[3].split(',') : []
+
+  ARGV[3].each_with_index do |element, index|
     if index.even?
       opts[:params] << {name: element}
 
@@ -33,6 +35,7 @@ namespace :apiify do |args|
     path       = Rails.root.join('app', 'controllers', 'api', filename)
 
     unless File.exist?(path)
+      Dir.mkdir(Rails.root.join('app', 'controllers', 'api')) unless File.exists?(Rails.root.join('app', 'controllers', 'api'))
       methods = ""
 
       File.open(path, 'w+') do |f|
@@ -55,7 +58,7 @@ namespace :apiify do |args|
             <<-eos
 
             def show
-              render json: #{opts[:camel_name]}.find(params['id'], status: 200
+              render json: #{opts[:camel_name]}.find(params['id']), status: 200
             end
             eos
             end
@@ -109,7 +112,7 @@ namespace :apiify do |args|
 
       f.each do |line|
         if insert_next
-          insert_next = false
+          insert_next = nil
           routes_key = {'i' => :index, 's' => :show, 'u' => :update, 'c' => :create, 'd' => :destroy}
 
           tempfile << "\t\tresources :#{opts[:camel_name].underscore.pluralize}, only: #{opts[:routes].map{|r| routes_key[r]}}\n"
