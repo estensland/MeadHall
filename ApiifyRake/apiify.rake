@@ -40,7 +40,7 @@ namespace :apiify do |args|
 
       File.open(path, 'w+') do |f|
         f.write(<<-EOF.strip_heredoc)
-          class Api::#{opts[:camel_name]}Controller < ApplicationController
+          class Api::#{opts[:model_name].pluralize.camelize}Controller < ApplicationController
             # Prevent CSRF attacks by raising an exception.
             # For APIs, you may want to use :null_session instead.
             # protect_from_forgery with: :exception
