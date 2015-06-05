@@ -7,6 +7,8 @@ alias reshell='source ~/.bash_profile'
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
 
+alias mysqlstart='mysql.server start'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
