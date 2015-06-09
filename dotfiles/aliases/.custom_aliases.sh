@@ -1,5 +1,9 @@
 # Custom Aliases
 
+# Open Files
+
+alias bashprof='subl ~/.bash_profile'
+
 # Quick Ins to Coding Directories
 
 alias coding='cd ~/coding'
@@ -53,6 +57,8 @@ array=( 'Get that shit out of you, and get that motivation to not give up and no
 
 custom-help () {
   echo " Custom Aliases"
+  echo
+  echo " bashprof = subl ~/.bash_profile"
   echo
   echo " Quick Ins to Coding Directories"
   echo " coding = cd ~/coding"
