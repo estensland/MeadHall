@@ -15,6 +15,7 @@ alias gs='git status'
 alias gss='git status -s'
 alias gd='git diff'
 alias gdc='git diff --cached'
+
 function gph() {
   BRANCH=$(git symbolic-ref HEAD)
 
@@ -28,6 +29,7 @@ function gph() {
     git push origin HEAD
   fi
 }
+
 alias ggph='gph && gobranch'
 alias gr='git pull --rebase'
 alias gv='git remote -v'
@@ -48,6 +50,9 @@ function graft(){ #Git pull origin on current branch
   git pull origin $BRANCH
   echo ""
 }
+
+alias cmdz='git reset --soft HEAD~1' #undo a commit
+
 
 git-help () {
   echo " Git Aliases"
@@ -78,5 +83,6 @@ git-help () {
   echo " choochoo = git push origin master --force"
   echo " hitme    = git pull origin master"
   echo " graft    = git pull origin (Current Branch)"
+  echo " cmdz     = git reset --soft HEAD~1"
   echo
 }
