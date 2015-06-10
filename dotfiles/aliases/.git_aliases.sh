@@ -2,19 +2,19 @@
 
 # g_ Aliases
 
-alias g='git'
-alias gi='git init'
-alias ga='git add .'
-alias gap='git add --all -p'
-alias gc='git commit -m'
-alias gac='git add . && git commit -m'
-alias gapc='git add --all -p && git commit -m'
-alias gb='git branch'
-alias gco="git checkout"
-alias gs='git status'
-alias gss='git status -s'
-alias gd='git diff'
-alias gdc='git diff --cached'
+alias g='echo git & git'
+alias gi='echo gi & git init'
+alias ga='echo git add . & git add .'
+alias gap='echo git add --all -p & git add --all -p'
+alias gc='echo git commit -m & git commit -m'
+alias gac='echo git add . && git commit -m & git add . && git commit -m'
+alias gapc='echo git add --all -p && git commit -m & git add --all -p && git commit -m'
+alias gb='echo git branch & git branch'
+alias gco="echo git checkout & git checkout"
+alias gs='echo git status & git status'
+alias gss='echo git status -s & git status -s'
+alias gd='echo git diff & git diff'
+alias gdc='echo git diff --cached & git diff --cached'
 
 function gph() {
   BRANCH=$(git symbolic-ref HEAD)
@@ -30,16 +30,16 @@ function gph() {
   fi
 }
 
-alias ggph='gph && gobranch'
-alias gr='git pull --rebase'
-alias gv='git remote -v'
+alias ggph='echo gph && gobranch & gph && gobranch'
+alias gr='echo git pull --rebase & git pull --rebase'
+alias gv='echo git remote -v & git remote -v'
 
 # Shorthands
 
-alias choochoo='git push origin master --force'
-alias mikedrop='git push origin master'
+alias choochoo='echo git push origin master --force & git push origin master --force'
+alias mikedrop='echo git push origin master & git push origin master'
 
-alias hitme='git pull origin master'
+alias hitme='echo git pull origin master & git pull origin master'
 
 function graft(){ #Git pull origin on current branch
   BRANCH=$(git symbolic-ref HEAD)
@@ -51,7 +51,7 @@ function graft(){ #Git pull origin on current branch
   echo ""
 }
 
-alias cmdz='git reset --soft HEAD~1' #undo a commit
+alias cmdz='echo git reset --soft HEAD~1 & git reset --soft HEAD~1' #undo a commit
 
 
 git-help () {
