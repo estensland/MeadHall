@@ -1,3 +1,12 @@
+# Alias generator that also echoes what the original command was
+function alias_gen(){
+  echo
+  echo Running: $1
+  echo
+  eval $1
+  echo
+}
+
 # Basic General Commands
 
 alias edit='subl'
