@@ -11,7 +11,9 @@ function alias_gen(){
 
 alias edit='subl'
 
-alias reshell='source ~/.bash_profile'
+#alias reshell='source ~/.bash_profile'
+
+function reshell(){alias_gen('source ~/.bash_profile')}
 
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
