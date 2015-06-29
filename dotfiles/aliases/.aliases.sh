@@ -21,12 +21,14 @@ alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
 alias mysqlstart='mysql.server start'
 
 alias ..='cd ..'
+
 alias ...='cd ../..'
 alias -- -='cd -'
 
 
 # List directory contents
 alias sl=ls
+function sl(){alias_gen('ls -G')
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -alh'
