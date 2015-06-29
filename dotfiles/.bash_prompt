@@ -1,11 +1,11 @@
 # GIT_PS1_SHOWDIRTYSTATE=true
 
-RED="\[\033[1;91m\]"
-YELLOW="\[\033[1;93m\]"
-GREEN="\[\033[1;92m\]"
+RED="\[\033[1;31m\]"
+YELLOW="\[\033[1;33m\]"
+GREEN="\[\033[1;32m\]"
+BLUE="\[\033[1;34m\]"
 CYN="\[\033[36m\]"
-BLUE="\[\033[1;94m\]"
-WHITE="\[\033[1;97m\]"
+WHITE="\[\033[1;37m\]"
 COLOR_RESET="\[\e[0m\]"
 
 function is_git_repository {
