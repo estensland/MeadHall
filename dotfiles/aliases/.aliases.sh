@@ -1,10 +1,13 @@
 # Alias generator that also echoes what the original command was
-function alias_gen(){
+function run_and_tell(){
   echo
   echo Running: $1
   echo
   eval $1
   echo
+}
+function alias_gen(){
+  alias $1="run_and_tell \"$2\""
 }
 
 # Basic General Commands
