@@ -19,42 +19,73 @@ function batch_alias_create(){
   done
 }
 
-batch_alias_create  \
-"reshell:source ~/.bash_profile" \
-"proj:cd ~/projects" \
-"wow:cd ~/projects/wowzers_repo"
+# alias ..='cd ..'
+
+# alias ...='cd ../..'
+# alias -- -='cd -'
+
+
+# alias ls='ls -G'        # Compact view, show colors
+# alias la='ls -AF'       # Compact view, show hidden
+# alias ll='ls -alh'
+# alias l='ls -a'
+# alias l1='ls -1'
+# alias lo='ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g''  # convert permissions to octal
+# alias recent='ls -lAt | head'
+# alias old='ls -lAt | tail'
+
+
 
 # Basic General Commands
+batch_alias_create  \
+"reshell:source ~/.bash_profile"
+"..:cd .."
+"...:cd ..."
+"--:cd -"
+"ls:ls -G"
+"la:ls -AF"
+"ll:ls -alh"
+"l:ls -a"
+"l1:ls -1"
+"lo:ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g''"  # convert permissions to octal
+"recent:ls -lAt | head"
+"old:ls -lAt | tail"
 
-alias edit='subl'
 
-#alias reshell='source ~/.bash_profile'
+# Postgres Server Commands
+batch_alias_create  \
+"pgstart:pg_ctl -D /usr/local/var/postgres -l logfile start"\
+"pgstop:pg_ctl -D /usr/local/var/postgres stop"
 
-function reshell(){alias_gen('source ~/.bash_profile')}
+# MySql Server Commands
+batch_alias_create  \
+"mysqlstart:mysql.server start"
 
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l logfile start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
 
-alias mysqlstart='mysql.server start'
 
-alias ..='cd ..'
 
-alias ...='cd ../..'
-alias -- -='cd -'
+
+
+# alias pgstart='pg_ctl -D /usr/local/var/postgres -l logfile start'
+# alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
+
+# alias mysqlstart='mysql.server start'
+
+
 
 
 # List directory contents
-alias sl=ls
-function sl(){alias_gen('ls -G')
-alias ls='ls -G'        # Compact view, show colors
-alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -alh'
-alias l='ls -a'
-alias l1='ls -1'
-alias lo='ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g''  # convert permissions to octal
+# alias sl=ls
+# function sl(){alias_gen('ls -G')
+# alias ls='ls -G'        # Compact view, show colors
+# alias la='ls -AF'       # Compact view, show hidden
+# alias ll='ls -alh'
+# alias l='ls -a'
+# alias l1='ls -1'
+# alias lo='ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g''  # convert permissions to octal
 
-alias recent='ls -lAt | head'
-alias old='ls -lAt | tail'
+# alias recent='ls -lAt | head'
+# alias old='ls -lAt | tail'
 
 # Grab from other alias files
 
