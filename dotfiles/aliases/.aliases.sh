@@ -10,6 +10,20 @@ function alias_gen(){
   alias $1="run_and_tell \"$2\""
 }
 
+function batch_alias_create(){
+  for i in "$@"
+  do
+    alias_name=`echo $i| cut -d':' -f 1`
+    alias_action=`echo $i| cut -d':' -f 2`
+    alias_gen $alias_name "$alias_action"
+  done
+}
+
+batch_alias_create  \
+"reshell:source ~/.bash_profile" \
+"proj:cd ~/projects" \
+"wow:cd ~/projects/wowzers_repo"
+
 # Basic General Commands
 
 alias edit='subl'
