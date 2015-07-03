@@ -2,33 +2,51 @@
 
 # Open Files
 
-alias bashprof='subl ~/.bash_profile'
+batch_alias_create  \
+"bashprof:subl ~/.bash_profile"
 
 # Quick Ins to Coding Directories
 
-alias coding='cd ~/coding'
-alias mh='cd ~/coding/MeadHall'
-alias rfiles='cd ~/coding/ruby_files'
-alias wp='cd ~/coding/web_projects'
+batch_alias_create  \
+"coding:cd ~/coding" \
+"mh:cd ~/coding/MeadHall" \
+"rfiles:cd ~/coding/ruby_files" \
+"wp:cd ~/coding/web_projects" 
+
+# alias mh='cd ~/coding/MeadHall'
+# alias rfiles='cd ~/coding/ruby_files'
+# alias wp='cd ~/coding/web_projects'
 
 # Repos of Challenges
-
-alias exer='cd ~/coding/exercism.io'
-alias euler='cd ~/coding/euler'
+batch_alias_create  \
+"exer:cd ~/coding/exercism.io" \
+"euler:cd ~/coding/euler"
+# alias exer='cd ~/coding/exercism.io'
+# alias euler='cd ~/coding/euler'
 
 # Web Dev Projects by Language
 
-alias emberp='cd ~/coding/ember_projects'
-alias ngp='cd ~/coding/angular_projects'
-alias jsp='cd ~/coding/js_projects'
-alias phpp='cd ~/coding/php_projects'
-alias rp='cd ~/coding/rails_projects'
+batch_alias_create  \
+"emberp:cd ~/coding/ember_projects" \
+"ngp:cd ~/coding/angular_projects" \
+"jsp:cd ~/coding/js_projects" \
+"phpp:cd ~/coding/php_projects" \
+"rp:cd ~/coding/rails_projects" 
+
+# alias emberp='cd ~/coding/ember_projects'
+# alias ngp='cd ~/coding/angular_projects'
+# alias jsp='cd ~/coding/js_projects'
+# alias phpp='cd ~/coding/php_projects'
+# alias rp='cd ~/coding/rails_projects'
 
 # Local Ruby Gems
 
-alias rpg='cd ~/coding/rails_projects/gems'
+batch_alias_create  \
+"rpg:cd ~/coding/rails_projects/gems"
+"gene:cd ~/coding/rails_projects/genealogy_test"
 
-alias gene='cd ~/coding/rails_projects/genealogy_test'
+# alias rpg='cd ~/coding/rails_projects/gems'
+# alias gene='cd ~/coding/rails_projects/genealogy_test'
 
 # Nothing but random:
 
