@@ -2,19 +2,37 @@
 
 # g_ Aliases
 
-alias g='echo git & git'
-alias gi='echo gi & git init'
-alias ga='echo git add . & git add .'
-alias gap='echo git add --all -p & git add --all -p'
-alias gc='echo git commit -m & git commit -m'
-alias gac='echo git add . && git commit -m & git add . && git commit -m'
-alias gapc='echo git add --all -p && git commit -m & git add --all -p && git commit -m'
-alias gb='echo git branch & git branch'
-alias gco="echo git checkout & git checkout"
-alias gs='echo git status & git status'
-alias gss='echo git status -s & git status -s'
-alias gd='echo git diff & git diff'
-alias gdc='echo git diff --cached & git diff --cached'
+# alias g='echo git & git'
+# alias gi='echo gi & git init'
+# alias ga='echo git add . & git add .'
+# alias gap='echo git add --all -p & git add --all -p'
+# alias gc='echo git commit -m & git commit -m'
+# alias gac='echo git add . && git commit -m & git add . && git commit -m'
+# alias gapc='echo git add --all -p && git commit -m & git add --all -p && git commit -m'
+# alias gb='echo git branch & git branch'
+# alias gco="echo git checkout & git checkout"
+# alias gs='echo git status & git status'
+# alias gss='echo git status -s & git status -s'
+# alias gd='echo git diff & git diff'
+# alias gdc='echo git diff --cached & git diff --cached'
+
+
+batch_alias_create  \
+"g:git" \
+"gi:git init" \
+"ga:git add ." \
+"gap:git add -all -p" \
+"gc:git commit -m"\
+"gac:git add . && git commit -m"\
+"gapc:git add --all -p && git commit -m"\
+"gb:git branch"\
+"gco:git checkout"\
+"gs:git status"\
+"gss:git status -s"\
+"gd:git diff"\
+"gdc:git diff --cached" \
+"gr:git pull --rebase"\
+"gv:git remote -v"
 
 function gph() {
   BRANCH=$(git symbolic-ref HEAD)
@@ -30,9 +48,9 @@ function gph() {
   fi
 }
 
+
+
 alias ggph='echo gph && gobranch & gph && gobranch'
-alias gr='echo git pull --rebase & git pull --rebase'
-alias gv='echo git remote -v & git remote -v'
 
 # Shorthands
 
