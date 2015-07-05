@@ -1,17 +1,20 @@
 # Rails Aliases
 
-alias rc='rails c'
-alias rgm='rails generate model'
-alias rn='rails new'
+batch_alias_create  \
+"rc:rails c" \
+"rgm:rails generate model" \
+"rn:rails new" \
+"rs:rails s" \
+"rt:bundle exec rspec spec --format documentation"
 
-function rr(){
-  rake routes | grep $1
+function rr {
+  if [ $# -gt 1 ]; then
+    run_and_tell "rake routes | grep $1"
+  else
+    run_and_tell rake routes
+  fi
 }
 
-alias rs='rails s'
-alias rt='bundle exec rspec spec --format documentation'
-
-alias seed='echo seeding db && rake db:seed'
 
 # Drop, Create, Migrate, Seed
 alias reset='echo Resetting the Fraking db && echo dropping db && rake db:drop && echo creating db && rake db:create && echo migrating db  && rake db:migrate && echo seeding db && rake db:seed'
@@ -25,7 +28,7 @@ rails-help () {
   echo "rc   = rails c"
   echo "rgm  = rails generate model"
   echo "rn   = rails new"
-  echo "rr() = rake routes | grep ()"
+  echo "rr() = rake routes | grep $1"
   echo "rs   = rails s"
   echo "rt   = bundle exec rspec spec --format documentation"
   echo
