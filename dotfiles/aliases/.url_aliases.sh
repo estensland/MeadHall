@@ -1,10 +1,11 @@
 # URL Aliases
 
 # Static
-
-alias goexer='open http://www.exercism.io/estensland'
-alias goeuler='open http://projecteuler.net/problems'
-alias gogit='open http://www.github.com/estensland'
+batch_alias_create  \
+"goexer=:open http://www.exercism.io/estensland" \
+"goexer:open http://www.exercism.io/estensland" \
+"goeuler:open http://projecteuler.net/problems" \
+"gogit:open http://www.github.com/estensland"
 
 # Dynamic
 
