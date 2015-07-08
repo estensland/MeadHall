@@ -1,14 +1,14 @@
 # Homebrew Aliases
-
-alias brup="brew update && brew upgrade"
-alias brout="brew outdated"
-alias bro="brew outdated"
-alias brin="brew install"
-alias brrm="brew uninstall"
-alias brls="brew list"
-alias brsr="brew search"
-alias brinf="brew info"
-alias brdr="brew doctor"
+batch_alias_create  \
+"brup:brew update && brew upgrade" \
+"brout:brew outdated" \
+"bro:brew outdated" \
+"brin:brew install" \
+"brrm:brew uninstall" \
+"brls:brew list" \
+"brsr:brew search" \
+"brinf:brew info" \
+"brdr:brew doctor" 
 
 brew-help () {
   echo "Homebrew Aliases"
