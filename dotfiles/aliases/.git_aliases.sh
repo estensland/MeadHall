@@ -1,22 +1,6 @@
 # Git Aliases
 
 # g_ Aliases
-
-# alias g='echo git & git'
-# alias gi='echo gi & git init'
-# alias ga='echo git add . & git add .'
-# alias gap='echo git add --all -p & git add --all -p'
-# alias gc='echo git commit -m & git commit -m'
-# alias gac='echo git add . && git commit -m & git add . && git commit -m'
-# alias gapc='echo git add --all -p && git commit -m & git add --all -p && git commit -m'
-# alias gb='echo git branch & git branch'
-# alias gco="echo git checkout & git checkout"
-# alias gs='echo git status & git status'
-# alias gss='echo git status -s & git status -s'
-# alias gd='echo git diff & git diff'
-# alias gdc='echo git diff --cached & git diff --cached'
-
-
 batch_alias_create  \
 "g:git" \
 "gi:git init" \
@@ -32,7 +16,8 @@ batch_alias_create  \
 "gd:git diff"\
 "gdc:git diff --cached" \
 "gr:git pull --rebase"\
-"gv:git remote -v"
+"gv:git remote -v" \
+"ggph:gph && gobranch"
 
 function gph() {
   BRANCH=$(git symbolic-ref HEAD)
@@ -48,16 +33,13 @@ function gph() {
   fi
 }
 
-
-
-alias ggph='echo gph && gobranch & gph && gobranch'
-
 # Shorthands
 
-alias choochoo='echo git push origin master --force & git push origin master --force'
-alias mikedrop='echo git push origin master & git push origin master'
-
-alias hitme='echo git pull origin master & git pull origin master'
+batch_alias_create  \
+"mikedrop:git push origin master" \
+"choochoo:git push origin master --force" \
+"hitme:git pull origin master" \
+"cmdz:git reset --soft HEAD~1"
 
 function graft(){ #Git pull origin on current branch
   BRANCH=$(git symbolic-ref HEAD)
@@ -68,8 +50,6 @@ function graft(){ #Git pull origin on current branch
   git pull origin $BRANCH
   echo ""
 }
-
-alias cmdz='echo git reset --soft HEAD~1 & git reset --soft HEAD~1' #undo a commit
 
 
 git-help () {
@@ -100,7 +80,7 @@ git-help () {
   echo " mikedrop = git push origin master"
   echo " choochoo = git push origin master --force"
   echo " hitme    = git pull origin master"
-  echo " graft    = git pull origin (Current Branch)"
   echo " cmdz     = git reset --soft HEAD~1"
+  echo " graft    = git pull origin (Current Branch)"
   echo
 }
