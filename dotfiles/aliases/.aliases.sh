@@ -45,31 +45,6 @@ batch_alias_create  \
 "mysqlstart:mysql.server start"
 
 
-
-
-
-
-# alias pgstart='pg_ctl -D /usr/local/var/postgres -l logfile start'
-# alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
-
-# alias mysqlstart='mysql.server start'
-
-
-
-
-# List directory contents
-# alias sl=ls
-# function sl(){alias_gen('ls -G')
-# alias ls='ls -G'        # Compact view, show colors
-# alias la='ls -AF'       # Compact view, show hidden
-# alias ll='ls -alh'
-# alias l='ls -a'
-# alias l1='ls -1'
-# alias lo='ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g''  # convert permissions to octal
-
-# alias recent='ls -lAt | head'
-# alias old='ls -lAt | tail'
-
 # Grab from other alias files
 
 if [ -f ~/coding/MeadHall/dotfiles/aliases/.bundler_aliases.sh ]; then
