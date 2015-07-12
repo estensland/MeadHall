@@ -13,16 +13,10 @@ batch_alias_create  \
 "rfiles:cd ~/coding/ruby_files" \
 "wp:cd ~/coding/web_projects" 
 
-# alias mh='cd ~/coding/MeadHall'
-# alias rfiles='cd ~/coding/ruby_files'
-# alias wp='cd ~/coding/web_projects'
-
 # Repos of Challenges
 batch_alias_create  \
 "exer:cd ~/coding/exercism.io" \
 "euler:cd ~/coding/euler"
-# alias exer='cd ~/coding/exercism.io'
-# alias euler='cd ~/coding/euler'
 
 # Web Dev Projects by Language
 
@@ -33,20 +27,11 @@ batch_alias_create  \
 "phpp:cd ~/coding/php_projects" \
 "rp:cd ~/coding/rails_projects" 
 
-# alias emberp='cd ~/coding/ember_projects'
-# alias ngp='cd ~/coding/angular_projects'
-# alias jsp='cd ~/coding/js_projects'
-# alias phpp='cd ~/coding/php_projects'
-# alias rp='cd ~/coding/rails_projects'
-
 # Local Ruby Gems
 
 batch_alias_create  \
 "rpg:cd ~/coding/rails_projects/gems"
 "gene:cd ~/coding/rails_projects/genealogy_test"
-
-# alias rpg='cd ~/coding/rails_projects/gems'
-# alias gene='cd ~/coding/rails_projects/genealogy_test'
 
 # Nothing but random:
 
