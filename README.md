@@ -5,6 +5,7 @@ This is a collection of code I reuse/random coding projects that I do not want t
 
 ###This repo contains:
 
+2. ApiifyRake -> A rake task that creates an api controller for a rails app
 2. CustomRandomRails -> Some code I have used in rails that I haven saved for future use
 2. Fault_Finder -> Code that finds syntax errors in code, currently working on Ruby
 2. Go_Figure -> Ruby Code to solve a newspaper math puzzle
