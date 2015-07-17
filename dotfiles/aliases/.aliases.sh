@@ -45,6 +45,13 @@ batch_alias_create  \
 "mysqlstart:mysql.server start"
 
 
+# ps aux command
+function psaux(){
+  ps aux | grep $1
+}
+
+
+
 # Grab from other alias files
 
 if [ -f ~/coding/MeadHall/dotfiles/aliases/.bundler_aliases.sh ]; then
