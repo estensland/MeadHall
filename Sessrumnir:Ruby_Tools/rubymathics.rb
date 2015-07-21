@@ -179,4 +179,22 @@ module Rubymathics
     num = base ? num.to_s : num.to_s(base)
     num == num.reverse
   end
+  
+  # TRIANGLE NUMBER
+  
+  def nth_triangle_number(num)
+    (num * (num + 1 )) /2
+  end
+  
+  # PENTAGONAL NUMBER
+  
+  def nth_pentagonal_number(num)
+    (num * (3 * (num − 1))) / 2	
+  end
+  
+  # HEXAGONAL NUMBER
+  
+  def nth_hexagonal_number(num)
+    num * ((2 * num) −1)
+  end
 end
