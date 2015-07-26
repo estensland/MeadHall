@@ -186,15 +186,34 @@ module Rubymathics
     (num * (num + 1 )) /2
   end
   
+  def triangle_num?(num)
+    res = (num * 8 + 1) ** 0.5
+    res % 1 ==0 && res % 2 != 0
+  end
+
+  
   # PENTAGONAL NUMBER
   
   def nth_pentagonal_number(num)
     (num * (3 * (num − 1))) / 2	
   end
   
+  def is_pentagonal_number?(num)
+    top = 24 * num + 1
+    top = Math.sqrt(top) + 1
+    (top / 6) % 1 == 0
+  end
+  
   # HEXAGONAL NUMBER
   
   def nth_hexagonal_number(num)
-    num * ((2 * num) −1)
+    num * ((2 * num) -1)
+  end
+  
+  def is_hexagonal_number?(num)
+    top = 8 * num + 1
+    top = Math.sqrt(top) + 1
+    res = top / 4
+    (res % 1 == 0) && (res % 2 != 0)
   end
 end
