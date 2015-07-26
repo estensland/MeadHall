@@ -37,10 +37,15 @@ module StatisticsJunk
     (sorted[(leng - 1) / 2] + sorted[leng / 2]) / 2.0
   end
 
-  # STANDARD DEVIATION
-  def standard_deviation
+    # VARIANCE
+  def variance
     av = self.mean #cache the mean
     result = self.inject(0){|sum, num| sum + ((num - av) ** 2)} # sum of the squared variance for each item
-    Math.sqrt((result.to_f / self.length)) # Get the the square root of the mean of the sumed squared variance
+    (result.to_f / self.length) # Get the mean of the sumed squared variance
+  end
+  
+  # STANDARD DEVIATION
+  def standard_deviation
+    Math.sqrt(variance) # Get the the square root of the variance
   end
 end
