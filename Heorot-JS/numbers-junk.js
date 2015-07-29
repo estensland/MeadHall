@@ -29,6 +29,15 @@ evenFibs = function(limit) {
   return evenFibs.reduce(function(a,b){return a+b;});
 }
 
+// FACTORIAL
+
+var factorial function(nums){
+  var sum = 0
+  for(var i = 0, ii=nums.length; i < ii; i ++){
+    sum = sum + nums[i]
+  }
+  return sum
+}
 
 
 // PALLINDROME
