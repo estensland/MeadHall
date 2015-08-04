@@ -11,7 +11,7 @@ batch_alias_create  \
 "coding:cd ~/coding" \
 "mh:cd ~/coding/MeadHall" \
 "rfiles:cd ~/coding/ruby_files" \
-"wp:cd ~/coding/web_projects" 
+"wp:cd ~/coding/web_projects"
 
 # Repos of Challenges
 batch_alias_create  \
@@ -25,12 +25,12 @@ batch_alias_create  \
 "ngp:cd ~/coding/angular_projects" \
 "jsp:cd ~/coding/js_projects" \
 "phpp:cd ~/coding/php_projects" \
-"rp:cd ~/coding/rails_projects" 
+"rp:cd ~/coding/rails_projects"
 
 # Local Ruby Gems
 
 batch_alias_create  \
-"rpg:cd ~/coding/rails_projects/gems"
+"rpg:cd ~/coding/rails_projects/gems"\
 "gene:cd ~/coding/rails_projects/genealogy_test"
 
 # Nothing but random:

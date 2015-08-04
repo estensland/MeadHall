@@ -6,16 +6,16 @@ batch_alias_create  \
 "gi:git init" \
 "ga:git add ." \
 "gap:git add -all -p" \
-"gc:git commit -m"\
-"gac:git add . && git commit -m"\
-"gapc:git add --all -p && git commit -m"\
-"gb:git branch"\
-"gco:git checkout"\
-"gs:git status"\
-"gss:git status -s"\
-"gd:git diff"\
+"gc:git commit -m" \
+"gac:git add . ; git commit -m" \
+"gapc:git add --all -p && git commit -m" \
+"gb:git branch" \
+"gco:git checkout" \
+"gs:git status" \
+"gss:git status -s" \
+"gd:git diff" \
 "gdc:git diff --cached" \
-"gr:git pull --rebase"\
+"gr:git pull --rebase" \
 "gv:git remote -v" \
 "ggph:gph && gobranch"
 
