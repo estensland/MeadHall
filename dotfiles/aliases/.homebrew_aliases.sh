@@ -8,7 +8,7 @@ batch_alias_create  \
 "brls:brew list" \
 "brsr:brew search" \
 "brinf:brew info" \
-"brdr:brew doctor" 
+"brdr:brew doctor"
 
 brew-help () {
   echo "Homebrew Aliases"

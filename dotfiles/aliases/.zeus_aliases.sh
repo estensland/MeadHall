@@ -1,8 +1,8 @@
 # Zeus Aliases
-
-alias zc='zeus c'
-alias zr='zeus rake'
-alias zs='zeus start'
+batch_alias_create  \
+"zc:zeus c" \
+"zr:zeus rake" \
+"zs:zeus start"
 
 function ztc(){
   if [ $# -gt 1 ]; then

@@ -19,6 +19,19 @@ batch_alias_create  \
 "gv:git remote -v" \
 "ggph:gph && gobranch"
 
+function gc() {
+  echo "git commit -m"
+  git commit -m $1
+}
+
+function gac() {
+  echo "git add ."
+  git add .
+  echo "git commit -m"
+  git commit -m $1
+}
+
+
 function gph() {
   BRANCH=$(git symbolic-ref HEAD)
 

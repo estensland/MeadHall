@@ -6,7 +6,7 @@ batch_alias_create  \
 "be:bundle exec" \
 "bl:bundle list" \
 "bu:bundle update" \
-"bp:bundle package" 
+"bp:bundle package"
 
 bundler-help () {
   echo "Bundler Aliases"
