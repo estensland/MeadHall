@@ -6,22 +6,27 @@ class RunAndTell
 
 function run_and_tell(){
   echo
-  echo Running: $1
+  echo Running: $@
   echo
-  eval $1
+  eval $@
   echo
 }
     eos
 
   end
 
-
-  def initialize(opts = {})
-    @alias = opts[:alias_name]
-    @action = opts[:action]
+  def self.generate_alias(opts = {})
+    row = self.new(opts)
+    return row.run_tell_alias
   end
 
-  def write_to_page
 
+  def initialize(opts = {})
+    @alias  = opts[:alias_name]
+    @action = opts[:alias_action]
+  end
+
+  def run_tell_alias
+    "alias #{@alias}=\"run_and_tell '#{@action}'\""
   end
 end
