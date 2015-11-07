@@ -4,7 +4,7 @@
 batch_alias_create  \
 "g:git" \
 "gi:git init" \
-"ga:git add ." \
+"ga:git add" \
 "gap:git add -all -p" \
 "gc:git commit -m" \
 "gac:git add . ; git commit -m" \
