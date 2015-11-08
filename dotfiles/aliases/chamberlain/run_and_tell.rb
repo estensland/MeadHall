@@ -27,6 +27,6 @@ function run_and_tell(){
   end
 
   def run_tell_alias
-    "alias #{@alias}=\"run_and_tell '#{@action}'\""
+    "alias #{@alias}=\"run_and_tell #{@action}\""
   end
 end
