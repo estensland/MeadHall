@@ -1,4 +1,5 @@
-# Alias generator that also echoes what the original command was
+# run and tell function runs the alias, but says what the real command was
+
 function run_and_tell(){
   echo
   echo Running: $@
@@ -6,81 +7,76 @@ function run_and_tell(){
   eval $@
   echo
 }
-function alias_gen(){
-  alias $1="run_and_tell \"$2\""
-}
-
-function batch_alias_create(){
-  for i in "$@"
-  do
-    alias_name=`echo $i| cut -d':' -f 1`
-    alias_action=`echo $i| cut -d':' -f 2`
-    alias_gen $alias_name "$alias_action"
-  done
-}
-
-# Basic General Commands
-batch_alias_create  \
-"reshell:source ~/.bash_profile" \
-"..:cd .." \
-"...:cd ..." \
-"lg:ls -G" \
-"la:ls -AF" \
-"ll:ls -alh" \
-"l:ls -a" \
-"l1:ls -1" \
-"lo:ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'" \
-"recent:ls -lAt | head" \
-"old:ls -lAt | tail"
 
 
-# Postgres Server Commands
-batch_alias_create  \
-"pgstart:pg_ctl -D /usr/local/var/postgres -l logfile start"\
-"pgstop:pg_ctl -D /usr/local/var/postgres stop"
+# run and tell quoted inputs function runs the alias, but keeps extra arguments locked in as a string, like for git commit
 
-# MySql Server Commands
-batch_alias_create  \
-"mysqlstart:mysql.server start"
-
-
-# ps aux command
-function psaux(){
-  ps aux | grep $1
+function run_and_tell_quoted_inputs(){
+  echo
+  echo Running: $1 "'${@:2}'"
+  echo
+  eval $1 "'${@:2}'"
+  echo
 }
 
 
+# Alias List: Basic
 
-# Grab from other alias files
+alias reshell="run_and_tell source ~/.bash_profile"
+alias ..="run_and_tell cd .."
+alias ...="run_and_tell cd ..."
+alias lg="run_and_tell ls -G"
+alias la="run_and_tell ls -AF"
+alias ll="run_and_tell ls -alh"
+alias l="run_and_tell ls -a"
+alias l1="run_and_tell ls -1"
+alias lo="run_and_tell ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'"
+alias recent="run_and_tell ls -lAt | head"
+alias old="run_and_tell ls -lAt | tail"
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.bundler_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.bundler_aliases.sh
-fi
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.custom_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.custom_aliases.sh
-fi
+# Alias List: Custom
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.homebrew_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.homebrew_aliases.sh
-fi
+alias bashprof="run_and_tell subl ~/.bash_profile"
+alias coding="run_and_tell cd ~/coding"
+alias mh="run_and_tell cd ~/coding/MeadHall"
+alias rfiles="run_and_tell cd ~/coding/ruby_files"
+alias wp="run_and_tell cd ~/coding/web_projects"
+alias exer="run_and_tell cd ~/coding/exercism.io"
+alias euler="run_and_tell cd ~/coding/euler"
+alias emberp="run_and_tell cd ~/coding/ember_projects"
+alias ngp="run_and_tell cd ~/coding/angular_projects"
+alias jsp="run_and_tell cd ~/coding/js_projects"
+alias phpp="run_and_tell cd ~/coding/php_projects"
+alias rp="run_and_tell cd ~/coding/rails_projects"
+alias rpg="run_and_tell cd ~/coding/rails_projects/gems"
+alias gene="run_and_tell cd ~/coding/rails_projects/genealogy_test"
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.heroku_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.heroku_aliases.sh
-fi
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.git_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.git_aliases.sh
-fi
+# Alias List: Git
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.rails_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.rails_aliases.sh
-fi
+alias g="run_and_tell git"
+alias gi="run_and_tell git init"
+alias ga="run_and_tell git add"
+alias gap="run_and_tell git add --all -p"
+alias gb="run_and_tell git branch"
+alias gco="run_and_tell git checkout"
+alias gs="run_and_tell git status"
+alias gss="run_and_tell git status -s"
+alias gd="run_and_tell git diff"
+alias gdc="run_and_tell git diff --cached"
+alias gr="run_and_tell git pull --rebase"
+alias gv="run_and_tell git remote -v"
+alias ggph="run_and_tell gph && gobranch"
+alias gac="run_and_tell_quoted_inputs 'git add . ; git commit -m'"
+alias gc="run_and_tell_quoted_inputs 'git commit -m'"
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.url_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.url_aliases.sh
-fi
 
-if [ -f ~/coding/MeadHall/dotfiles/aliases/.zeus_aliases.sh ]; then
-  source ~/coding/MeadHall/dotfiles/aliases/.zeus_aliases.sh
-fi
+# Alias List: Bundler
+
+alias b="run_and_tell bundle"
+alias bi="run_and_tell bundle install --path vendor"
+alias be="run_and_tell bundle exec"
+alias bl="run_and_tell bundle list"
+alias bu="run_and_tell bundle update"
+alias bp="run_and_tell bundle package"
