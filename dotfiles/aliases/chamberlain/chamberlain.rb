@@ -62,8 +62,10 @@ class Chamberlain
           end
         end
 
-
-        HelperFunction.generate(name: list[:name], alias_list: arrayed)
+        File.open('.aliases.sh', 'a') do |f|
+          f.puts HelperFunction.generate(name: list[:name], alias_list: arrayed)
+          f.puts "\n\n\n#########"
+        end
 
       end
     end
