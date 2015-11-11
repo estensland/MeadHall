@@ -39,6 +39,7 @@ lists = [
       }
     },
     {
+
       name: 'Git',
       aliases: {
         g: "git",
@@ -53,7 +54,11 @@ lists = [
         gdc: "git diff --cached",
         gr: "git pull --rebase",
         gv: "git remote -v",
-        ggph: "gph && gobranch"
+        ggph: "gph && gobranch",
+        mikedrop: "git push origin master",
+        choochoo: "git push origin master --force",
+        hitme: "git pull origin master",
+        cmdz: "git reset --soft HEAD~1"
       },
       quoted_inputs: {
         gac: "git add . ; git commit -m",
@@ -71,25 +76,36 @@ lists = [
         bp: "bundle package"
       }
     },
+    {
+      name: 'Rails',
+      aliases: {
+        rc: "rails console",
+        rgm: "rails generate model",
+        rn: "rails new",
+        rs: "rails server",
+        rt: "bundle exec rspec spec --format documentation",
+      }
+    },
+    {
+      name: 'Heroku',
+      aliases: {
+        hl: 'heroku list',
+        hi: 'heroku info',
+        ho: 'heroku open',
+        hr: 'heroku rake',
+        hcon: 'heroku console',
+        hnew: 'heroku create',
+        hrestart: 'heroku restart',
+        hlog: 'heroku logs',
+        hc: 'heroku config',
+        hca: 'heroku config:add',
+        hcr: 'heroku config:remove',
+        hcc: 'heroku config:clear'
+      }
+    }
   ]
 ]
 
 
-
-# bundler-help () {
-#   echo "Bundler Aliases"
-#   echo
-#   echo " b     = bundle"
-#   echo " bi    = bundle install --path vendor"
-#   echo " be    = bundle exec"
-#   echo " bl    = bundle list"
-#   echo " bu    = bundle update"
-#   echo " bp    = bundle package"
-#   echo
-# }
-
-
-
 Chamberlain.new(alias_lists: lists)
-
 

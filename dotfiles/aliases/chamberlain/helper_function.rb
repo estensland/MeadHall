@@ -18,7 +18,6 @@ class HelperFunction
 
   def generate_function
     <<-eos
-# run and tell quoted inputs function runs the alias, but keeps extra arguments locked in as a string, like for git commit
 
 function #{name.downcase}-help(){
   echo "#{name.capitalize} Aliases"
@@ -29,7 +28,7 @@ function #{name.downcase}-help(){
       (10 - alias_key.length).times{spacing << ' '}
 
       "echo \" #{alias_key}#{spacing} = #{alias_action}\""
-    end.join("\n")
+    end.join("\n\t")
   }
   echo
 }
