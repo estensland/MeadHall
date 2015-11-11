@@ -25,8 +25,11 @@ function #{name.downcase}-help(){
   echo
   #{
     alias_list.map do |alias_key, alias_action|
-      "echo \" #{alias_key}     = #{alias_action}\""
-    end
+      spacing = ""
+      (10 - alias_key.length).times{spacing << ' '}
+
+      "echo \" #{alias_key}#{spacing} = #{alias_action}\""
+    end.join("\n")
   }
   echo
 }
