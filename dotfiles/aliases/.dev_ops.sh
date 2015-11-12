@@ -1,6 +1,6 @@
 # DevOps Aliases
 
-function hop_to(){
+function hop(){
   echo ssh -p $1 $2@$3
   echo ''
   ssh -p $1 $2@$3;

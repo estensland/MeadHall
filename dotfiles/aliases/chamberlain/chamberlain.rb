@@ -1,6 +1,7 @@
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/run_and_tell.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/run_and_tell_quoted_inputs.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/helper_function.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/custom_function.rb'
 
 class Chamberlain
 
@@ -48,7 +49,7 @@ class Chamberlain
           arrayed << [alias_name, alias_action]
           File.open('.aliases.sh', 'a') do |f|
             command = RunAndTell.generate_alias(alias_name: alias_name, alias_action: alias_action)
-            puts command
+            print '.'
             f.puts command
           end
         end
@@ -57,7 +58,19 @@ class Chamberlain
           File.open('.aliases.sh', 'a') do |f|
             arrayed << [alias_name, alias_action]
             command = RunAndTellQuotedInputs.generate_alias(alias_name: alias_name, alias_action: alias_action)
-            puts command
+            print '.'
+            f.puts command
+          end
+        end
+
+        (list[:custom_functions] || []).each do |function_name, function_hash|
+          command = CustomFunction.generate(
+            name: function_name,
+            echo_description: function_hash[:echo_description],
+            command: function_hash[:command]
+          )
+          File.open('.aliases.sh', 'a') do |f|
+            print '.'
             f.puts command
           end
         end

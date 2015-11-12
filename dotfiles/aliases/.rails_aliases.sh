@@ -7,13 +7,14 @@ batch_alias_create  \
 "rs:rails s" \
 "rt:bundle exec rspec spec --format documentation"
 
-function rr {
-  if [ $# -gt 1 ]; then
+function rr() {
+  if [ $# -gt 0 ]; then
     run_and_tell "rake routes | grep $1"
   else
     run_and_tell rake routes
   fi
 }
+
 
 
 # Drop, Create, Migrate, Seed
