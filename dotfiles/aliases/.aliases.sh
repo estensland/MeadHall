@@ -36,6 +36,7 @@ alias recent="run_and_tell ls -lAt | head"
 alias old="run_and_tell ls -lAt | tail"
 
 function basic-help(){
+  echo
   echo "Basic Aliases"
   echo
   echo " reshell    = source ~/.bash_profile"
@@ -108,6 +109,7 @@ function inspire(){
 }
 
 function custom-help(){
+  echo
   echo "Custom Aliases"
   echo
   echo " bashprof   = subl ~/.bash_profile"
@@ -124,6 +126,7 @@ function custom-help(){
 	echo " rp         = cd ~/coding/rails_projects"
 	echo " rpg        = cd ~/coding/rails_projects/gems"
 	echo " gene       = cd ~/coding/rails_projects/genealogy_test"
+	echo " inspire    = randomly be given an inspiring quote"
   echo
 }
 
@@ -194,6 +197,7 @@ function graft(){
 }
 
 function git-help(){
+  echo
   echo "Git Aliases"
   echo
   echo " g          = git"
@@ -215,6 +219,8 @@ function git-help(){
 	echo " cmdz       = git reset --soft HEAD~1"
 	echo " gac        = git add . ; git commit -m"
 	echo " gc         = git commit -m"
+	echo " gph        = git push origin current branch (blocks master)"
+	echo " graft      = git pull on current branch"
   echo
 }
 
@@ -233,6 +239,7 @@ alias bu="run_and_tell bundle update"
 alias bp="run_and_tell bundle package"
 
 function bundler-help(){
+  echo
   echo "Bundler Aliases"
   echo
   echo " b          = bundle"
@@ -272,6 +279,7 @@ function rr(){
 }
 
 function rails-help(){
+  echo
   echo "Rails Aliases"
   echo
   echo " rc         = rails console"
@@ -279,6 +287,7 @@ function rails-help(){
 	echo " rn         = rails new"
 	echo " rs         = rails server"
 	echo " rt         = bundle exec rspec spec --format documentation"
+	echo " rr         = rake route (| grep \$1)"
   echo
 }
 
@@ -300,6 +309,7 @@ alias brinf="run_and_tell brew info"
 alias brdr="run_and_tell brew doctor"
 
 function homebrew-help(){
+  echo
   echo "Homebrew Aliases"
   echo
   echo " brup       = brew update && brew upgrade"
@@ -335,6 +345,7 @@ alias hcr="run_and_tell heroku config:remove"
 alias hcc="run_and_tell heroku config:clear"
 
 function heroku-help(){
+  echo
   echo "Heroku Aliases"
   echo
   echo " hl         = heroku list"
@@ -405,9 +416,11 @@ function rtm(){
 }
 
 function rspec-help(){
+  echo
   echo "Rspec Aliases"
   echo
-  
+  echo " rtc        = rspec test controller (\$1) line (\$2)"
+	echo " rtm        = rspec test controller (\$1) line (\$2)"
   echo
 }
 
@@ -428,7 +441,7 @@ function gorepo(){
   echo "running: openning repo url"
   echo
 
-  URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/:///')
+  URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
   URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
   open "$URL"
 
@@ -437,11 +450,13 @@ function gorepo(){
 }
 
 function url-help(){
+  echo
   echo "Url Aliases"
   echo
   echo " goexer     = open http://www.exercism.io/estensland"
 	echo " goeuler    = open http://projecteuler.net/problems"
 	echo " gogit      = open http://www.github.com/estensland"
+	echo " gorepo     = opens git remote origin url"
   echo
 }
 
@@ -468,9 +483,10 @@ function hop(){
 }
 
 function devops-help(){
+  echo
   echo "Devops Aliases"
   echo
-  
+  echo " hop        = ssh -p(port, user, ip"
   echo
 }
 
@@ -524,11 +540,14 @@ function ztm(){
 }
 
 function zeus-help(){
+  echo
   echo "Zeus Aliases"
   echo
   echo " zc         = zeus c"
 	echo " zr         = zeus rake"
 	echo " zs         = zeus start"
+	echo " ztc        = zeus test controller (\$1) line (\$2)"
+	echo " ztm        = zeus test controller (\$1) line (\$2)"
   echo
 }
 

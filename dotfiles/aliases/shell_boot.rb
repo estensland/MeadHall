@@ -40,7 +40,6 @@ lists = [
       },
       custom_functions: {
         shuffle: {
-          no_descriptions: true,
           command:
   "local i tmp size max rand
 
@@ -54,7 +53,6 @@ lists = [
   done"
         },
         inspire: {
-          no_echo_description: true,
           helper_descrpition: "randomly be given an inspiring quote",
           command:
   "shuffle
@@ -143,7 +141,7 @@ lists = [
       },
       custom_functions:{
         rr:{
-          helper_descrpition: "rake route (| grep $1)",
+          helper_descrpition: 'rake route (| grep \$1)',
           command:
   "if [ $# -gt 0 ]; then
     run_and_tell \"rake routes | grep $1\"
@@ -188,7 +186,7 @@ lists = [
       name: 'RSpec',
       custom_functions:{
         rtc: {
-          helper_descrpition: 'rails test controller ($1) line ($2)"',
+          helper_descrpition: 'rspec test controller (\$1) line (\$2)',
           command:
   "if [ $# -gt 1 ]; then
     echo testing line $2 in $1 controller
@@ -205,7 +203,7 @@ lists = [
   fi"
         },
         rtm: {
-          helper_descrpition: 'zeus test controller ($1) line ($2)"',
+          helper_descrpition: 'rspec test controller (\$1) line (\$2)',
           command:
   "if [ $# -gt 1 ]; then
     echo testing line $2 in $1 model
@@ -235,7 +233,7 @@ lists = [
           echo_description: 'openning repo url',
           helper_descrpition: 'opens git remote origin url',
           command:
-  "URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
+  "URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\\:/\\//')
   URL=$(awk '{gsub(/git@/,\"https://www.\")}1' <<< $URL)
   open \"$URL\""
         }
@@ -263,7 +261,7 @@ lists = [
       },
       custom_functions:{
         ztc: {
-          helper_descrpition: 'zeus test controller ($1) line ($2)"',
+          helper_descrpition: 'zeus test controller (\$1) line (\$2)',
           command:
   "if [ $# -gt 1 ]; then
     echo testing line $2 in $1 controller
@@ -277,7 +275,7 @@ lists = [
   fi"
         },
         ztm: {
-          helper_descrpition: 'zeus test controller ($1) line ($2)"',
+          helper_descrpition: 'zeus test controller (\$1) line (\$2)',
           command:
   "if [ $# -gt 1 ]; then
     echo testing line $2 in $1 model

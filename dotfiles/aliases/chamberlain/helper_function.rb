@@ -4,22 +4,18 @@ class HelperFunction
     self.new(opts).generate_function
   end
 
-  attr_accessor :name, :alias_list, :spacing
+  attr_accessor :name, :alias_list
 
   def initialize(opts = {})
     @name  = opts[:name]
     @alias_list = opts[:alias_list] || []
-    @spacing = calculate_spacing
-  end
-
-  def calculate_spacing
-    4
   end
 
   def generate_function
     <<-eos
 
 function #{name.downcase}-help(){
+  echo
   echo "#{name.capitalize} Aliases"
   echo
   #{

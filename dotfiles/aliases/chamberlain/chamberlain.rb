@@ -64,6 +64,7 @@ class Chamberlain
         end
 
         (list[:custom_functions] || []).each do |function_name, function_hash|
+          arrayed << [function_name, function_hash[:helper_descrpition]] if function_hash[:helper_descrpition]
           command = CustomFunction.generate(
             name: function_name,
             echo_description: function_hash[:echo_description],
