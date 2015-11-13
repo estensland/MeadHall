@@ -1,7 +1,7 @@
-require '~/coding/MeadHall/dotfiles/aliases/chamberlain/run_and_tell.rb'
-require '~/coding/MeadHall/dotfiles/aliases/chamberlain/run_and_tell_quoted_inputs.rb'
-require '~/coding/MeadHall/dotfiles/aliases/chamberlain/helper_function.rb'
-require '~/coding/MeadHall/dotfiles/aliases/chamberlain/custom_function.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell_quoted_inputs.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/helper_function.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/custom_function.rb'
 
 class Chamberlain
 
@@ -12,12 +12,10 @@ class Chamberlain
     path = "~/coding/MeadHall/dotfiles/aliases/"
 
     # create file
-    puts Dir.pwd
     Dir.chdir "coding"
     Dir.chdir "MeadHall"
     Dir.chdir "dotfiles"
     Dir.chdir "aliases"
-    puts Dir.pwd
 
      File.open('.aliases.sh', 'w') do |alias_file|
       alias_file.write(RunAndTell.base_function)
