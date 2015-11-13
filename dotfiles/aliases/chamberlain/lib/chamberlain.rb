@@ -1,3 +1,4 @@
+require 'fileutils'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell_quoted_inputs.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/helper_function.rb'
@@ -9,14 +10,24 @@ class Chamberlain
 
   def self.run
     # set path
-    path = "~/coding/MeadHall/dotfiles/aliases/"
+    path = "/Users/Eric/coding/MeadHall/dotfiles/aliases/"
+
+    FileUtils.cd("#{path}/chamberlain/last_pass/")
+
+    # move files to last_pass
+    Dir.entries(".").each do |file|
+      next if file == '.' || file == '..' || File.directory?(file)
+      FileUtils.rm(file)
+    end
+
+    FileUtils.cd(path)
+    # move files to last_pass
+    Dir.entries(".").each do |file|
+      next if file == '.' || file == '..' || File.directory?(file)
+      FileUtils.mv(file, "chamberlain/last_pass/#{file}")
+    end
 
     # create file
-    Dir.chdir "coding"
-    Dir.chdir "MeadHall"
-    Dir.chdir "dotfiles"
-    Dir.chdir "aliases"
-
      File.open('.aliases.sh', 'w') do |alias_file|
       alias_file.write(RunAndTell.base_function)
       alias_file.write("\n\n")

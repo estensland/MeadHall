@@ -7,7 +7,7 @@ lists = [
       name: 'Basic',
       aliases:{
         reshell: "source ~/.bash_profile",
-        chamberlain: "ruby ~/coding/MeadHall/dotfiles/aliases/shell_boot.rb; reshell",
+        chamberlain: "ruby ~/coding/MeadHall/dotfiles/aliases/chamberlain/shell_boot.rb; reshell",
         '..' => "cd ..",
         '...' => "cd ...",
         lg: "ls -G",
@@ -137,9 +137,8 @@ lists = [
         rgm: "rails generate model",
         rn: "rails new",
         rs: "rails server",
-        rt: "bundle exec rspec spec --format documentation"
+        rt: "bundle exec rspec spec --format documentation",
         frakit:  'echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake db:seed'
-
       },
       custom_functions:{
         rr:{
