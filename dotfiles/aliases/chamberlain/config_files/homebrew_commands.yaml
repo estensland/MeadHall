@@ -1,0 +1,12 @@
+---
+:name: Homebrew
+:aliases:
+  :brup: "run_and_tell brew update && brew upgrade"
+  :brout: "run_and_tell brew outdated"
+  :bro: "run_and_tell brew outdated"
+  :brin: "run_and_tell brew install"
+  :brrm: "run_and_tell brew uninstall"
+  :brls: "run_and_tell brew list"
+  :brsr: "run_and_tell brew search"
+  :brinf: "run_and_tell brew info"
+  :brdr: "run_and_tell brew doctor"

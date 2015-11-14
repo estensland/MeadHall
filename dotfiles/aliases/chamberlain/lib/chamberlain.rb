@@ -3,6 +3,7 @@ require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell_quoted_inputs.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/helper_function.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/custom_function.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/list_collector.rb'
 
 class Chamberlain
 
@@ -38,7 +39,9 @@ class Chamberlain
   #### INSTANCE METHODS
 
   def initialize(opts = {})
-    @alias_lists = opts[:alias_lists]
+    @profile = opts[:profile]
+    @option = opts[:options]
+    @alias_lists = ListCollector(@profile)
     self.class.run
     write_aliases
   end
