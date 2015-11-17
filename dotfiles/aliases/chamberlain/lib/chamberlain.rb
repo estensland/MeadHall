@@ -28,6 +28,13 @@ class Chamberlain
       FileUtils.mv(file, "chamberlain/last_pass/#{file}")
     end
 
+    FileUtils.cd('../config_files/')
+    lists = {}
+    Dir.entries(".").each do |file|
+      next if file == '.' || file == '..' || File.directory?(file)
+      list.merge(YAML.load_file(file))
+    end
+
     # create file
      File.open('.aliases.sh', 'w') do |alias_file|
       alias_file.write(RunAndTell.base_function)
