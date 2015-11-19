@@ -14,7 +14,7 @@
     :helper_descrpition: rake route (| grep \$1)
     :command: |-
       if [ $# -gt 0 ]; then
-      run_and_tell "rake routes | grep $1"
-      else
-      run_and_tell rake routes
-      fi
+          run_and_tell "rake routes | grep $1"
+        else
+          run_and_tell rake routes
+        fi

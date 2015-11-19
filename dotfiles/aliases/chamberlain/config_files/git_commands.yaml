@@ -25,9 +25,9 @@
     :helper_descrpition: git pull on current branch
     :command: |-
       BRANCH=$(git symbolic-ref HEAD)
-      echo ""
-      echo "Pulling Down Origin Branch"
-      echo "git pull origin $BRANCH"
-      echo ""
-      git pull origin $BRANCH
-      echo ""
+        echo ""
+        echo "Pulling Down Origin Branch"
+        echo "git pull origin $BRANCH"
+        echo ""
+        git pull origin $BRANCH
+        echo ""
