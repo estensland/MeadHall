@@ -12,3 +12,12 @@
       URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
       URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
       open "$URL"
+  :gopr:
+    :echo_description: opening new PR for branch
+    :helper_descrpition: opens git remote origin url new branch
+    :command: |-
+      URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
+      URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
+      URL=$(awk '{gsub(/.git$/,"")}1' <<< $URL)
+      BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      open ${URL}/compare/${BRANCH}?expand=1

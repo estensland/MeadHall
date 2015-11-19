@@ -498,6 +498,22 @@ function gorepo(){
   echo
 }
 
+
+function gopr(){
+  echo
+  echo "running: opening new PR for branch"
+  echo
+
+  URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
+  URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
+  URL=$(awk '{gsub(/.git$/,"")}1' <<< $URL)
+  BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  open ${URL}/compare/${BRANCH}?expand=1
+
+  echo
+  echo
+}
+
 function url-help(){
   echo
   echo "Url Aliases"
@@ -506,6 +522,7 @@ function url-help(){
 	echo " goeuler    = open http://projecteuler.net/problems"
 	echo " gogit      = open http://www.github.com/estensland"
 	echo " gorepo     = opens git remote origin url"
+	echo " gopr       = opens git remote origin url new branch"
   echo
 }
 
