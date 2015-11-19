@@ -17,7 +17,11 @@ function run_and_tell(){
 
   def self.generate_alias(opts = {})
     row = self.new(opts)
-    return row.run_tell_alias
+    if(opts[:single_input])
+      row.run_tell_single_input
+    else
+      row.run_tell_alias
+    end
   end
 
 
@@ -28,5 +32,9 @@ function run_and_tell(){
 
   def run_tell_alias
     "alias #{@alias}=\"run_and_tell #{@action}\""
+  end
+
+  def run_tell_single_input
+    "alias #{@alias}=\"run_and_tell '#{@action}'\""
   end
 end

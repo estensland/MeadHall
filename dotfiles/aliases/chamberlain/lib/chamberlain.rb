@@ -68,6 +68,15 @@ class Chamberlain
         end
       end
 
+      (list[:grepped_aliases] || []).each do |alias_name, alias_action|
+        File.open('.aliases.sh', 'a') do |f|
+          arrayed << [alias_name, alias_action]
+          command = RunAndTell.generate_alias(single_input: true, alias_name: alias_name, alias_action: alias_action)
+          print '.'
+          f.puts command
+        end
+      end
+
       (list[:quoted_inputs] || []).each do |alias_name, alias_action|
         File.open('.aliases.sh', 'a') do |f|
           arrayed << [alias_name, alias_action]

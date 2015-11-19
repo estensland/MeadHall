@@ -13,9 +13,11 @@
   :gdc: git diff --cached
   :gr: git pull --rebase
   :gv: git remote -v
-  :ggph: gph && gobranch
+  :ggph: gph ; gobranch
   :hitme: git pull origin master
   :cmdz: git reset --soft HEAD~1
+:grepped_aliases:
+  :gssc: git status -s | grep UU --color=auto
 :quoted_inputs:
   :gac: git add . ; git commit -m
   :gc: git commit -m

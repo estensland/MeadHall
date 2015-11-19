@@ -20,6 +20,47 @@ function run_and_tell_quoted_inputs(){
 }
 
 
+# Alias List: Basic
+
+alias reshell="run_and_tell source ~/.bash_profile"
+alias chamberlain="run_and_tell ruby ~/coding/MeadHall/dotfiles/aliases/chamberlain/shell_boot.rb; reshell"
+alias ..="run_and_tell cd .."
+alias ...="run_and_tell cd ..."
+alias lg="run_and_tell ls -G"
+alias la="run_and_tell ls -AF"
+alias ll="run_and_tell ls -alh"
+alias l="run_and_tell ls -a"
+alias l1="run_and_tell ls -1"
+alias lo="run_and_tell ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'"
+alias recent="run_and_tell ls -lAt | head"
+alias old="run_and_tell ls -lAt | tail"
+alias bashprof="run_and_tell subl ~/.bash_profile"
+
+function basic-help(){
+  echo
+  echo "Basic Aliases"
+  echo
+  echo " reshell    = source ~/.bash_profile"
+	echo " chamberlain = ruby ~/coding/MeadHall/dotfiles/aliases/chamberlain/shell_boot.rb; reshell"
+	echo " ..         = cd .."
+	echo " ...        = cd ..."
+	echo " lg         = ls -G"
+	echo " la         = ls -AF"
+	echo " ll         = ls -alh"
+	echo " l          = ls -a"
+	echo " l1         = ls -1"
+	echo " lo         = ls -l | sed -e 's/--x/1/g' -e 's/-w-/2/g' -e 's/-wx/3/g' -e 's/r--/4/g' -e 's/r-x/5/g' -e 's/rw-/6/g' -e 's/rwx/7/g' -e 's/---/0/g'"
+	echo " recent     = ls -lAt | head"
+	echo " old        = ls -lAt | tail"
+	echo " bashprof   = subl ~/.bash_profile"
+  echo
+}
+
+
+
+#########
+
+
 # Alias List: Bundler
 
 alias b="run_and_tell bundle"
@@ -92,9 +133,10 @@ alias gd="run_and_tell git diff"
 alias gdc="run_and_tell git diff --cached"
 alias gr="run_and_tell git pull --rebase"
 alias gv="run_and_tell git remote -v"
-alias ggph="run_and_tell gph && gobranch"
+alias ggph="run_and_tell gph ; gobranch"
 alias hitme="run_and_tell git pull origin master"
 alias cmdz="run_and_tell git reset --soft HEAD~1"
+alias gssc="run_and_tell 'git status -s | grep UU --color=auto'"
 alias gac="run_and_tell_quoted_inputs 'git add . ; git commit -m'"
 alias gc="run_and_tell_quoted_inputs 'git commit -m'"
 
@@ -132,9 +174,10 @@ function git-help(){
 	echo " gdc        = git diff --cached"
 	echo " gr         = git pull --rebase"
 	echo " gv         = git remote -v"
-	echo " ggph       = gph && gobranch"
+	echo " ggph       = gph ; gobranch"
 	echo " hitme      = git pull origin master"
 	echo " cmdz       = git reset --soft HEAD~1"
+	echo " gssc       = git status -s | grep UU --color=auto"
 	echo " gac        = git add . ; git commit -m"
 	echo " gc         = git commit -m"
 	echo " graft      = git pull on current branch"

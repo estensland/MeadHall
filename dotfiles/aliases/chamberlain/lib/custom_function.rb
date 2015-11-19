@@ -12,7 +12,6 @@ class CustomFunction
   end
 
   def multiline_yaml_parse(command_line)
-    p command_line if command_line.match('ssh')
     command_line.gsub(/\n(?!$)/, "\n\s\s")
   end
 
