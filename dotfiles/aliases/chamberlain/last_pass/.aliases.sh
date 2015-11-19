@@ -105,12 +105,12 @@ function graft(){
   echo
 
   BRANCH=$(git symbolic-ref HEAD)
-  echo ""
-  echo "Pulling Down Origin Branch"
-  echo "git pull origin $BRANCH"
-  echo ""
-  git pull origin $BRANCH
-  echo ""
+    echo ""
+    echo "Pulling Down Origin Branch"
+    echo "git pull origin $BRANCH"
+    echo ""
+    git pull origin $BRANCH
+    echo ""
 
   echo
   echo
@@ -239,14 +239,14 @@ function shuffle(){
   echo
 
   local i tmp size max rand
-  array=( 'Get that shit out of you, and get that motivation to not give up and not be a quitter, no matter how much you just want to fall flat on your face' 'These are the times that try mens souls...Tyranny, like hell, is not easily conquered...the harder the conflict, the more glorious the triumph' 'Nothing is eaten as hot as it is cooked' 'Sometimes even to live is an act of courage' 'Ships are safe in harbor, but that is not what they are made for' 'All I know is that I know nothing' 'The best revenge is massive success' 'People often say that motivation doesnt last. Well, neither does bathing.  Thats why we recommend it daily' 'Fall seven times and stand up eight' 'If the wind will not serve, take to the oars' 'ASTRA INCLINANT NON OBLIGANT' 'When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.' 'Nothing is impossible, the word itself says, Im possible!' 'Give me six hours to chop down a tree and I will spend the first four sharpening the axe' 'Common looking people are the best in the world: that is the reason the Lord makes so many of them' 'If I were two-faced, would I be wearing this one?')
-  size=${#array[*]}
-  max=$(( 32768 / size * size ))
-  for ((i=size-1; i>0; i--)); do
-  while (( (rand=$RANDOM) >= max )); do :; done
-  rand=$(( rand % (i+1) ))
-  tmp=${array[i]} array[i]=${array[rand]} array[rand]=$tmp
-  done
+    array=( 'Get that shit out of you, and get that motivation to not give up and not be a quitter, no matter how much you just want to fall flat on your face' 'These are the times that try mens souls...Tyranny, like hell, is not easily conquered...the harder the conflict, the more glorious the triumph' 'Nothing is eaten as hot as it is cooked' 'Sometimes even to live is an act of courage' 'Ships are safe in harbor, but that is not what they are made for' 'All I know is that I know nothing' 'The best revenge is massive success' 'People often say that motivation doesnt last. Well, neither does bathing.  Thats why we recommend it daily' 'Fall seven times and stand up eight' 'If the wind will not serve, take to the oars' 'ASTRA INCLINANT NON OBLIGANT' 'When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.' 'Nothing is impossible, the word itself says, Im possible!' 'Give me six hours to chop down a tree and I will spend the first four sharpening the axe' 'Common looking people are the best in the world: that is the reason the Lord makes so many of them' 'If I were two-faced, would I be wearing this one?')
+    size=${#array[*]}
+    max=$(( 32768 / size * size ))
+    for ((i=size-1; i>0; i--)); do
+    while (( (rand=$RANDOM) >= max )); do :; done
+    rand=$(( rand % (i+1) ))
+    tmp=${array[i]} array[i]=${array[rand]} array[rand]=$tmp
+    done
 
   echo
   echo
@@ -257,9 +257,9 @@ function inspire(){
   echo
 
   shuffle
-  echo "Quote:"
-  echo "${array[1]}"
-  echo
+    echo "Quote:"
+    echo "${array[1]}"
+    echo
 
   echo
   echo
@@ -303,15 +303,15 @@ function gph(){
   echo
 
   BRANCH=$(git symbolic-ref HEAD)
-  MASTER="refs/heads/master"
-  echo "Trying to Push Branch"
-  echo "Checking if on master..."
-  if  [[ "$BRANCH" == "$MASTER" ]]; then
-    echo 'YOU ARE ON MASTER BRACNH!'
-  else
-    echo "Passed check"
-    git push origin HEAD
-  fi
+    MASTER="refs/heads/master"
+    echo "Trying to Push Branch"
+    echo "Checking if on master..."
+    if  [[ "$BRANCH" == "$MASTER" ]]; then
+      echo 'YOU ARE ON MASTER BRACNH!'
+    else
+      echo "Passed check"
+      git push origin HEAD
+    fi
 
   echo
   echo
@@ -346,10 +346,10 @@ function rr(){
   echo
 
   if [ $# -gt 0 ]; then
-    run_and_tell "rake routes | grep $1"
-  else
-    run_and_tell rake routes
-  fi
+      run_and_tell "rake routes | grep $1"
+    else
+      run_and_tell rake routes
+    fi
 
   echo
   echo
@@ -382,18 +382,18 @@ function rtc(){
   echo
 
   if [ $# -gt 1 ]; then
-    echo testing line $2 in $1 controller
-    echo "rspec spec/controllers/$1_controller_spec.rb:$2;"
-    rspec spec/controllers/$1_controller_spec.rb:$2;
-  elif [ $# -gt 0 ]; then
-    echo testing all of $1 controller
-    echo "rspec spec/controllers/$1_controller_spec.rb"
-    rspec spec/controllers/$1_controller_spec.rb;
-  else
-    echo testing all controllers
-    echo "rspec spec/controllers/"
-    rspec spec/controllers/;
-  fi
+      echo testing line $2 in $1 controller
+      echo "rspec spec/controllers/$1_controller_spec.rb:$2;"
+      rspec spec/controllers/$1_controller_spec.rb:$2;
+    elif [ $# -gt 0 ]; then
+      echo testing all of $1 controller
+      echo "rspec spec/controllers/$1_controller_spec.rb"
+      rspec spec/controllers/$1_controller_spec.rb;
+    else
+      echo testing all controllers
+      echo "rspec spec/controllers/"
+      rspec spec/controllers/;
+    fi
 
   echo
   echo
@@ -404,18 +404,18 @@ function rtm(){
   echo
 
   if [ $# -gt 1 ]; then
-    echo testing line $2 in $1 model
-    echo "rspec spec/models/$1_spec.rb:$2;"
-    rspec spec/models/$1_spec.rb:$2;
-  elif [ $# -gt 0 ]; then
-    echo testing all of $1 model
-    echo "rspec spec/models/$1_spec.rb;"
-    rspec spec/models/$1_spec.rb;
-  else
-    echo testing all of models
-    echo "rspec spec/models/;"
-    rspec spec/models/;
-  fi
+      echo testing line $2 in $1 model
+      echo "rspec spec/models/$1_spec.rb:$2;"
+      rspec spec/models/$1_spec.rb:$2;
+    elif [ $# -gt 0 ]; then
+      echo testing all of $1 model
+      echo "rspec spec/models/$1_spec.rb;"
+      rspec spec/models/$1_spec.rb;
+    else
+      echo testing all of models
+      echo "rspec spec/models/;"
+      rspec spec/models/;
+    fi
 
   echo
   echo
@@ -448,8 +448,8 @@ function gorepo(){
   echo
 
   URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
-  URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
-  open "$URL"
+    URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
+    open "$URL"
 
   echo
   echo
@@ -482,15 +482,15 @@ function ztc(){
   echo
 
   if [ $# -gt 1 ]; then
-    echo testing line $2 in $1 controller
-    zeus rspec spec/controllers/$1_controller_spec.rb:$2;
-  elif [ $# -gt 0 ]; then
-    echo testing all of $1 controller
-    zeus rspec spec/controllers/$1_controller_spec.rb;
-  else
-    echo testing all controllers
-    zeus rspec spec/controllers/;
-  fi
+      echo testing line $2 in $1 controller
+      zeus rspec spec/controllers/$1_controller_spec.rb:$2;
+    elif [ $# -gt 0 ]; then
+      echo testing all of $1 controller
+      zeus rspec spec/controllers/$1_controller_spec.rb;
+    else
+      echo testing all controllers
+      zeus rspec spec/controllers/;
+    fi
 
   echo
   echo
@@ -501,15 +501,15 @@ function ztm(){
   echo
 
   if [ $# -gt 1 ]; then
-    echo testing line $2 in $1 model
-    zeus rspec spec/models/$1_spec.rb:$2;
-  elif [ $# -gt 0 ]; then
-    echo testing all of $1 model
-    zeus rspec spec/models/$1_spec.rb;
-  else
-    echo testing all of models
-    zeus rspec spec/models/;
-  fi
+      echo testing line $2 in $1 model
+      zeus rspec spec/models/$1_spec.rb:$2;
+    elif [ $# -gt 0 ]; then
+      echo testing all of $1 model
+      zeus rspec spec/models/$1_spec.rb;
+    else
+      echo testing all of models
+      zeus rspec spec/models/;
+    fi
 
   echo
   echo

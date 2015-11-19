@@ -9,12 +9,12 @@
     :helper_descrpition: git push origin current branch (blocks master)
     :command: |-
       BRANCH=$(git symbolic-ref HEAD)
-        MASTER="refs/heads/master"
-        echo "Trying to Push Branch"
-        echo "Checking if on master..."
-        if  [[ "$BRANCH" == "$MASTER" ]]; then
-          echo 'YOU ARE ON MASTER BRACNH!'
-        else
-          echo "Passed check"
-          git push origin HEAD
-        fi
+      MASTER="refs/heads/master"
+      echo "Trying to Push Branch"
+      echo "Checking if on master..."
+      if  [[ "$BRANCH" == "$MASTER" ]]; then
+        echo 'YOU ARE ON MASTER BRACNH!'
+      else
+        echo "Passed check"
+        git push origin HEAD
+      fi

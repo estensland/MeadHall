@@ -8,7 +8,12 @@ class CustomFunction
   def initialize(opts = {})
     @name = opts[:name]
     @echo_description = opts[:echo_description]
-    @command = opts[:command]
+    @command = multiline_yaml_parse(opts[:command])
+  end
+
+  def multiline_yaml_parse(command_line)
+    p command_line if command_line.match('ssh')
+    command_line.gsub(/\n(?!$)/, "\n\s\s")
   end
 
   def output

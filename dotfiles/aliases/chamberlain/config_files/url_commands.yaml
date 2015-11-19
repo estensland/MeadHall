@@ -10,5 +10,5 @@
     :helper_descrpition: opens git remote origin url
     :command: |-
       URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
-        URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
-        open "$URL"
+      URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
+      open "$URL"
