@@ -2,7 +2,7 @@
 
 function run_and_tell(){
   echo
-  echo Running: $@
+  echo -e `tput setaf 215` Running: `tput sgr0` $@ | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails", "[1;31m&[0m"); gsub("git", "[1;32m&[0m"); gsub("cd", "[1;34m&[0m"); print }'
   echo
   eval $@
   echo
@@ -508,7 +508,7 @@ function gopr(){
   URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
   URL=$(awk '{gsub(/.git$/,"")}1' <<< $URL)
   BRANCH=$(git rev-parse --abbrev-ref HEAD)
-  echo ${URL}/compare/${BRANCH}?expand=1
+  open ${URL}/compare/${BRANCH}?expand=1
 
   echo
   echo

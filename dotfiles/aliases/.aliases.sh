@@ -2,7 +2,7 @@
 
 function run_and_tell(){
   echo
-  echo Running: $@
+  echo -e `tput setaf 215` Running: `tput sgr0` $@ | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails", "[1;31m&[0m"); gsub("git", "[1;32m&[0m"); gsub("cd", "[1;37m&[0m"); print }'
   echo
   eval $@
   echo

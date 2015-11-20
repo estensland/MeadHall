@@ -50,6 +50,7 @@ class Chamberlain
   end
 
   def write_aliases
+    system "echo `tput setaf 2`"
     @alias_lists.each do |list|
       File.open('.aliases.sh', 'a') do |f|
         f.puts "\n\n"
@@ -105,5 +106,6 @@ class Chamberlain
       end
 
     end
+    system "echo `tput sgr0`"
   end
 end
