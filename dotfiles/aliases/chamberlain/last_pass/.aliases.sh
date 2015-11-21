@@ -2,7 +2,7 @@
 
 function run_and_tell(){
   echo
-  echo -e `tput setaf 215` Running: `tput sgr0` $@ | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails", "[1;31m&[0m"); gsub("git", "[1;32m&[0m"); gsub("cd", "[1;34m&[0m"); print }'
+  echo -e `tput setaf 215` Running: `tput sgr0` $@ | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails", "[1;31m&[0m"); gsub("rake", "[1;31m&[0m"); gsub("git", "[1;32m&[0m"); gsub("cd", "[1;33m&[0m"); gsub("ls", "[1;33m&[0m"); gsub("subl", "[1;30m&[0m"); gsub("brew", "[1;34m&[0m");print }'
   echo
   eval $@
   echo
@@ -230,29 +230,33 @@ function heroku-help(){
 
 # Alias List: Homebrew
 
-alias brup="run_and_tell run_and_tell brew update && brew upgrade"
-alias brout="run_and_tell run_and_tell brew outdated"
-alias bro="run_and_tell run_and_tell brew outdated"
-alias brin="run_and_tell run_and_tell brew install"
-alias brrm="run_and_tell run_and_tell brew uninstall"
-alias brls="run_and_tell run_and_tell brew list"
-alias brsr="run_and_tell run_and_tell brew search"
-alias brinf="run_and_tell run_and_tell brew info"
-alias brdr="run_and_tell run_and_tell brew doctor"
+alias brupp="run_and_tell brew update; brew upgrade"
+alias brup="run_and_tell brew update"
+alias brdd="run_and_tell brew upgrade"
+alias brout="run_and_tell brew outdated"
+alias bro="run_and_tell brew outdated"
+alias brin="run_and_tell brew install"
+alias brrm="run_and_tell brew uninstall"
+alias brls="run_and_tell brew list"
+alias brsr="run_and_tell brew search"
+alias brinf="run_and_tell brew info"
+alias brdr="run_and_tell brew doctor"
 
 function homebrew-help(){
   echo
   echo "Homebrew Aliases"
   echo
-  echo " brup       = run_and_tell brew update && brew upgrade"
-	echo " brout      = run_and_tell brew outdated"
-	echo " bro        = run_and_tell brew outdated"
-	echo " brin       = run_and_tell brew install"
-	echo " brrm       = run_and_tell brew uninstall"
-	echo " brls       = run_and_tell brew list"
-	echo " brsr       = run_and_tell brew search"
-	echo " brinf      = run_and_tell brew info"
-	echo " brdr       = run_and_tell brew doctor"
+  echo " brupp      = brew update; brew upgrade"
+	echo " brup       = brew update"
+	echo " brdd       = brew upgrade"
+	echo " brout      = brew outdated"
+	echo " bro        = brew outdated"
+	echo " brin       = brew install"
+	echo " brrm       = brew uninstall"
+	echo " brls       = brew list"
+	echo " brsr       = brew search"
+	echo " brinf      = brew info"
+	echo " brdr       = brew doctor"
   echo
 }
 
