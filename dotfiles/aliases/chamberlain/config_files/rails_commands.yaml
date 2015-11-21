@@ -4,6 +4,7 @@
   :rc: rails console
   :rgm: rails generate model
   :rn: rails new
+  :rnpg: rails new -d postgresql
   :rs: rails server
   :rt: bundle exec rspec spec --format documentation
   :frakit: echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating

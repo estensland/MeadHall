@@ -1,0 +1,4 @@
+:name: 'Basic'
+:aliases:
+  :pgstart: "pg_ctl -D /usr/local/var/postgres -l logfile start"
+  :pgstop: "pg_ctl -D /usr/local/var/postgres stop"

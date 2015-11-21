@@ -2,7 +2,7 @@
 
 function run_and_tell(){
   echo
-  echo -e `tput setaf 215` Running: `tput sgr0` $@ | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails", "[1;31m&[0m"); gsub("rake", "[1;31m&[0m"); gsub("git", "[1;32m&[0m"); gsub("cd", "[1;33m&[0m"); gsub("ls", "[1;33m&[0m"); gsub("subl", "[1;30m&[0m"); gsub("brew", "[1;34m&[0m");print }'
+  echo -e `tput setaf 215` Running: `tput sgr0` $@ | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
   eval $@
   echo
@@ -384,6 +384,7 @@ function power_git-help(){
 alias rc="run_and_tell rails console"
 alias rgm="run_and_tell rails generate model"
 alias rn="run_and_tell rails new"
+alias rnpg="run_and_tell rails new -d postgresql"
 alias rs="run_and_tell rails server"
 alias rt="run_and_tell bundle exec rspec spec --format documentation"
 alias frakit="run_and_tell echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake db:seed"
@@ -409,6 +410,7 @@ function rails-help(){
   echo " rc         = rails console"
 	echo " rgm        = rails generate model"
 	echo " rn         = rails new"
+	echo " rnpg       = rails new -d postgresql"
 	echo " rs         = rails server"
 	echo " rt         = bundle exec rspec spec --format documentation"
 	echo " frakit     = echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake db:seed"
