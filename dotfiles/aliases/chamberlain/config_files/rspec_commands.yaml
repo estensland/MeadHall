@@ -33,3 +33,19 @@
         echo "rspec spec/models/;"
         rspec spec/models/;
       fi
+  :rtj:
+    :helper_descrpition: rspec test job (\$1) line (\$2)
+    :command: |-
+      if [ $# -gt 1 ]; then
+        echo testing line $2 in $1 job
+        echo "rspec spec/job/$1_job_spec.rb:$2;"
+        rspec spec/jobs/$1_job_spec.rb:$2;
+      elif [ $# -gt 0 ]; then
+        echo testing all of $1 job
+        echo "rspec spec/jobs/$1_job_spec.rb"
+        rspec spec/jobs/$1_job_spec.rb;
+      else
+        echo testing all jobs
+        echo "rspec spec/jobs/"
+        rspec spec/jobs/;
+      fi
