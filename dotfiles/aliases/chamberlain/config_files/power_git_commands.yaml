@@ -18,3 +18,13 @@
         echo "Passed check"
         git push origin HEAD
       fi
+  :gtimemachine:
+    :echo_description: git checkout master; git branch -D time_machine; git checkout -b time_machine commit
+    :helper_descrpition: git checkout master; git branch -D time_machine; git checkout -b time_machine $1
+    :command: |-
+      echo "Switching to master"
+      run_and_tell git checkout master
+      echo "clearing time_machine branch"
+      run_and_tell git branch -D time_machine
+      echo "checking out time machine branch at commit $1"
+      run_and_tell git checkout -b time_machine $1
