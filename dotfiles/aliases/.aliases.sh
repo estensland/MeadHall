@@ -383,6 +383,23 @@ function gph(){
   echo
 }
 
+
+function gtimemachine(){
+  echo
+  echo "running: git checkout master; git branch -D time_machine; git checkout -b time_machine commit"
+  echo
+
+  echo "Switching to master"
+  run_and_tell git checkout master
+  echo "clearing time_machine branch"
+  run_and_tell git branch -D time_machine
+  echo "checking out time machine branch at commit $1"
+  run_and_tell git checkout -b time_machine $1
+
+  echo
+  echo
+}
+
 function power_git-help(){
   echo
   echo "Power_git Aliases"
@@ -390,6 +407,7 @@ function power_git-help(){
   echo " mikedrop   = git push origin master"
 	echo " choochoo   = git push origin master --force"
 	echo " gph        = git push origin current branch (blocks master)"
+	echo " gtimemachine = git checkout master; git branch -D time_machine; git checkout -b time_machine $1"
   echo
 }
 
@@ -422,6 +440,20 @@ function rr(){
   echo
 }
 
+
+function golh(){
+  echo
+
+  if [ $# -gt 0 ]; then
+    run_and_tell "open http://localhost:300$1"
+  else
+    run_and_tell open http://localhost:3000
+  fi
+
+  echo
+  echo
+}
+
 function rails-help(){
   echo
   echo "Rails Aliases"
@@ -434,6 +466,7 @@ function rails-help(){
 	echo " rt         = bundle exec rspec spec --format documentation"
 	echo " frakit     = echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake db:seed"
 	echo " rr         = rake route (| grep \$1)"
+	echo " golh       = open http://localhost:300(| grep \$1)"
   echo
 }
 
@@ -489,12 +522,104 @@ function rtm(){
   echo
 }
 
+
+function rtj(){
+  echo
+
+  if [ $# -gt 1 ]; then
+    echo testing line $2 in $1 job
+    echo "rspec spec/job/$1_job_spec.rb:$2;"
+    rspec spec/jobs/$1_job_spec.rb:$2;
+  elif [ $# -gt 0 ]; then
+    echo testing all of $1 job
+    echo "rspec spec/jobs/$1_job_spec.rb"
+    rspec spec/jobs/$1_job_spec.rb;
+  else
+    echo testing all jobs
+    echo "rspec spec/jobs/"
+    rspec spec/jobs/;
+  fi
+
+  echo
+  echo
+}
+
+
+function rth(){
+  echo
+
+  if [ $# -gt 1 ]; then
+    echo testing line $2 in $1 helper
+    echo "rspec spec/helpers/$1_helper_spec.rb:$2;"
+    rspec spec/helpers/$1_helper_spec.rb:$2;
+  elif [ $# -gt 0 ]; then
+    echo testing all of $1 helper
+    echo "rspec spec/helpers/$1_helper_spec.rb"
+    rspec spec/helpers/$1_helper_spec.rb;
+  else
+    echo testing all helpers
+    echo "rspec spec/helpers/"
+    rspec spec/helpers/;
+  fi
+
+  echo
+  echo
+}
+
+
+function rtf(){
+  echo
+
+  if [ $# -gt 1 ]; then
+    echo testing line $2 in $1 feature
+    echo "rspec spec/features/$1_spec.rb:$2;"
+    rspec spec/features/$1_spec.rb:$2;
+  elif [ $# -gt 0 ]; then
+    echo testing all of $1 feature
+    echo "rspec spec/features/$1_spec.rb"
+    rspec spec/features/$1_spec.rb;
+  else
+    echo testing all features
+    echo "rspec spec/features/"
+    rspec spec/features/;
+  fi
+
+  echo
+  echo
+}
+
+
+function rt2(){
+  echo
+
+  if [ $# -gt 1 ]; then
+    echo testing line $2 in $1 worker
+    echo "rspec spec/workers/$1_worker_spec.rb:$2;"
+    rspec spec/workers/$1_worker_spec.rb:$2;
+  elif [ $# -gt 0 ]; then
+    echo testing all of $1 worker
+    echo "rspec spec/workers/$1_worker_spec.rb"
+    rspec spec/workers/$1_worker_spec.rb;
+  else
+    echo testing all workers
+    echo "rspec spec/workers/"
+    rspec spec/workers/;
+  fi
+
+  echo
+  echo
+}
+
 function rspec-help(){
   echo
   echo "Rspec Aliases"
   echo
   echo " rtc        = rspec test controller (\$1) line (\$2)"
 	echo " rtm        = rspec test controller (\$1) line (\$2)"
+	echo " rtj        = rspec test job (\$1) line (\$2)"
+	echo " rth        = rspec test helper (\$1) line (\$2)"
+	echo " rtf        = rspec test feature (\$1) line (\$2)"
+	echo " rt2        = rspec test worker (\$1) line (\$2)"
   echo
 }
 

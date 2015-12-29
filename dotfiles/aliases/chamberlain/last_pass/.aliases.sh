@@ -338,6 +338,25 @@ function isidore_custom-help(){
 #########
 
 
+# Alias List: Basic
+
+alias pgstart="run_and_tell pg_ctl -D /usr/local/var/postgres -l logfile start"
+alias pgstop="run_and_tell pg_ctl -D /usr/local/var/postgres stop"
+
+function basic-help(){
+  echo
+  echo "Basic Aliases"
+  echo
+  echo " pgstart    = pg_ctl -D /usr/local/var/postgres -l logfile start"
+	echo " pgstop     = pg_ctl -D /usr/local/var/postgres stop"
+  echo
+}
+
+
+
+#########
+
+
 # Alias List: Power_Git
 
 alias mikedrop="run_and_tell git push origin master"
