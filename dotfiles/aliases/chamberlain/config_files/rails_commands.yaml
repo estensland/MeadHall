@@ -20,10 +20,10 @@
         run_and_tell rake routes
       fi
   :golh:
-    :helper_descrpition: open http://localhost:300(| grep \$1)
+    :helper_descrpition: open http://localhost:(| grep \$1)
     :command: |-
       if [ $# -gt 0 ]; then
-        run_and_tell "open http://localhost:300$1"
+        run_and_tell "open http://localhost:$1"
       else
         run_and_tell open http://localhost:3000
       fi
