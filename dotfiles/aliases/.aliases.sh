@@ -445,7 +445,7 @@ function golh(){
   echo
 
   if [ $# -gt 0 ]; then
-    run_and_tell "open http://localhost:300$1"
+    run_and_tell "open http://localhost:$1"
   else
     run_and_tell open http://localhost:3000
   fi
@@ -466,7 +466,7 @@ function rails-help(){
 	echo " rt         = bundle exec rspec spec --format documentation"
 	echo " frakit     = echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake db:seed"
 	echo " rr         = rake route (| grep \$1)"
-	echo " golh       = open http://localhost:300(| grep \$1)"
+	echo " golh       = open http://localhost:(| grep \$1)"
   echo
 }
 
