@@ -5,6 +5,7 @@
 # VAR controller/#{WHAT}/
 # VAR Attrs
 # VAR safe_params override
+# VAR controller_path
 
 
 
@@ -13,7 +14,7 @@ rails g model garfield name:string cool:boolean --no-test-framework
 
 
 # make controller
-rails g controller api/v1/#{pural_name} --no-helper --no-assets --no-controller-specs --no-view-specs --no-template-engine --no-test-framework
+rails g controller #{controller_path} --no-helper --no-assets --no-controller-specs --no-view-specs --no-template-engine --no-test-framework
 
 
 # ############
