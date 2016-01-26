@@ -4,17 +4,18 @@
 # VAR classified model name
 # VAR controller/#{WHAT}/
 # VAR Attrs
+# VAR stringified_attrs
 # VAR safe_params override
 # VAR controller_path
 
 
 
 # make model and migration
-rails g model garfield name:string cool:boolean --no-test-framework
+exec("rails g model #{classify_name} #{stringified_attrs} --no-test-framework")
 
 
 # make controller
-rails g controller #{controller_path} --no-helper --no-assets --no-controller-specs --no-view-specs --no-template-engine --no-test-framework
+exec("rails g controller #{controller_path} --no-helper --no-assets --no-controller-specs --no-view-specs --no-template-engine --no-test-framework")
 
 
 # ############
