@@ -8,7 +8,7 @@ module CustomRandomRails
     ORDER BY
       pg_total_relation_size('"' || table_schema || '"."' || table_name || '"') DESC
 EOF
-    
+
     ActiveRecord::Base.connection.execute(query).to_a
   end
 
@@ -16,11 +16,11 @@ EOF
   def drop_single_table(table)
     ActiveRecord::Base.connection.execute("DROP TABLE #{table}")
   end
-  
+
   def ids_between(low, high)
     self.where(id: low..high)
   end
-  
+
   def ids_under(num)
     self.where('id < ?', num)
   end
