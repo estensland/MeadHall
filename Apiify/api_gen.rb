@@ -1,3 +1,5 @@
+require '~/coding/MeadHall/Apiify/lib/apiify.rb'
+
 # VAR directory of rails_app
 # VAR model name
 # VAR puralized model name
