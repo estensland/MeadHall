@@ -2,13 +2,15 @@ require '~/coding/MeadHall/Apiify/lib/apiify.rb'
 
 # VAR directory of rails_app
 # VAR model name
-# VAR puralized model name
-# VAR classified model name
+pluralized_name = model_name.pluralized
+classify_name = model_name.classify
 # VAR controller/#{WHAT}/
 # VAR Attrs
 # VAR stringified_attrs
 # VAR safe_params override
 # VAR controller_path
+
+
 
 
 
