@@ -81,7 +81,7 @@
         echo "rspec spec/features/"
         rspec spec/features/;
       fi
-  :rt2:
+  :rtw:
     :helper_descrpition: rspec test worker (\$1) line (\$2)
     :command: |-
       if [ $# -gt 1 ]; then
@@ -96,4 +96,20 @@
         echo testing all workers
         echo "rspec spec/workers/"
         rspec spec/workers/;
+      fi
+  :rtr:
+    :helper_descrpition: rspec test report (\$1) line (\$2)
+    :command: |-
+      if [ $# -gt 1 ]; then
+        echo testing line $2 in $1 report
+        echo "rspec spec/reports/$1_report_spec.rb:$2;"
+        rspec spec/reports/$1_report_spec.rb:$2;
+      elif [ $# -gt 0 ]; then
+        echo testing all of $1 report
+        echo "rspec spec/reports/$1_report_spec.rb"
+        rspec spec/reports/$1_report_spec.rb;
+      else
+        echo testing all reports
+        echo "rspec spec/reports/"
+        rspec spec/reports/;
       fi
