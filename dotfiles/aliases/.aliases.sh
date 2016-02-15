@@ -93,9 +93,11 @@ function bundler-help(){
 
 
 function hop(){
+
   echo
-  echo "running: sshing..."
+  echo -e `tput setaf 215` Running: `tput sgr0` "sshing..." | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
+
 
   echo ssh -p $1 $2@$3
   echo ''
@@ -142,9 +144,11 @@ alias gc="run_and_tell_quoted_inputs 'git commit -m'"
 
 
 function graft(){
+
   echo
-  echo "running: git pull origin HEAD"
+  echo -e `tput setaf 215` Running: `tput sgr0` "git pull origin HEAD" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
+
 
   BRANCH=$(git symbolic-ref HEAD)
   echo ""
@@ -153,6 +157,29 @@ function graft(){
   echo ""
   git pull origin $BRANCH
   echo ""
+
+  echo
+  echo
+}
+
+
+function gph(){
+
+  echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "git push origin HEAD" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
+
+  BRANCH=$(git symbolic-ref HEAD)
+  MASTER="refs/heads/master"
+  echo "Trying to Push Branch"
+  echo "Checking if on master..."
+  if  [[ "$BRANCH" == "$MASTER" ]]; then
+    echo 'YOU ARE ON MASTER BRACNH!'
+  else
+    echo "Passed check"
+    git push origin HEAD
+  fi
 
   echo
   echo
@@ -181,6 +208,7 @@ function git-help(){
 	echo " gac        = git add . ; git commit -m"
 	echo " gc         = git commit -m"
 	echo " graft      = git pull on current branch"
+	echo " gph        = git push origin current branch (blocks master)"
   echo
 }
 
@@ -363,31 +391,12 @@ alias mikedrop="run_and_tell git push origin master"
 alias choochoo="run_and_tell git push origin master --force"
 
 
-function gph(){
-  echo
-  echo "running: git push origin HEAD"
-  echo
-
-  BRANCH=$(git symbolic-ref HEAD)
-  MASTER="refs/heads/master"
-  echo "Trying to Push Branch"
-  echo "Checking if on master..."
-  if  [[ "$BRANCH" == "$MASTER" ]]; then
-    echo 'YOU ARE ON MASTER BRACNH!'
-  else
-    echo "Passed check"
-    git push origin HEAD
-  fi
-
-  echo
-  echo
-}
-
-
 function gtimemachine(){
+
   echo
-  echo "running: git checkout master; git branch -D time_machine; git checkout -b time_machine commit"
+  echo -e `tput setaf 215` Running: `tput sgr0` "git checkout master; git branch -D time_machine; git checkout -b time_machine commit" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
+
 
   echo "Switching to master"
   run_and_tell git checkout master
@@ -406,7 +415,6 @@ function power_git-help(){
   echo
   echo " mikedrop   = git push origin master"
 	echo " choochoo   = git push origin master --force"
-	echo " gph        = git push origin current branch (blocks master)"
 	echo " gtimemachine = git checkout master; git branch -D time_machine; git checkout -b time_machine $1"
   echo
 }
@@ -425,6 +433,8 @@ alias rnpg="run_and_tell rails new -d postgresql"
 alias rs="run_and_tell rails server"
 alias rt="run_and_tell bundle exec rspec spec --format documentation"
 alias frakit="run_and_tell echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake db:seed"
+alias clearpgpid="run_and_tell rm /usr/local/var/postgres/postmaster.pid"
+alias clearserverpid="run_and_tell rm tmp/pids/server.pid"
 
 
 function rr(){
@@ -465,6 +475,8 @@ function rails-help(){
 	echo " rs         = rails server"
 	echo " rt         = bundle exec rspec spec --format documentation"
 	echo " frakit     = echo Resetting the Fraking db; echo dropping db; rake db:drop; echo creating db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake db:seed"
+	echo " clearpgpid = rm /usr/local/var/postgres/postmaster.pid"
+	echo " clearserverpid = rm tmp/pids/server.pid"
 	echo " rr         = rake route (| grep \$1)"
 	echo " golh       = open http://localhost:(| grep \$1)"
   echo
@@ -480,7 +492,11 @@ function rails-help(){
 
 
 function rtc(){
+
   echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "rspec test controller ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
 
   if [ $# -gt 1 ]; then
     echo testing line $2 in $1 controller
@@ -488,13 +504,14 @@ function rtc(){
     rspec spec/controllers/$1_controller_spec.rb:$2;
   elif [ $# -gt 0 ]; then
     echo testing all of $1 controller
-    echo "rspec spec/controllers/$1_controller_spec.rb"
+    echo "rspec spec/controllers/$1_controller_spec.rb;"
     rspec spec/controllers/$1_controller_spec.rb;
   else
-    echo testing all controllers
-    echo "rspec spec/controllers/"
+    echo testing all of controllers
+    echo "rspec spec/controllers/;"
     rspec spec/controllers/;
   fi
+
 
   echo
   echo
@@ -502,7 +519,11 @@ function rtc(){
 
 
 function rtm(){
+
   echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "rspec test model ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
 
   if [ $# -gt 1 ]; then
     echo testing line $2 in $1 model
@@ -518,27 +539,33 @@ function rtm(){
     rspec spec/models/;
   fi
 
+
   echo
   echo
 }
 
 
 function rtj(){
+
   echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "rspec test job ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
 
   if [ $# -gt 1 ]; then
     echo testing line $2 in $1 job
-    echo "rspec spec/job/$1_job_spec.rb:$2;"
+    echo "rspec spec/jobs/$1_job_spec.rb:$2;"
     rspec spec/jobs/$1_job_spec.rb:$2;
   elif [ $# -gt 0 ]; then
     echo testing all of $1 job
-    echo "rspec spec/jobs/$1_job_spec.rb"
+    echo "rspec spec/jobs/$1_job_spec.rb;"
     rspec spec/jobs/$1_job_spec.rb;
   else
-    echo testing all jobs
-    echo "rspec spec/jobs/"
+    echo testing all of jobs
+    echo "rspec spec/jobs/;"
     rspec spec/jobs/;
   fi
+
 
   echo
   echo
@@ -546,7 +573,11 @@ function rtj(){
 
 
 function rth(){
+
   echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "rspec test helper ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
 
   if [ $# -gt 1 ]; then
     echo testing line $2 in $1 helper
@@ -554,13 +585,14 @@ function rth(){
     rspec spec/helpers/$1_helper_spec.rb:$2;
   elif [ $# -gt 0 ]; then
     echo testing all of $1 helper
-    echo "rspec spec/helpers/$1_helper_spec.rb"
+    echo "rspec spec/helpers/$1_helper_spec.rb;"
     rspec spec/helpers/$1_helper_spec.rb;
   else
-    echo testing all helpers
-    echo "rspec spec/helpers/"
+    echo testing all of helpers
+    echo "rspec spec/helpers/;"
     rspec spec/helpers/;
   fi
+
 
   echo
   echo
@@ -568,7 +600,11 @@ function rth(){
 
 
 function rtf(){
+
   echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "rspec test feature ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
 
   if [ $# -gt 1 ]; then
     echo testing line $2 in $1 feature
@@ -576,21 +612,26 @@ function rtf(){
     rspec spec/features/$1_spec.rb:$2;
   elif [ $# -gt 0 ]; then
     echo testing all of $1 feature
-    echo "rspec spec/features/$1_spec.rb"
+    echo "rspec spec/features/$1_spec.rb;"
     rspec spec/features/$1_spec.rb;
   else
-    echo testing all features
-    echo "rspec spec/features/"
+    echo testing all of features
+    echo "rspec spec/features/;"
     rspec spec/features/;
   fi
+
 
   echo
   echo
 }
 
 
-function rt2(){
+function rtw(){
+
   echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "rspec test worker ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
 
   if [ $# -gt 1 ]; then
     echo testing line $2 in $1 worker
@@ -598,13 +639,41 @@ function rt2(){
     rspec spec/workers/$1_worker_spec.rb:$2;
   elif [ $# -gt 0 ]; then
     echo testing all of $1 worker
-    echo "rspec spec/workers/$1_worker_spec.rb"
+    echo "rspec spec/workers/$1_worker_spec.rb;"
     rspec spec/workers/$1_worker_spec.rb;
   else
-    echo testing all workers
-    echo "rspec spec/workers/"
+    echo testing all of workers
+    echo "rspec spec/workers/;"
     rspec spec/workers/;
   fi
+
+
+  echo
+  echo
+}
+
+
+function rtr(){
+
+  echo
+  echo -e `tput setaf 215` Running: `tput sgr0` "rspec test report ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
+  echo
+
+
+  if [ $# -gt 1 ]; then
+    echo testing line $2 in $1 report
+    echo "rspec spec/reports/$1_report_spec.rb:$2;"
+    rspec spec/reports/$1_report_spec.rb:$2;
+  elif [ $# -gt 0 ]; then
+    echo testing all of $1 report
+    echo "rspec spec/reports/$1_report_spec.rb;"
+    rspec spec/reports/$1_report_spec.rb;
+  else
+    echo testing all of reports
+    echo "rspec spec/reports/;"
+    rspec spec/reports/;
+  fi
+
 
   echo
   echo
@@ -614,12 +683,7 @@ function rspec-help(){
   echo
   echo "Rspec Aliases"
   echo
-  echo " rtc        = rspec test controller (\$1) line (\$2)"
-	echo " rtm        = rspec test controller (\$1) line (\$2)"
-	echo " rtj        = rspec test job (\$1) line (\$2)"
-	echo " rth        = rspec test helper (\$1) line (\$2)"
-	echo " rtf        = rspec test feature (\$1) line (\$2)"
-	echo " rt2        = rspec test worker (\$1) line (\$2)"
+
   echo
 }
 
@@ -636,9 +700,11 @@ alias gogit="run_and_tell open http://www.github.com/estensland"
 
 
 function gorepo(){
+
   echo
-  echo "running: openning repo url"
+  echo -e `tput setaf 215` Running: `tput sgr0` "openning repo url" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
+
 
   URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
   URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)
@@ -650,9 +716,11 @@ function gorepo(){
 
 
 function gopr(){
+
   echo
-  echo "running: opening new PR for branch"
+  echo -e `tput setaf 215` Running: `tput sgr0` "opening new PR for branch" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
+
 
   URL=$(git --git-dir=.git config --get remote.origin.url | sed -e 's/\:/\//')
   URL=$(awk '{gsub(/git@/,"https://www.")}1' <<< $URL)

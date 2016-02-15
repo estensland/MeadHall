@@ -1,115 +1,29 @@
 ---
 :name: RSpec
-:custom_functions:
+:rspec_helper_functions:
   :rtc:
-    :helper_descrpition: rspec test controller (\$1) line (\$2)
-    :command: |-
-      if [ $# -gt 1 ]; then
-        echo testing line $2 in $1 controller
-        echo "rspec spec/controllers/$1_controller_spec.rb:$2;"
-        rspec spec/controllers/$1_controller_spec.rb:$2;
-      elif [ $# -gt 0 ]; then
-        echo testing all of $1 controller
-        echo "rspec spec/controllers/$1_controller_spec.rb"
-        rspec spec/controllers/$1_controller_spec.rb;
-      else
-        echo testing all controllers
-        echo "rspec spec/controllers/"
-        rspec spec/controllers/;
-      fi
+    :class: controller
+    :plural_class: controllers
+    :file_suffix: controller
   :rtm:
-    :helper_descrpition: rspec test controller (\$1) line (\$2)
-    :command: |-
-      if [ $# -gt 1 ]; then
-        echo testing line $2 in $1 model
-        echo "rspec spec/models/$1_spec.rb:$2;"
-        rspec spec/models/$1_spec.rb:$2;
-      elif [ $# -gt 0 ]; then
-        echo testing all of $1 model
-        echo "rspec spec/models/$1_spec.rb;"
-        rspec spec/models/$1_spec.rb;
-      else
-        echo testing all of models
-        echo "rspec spec/models/;"
-        rspec spec/models/;
-      fi
+    :class: model
+    :plural_class: models
   :rtj:
-    :helper_descrpition: rspec test job (\$1) line (\$2)
-    :command: |-
-      if [ $# -gt 1 ]; then
-        echo testing line $2 in $1 job
-        echo "rspec spec/job/$1_job_spec.rb:$2;"
-        rspec spec/jobs/$1_job_spec.rb:$2;
-      elif [ $# -gt 0 ]; then
-        echo testing all of $1 job
-        echo "rspec spec/jobs/$1_job_spec.rb"
-        rspec spec/jobs/$1_job_spec.rb;
-      else
-        echo testing all jobs
-        echo "rspec spec/jobs/"
-        rspec spec/jobs/;
-      fi
+    :class: job
+    :plural_class: jobs
+    :file_suffix: job
   :rth:
-    :helper_descrpition: rspec test helper (\$1) line (\$2)
-    :command: |-
-      if [ $# -gt 1 ]; then
-        echo testing line $2 in $1 helper
-        echo "rspec spec/helpers/$1_helper_spec.rb:$2;"
-        rspec spec/helpers/$1_helper_spec.rb:$2;
-      elif [ $# -gt 0 ]; then
-        echo testing all of $1 helper
-        echo "rspec spec/helpers/$1_helper_spec.rb"
-        rspec spec/helpers/$1_helper_spec.rb;
-      else
-        echo testing all helpers
-        echo "rspec spec/helpers/"
-        rspec spec/helpers/;
-      fi
+    :class: helper
+    :plural_class: helpers
+    :file_suffix: helper
   :rtf:
-    :helper_descrpition: rspec test feature (\$1) line (\$2)
-    :command: |-
-      if [ $# -gt 1 ]; then
-        echo testing line $2 in $1 feature
-        echo "rspec spec/features/$1_spec.rb:$2;"
-        rspec spec/features/$1_spec.rb:$2;
-      elif [ $# -gt 0 ]; then
-        echo testing all of $1 feature
-        echo "rspec spec/features/$1_spec.rb"
-        rspec spec/features/$1_spec.rb;
-      else
-        echo testing all features
-        echo "rspec spec/features/"
-        rspec spec/features/;
-      fi
+    :class: feature
+    :plural_class: features
   :rtw:
-    :helper_descrpition: rspec test worker (\$1) line (\$2)
-    :command: |-
-      if [ $# -gt 1 ]; then
-        echo testing line $2 in $1 worker
-        echo "rspec spec/workers/$1_worker_spec.rb:$2;"
-        rspec spec/workers/$1_worker_spec.rb:$2;
-      elif [ $# -gt 0 ]; then
-        echo testing all of $1 worker
-        echo "rspec spec/workers/$1_worker_spec.rb"
-        rspec spec/workers/$1_worker_spec.rb;
-      else
-        echo testing all workers
-        echo "rspec spec/workers/"
-        rspec spec/workers/;
-      fi
+    :class: worker
+    :plural_class: workers
+    :file_suffix: worker
   :rtr:
-    :helper_descrpition: rspec test report (\$1) line (\$2)
-    :command: |-
-      if [ $# -gt 1 ]; then
-        echo testing line $2 in $1 report
-        echo "rspec spec/reports/$1_report_spec.rb:$2;"
-        rspec spec/reports/$1_report_spec.rb:$2;
-      elif [ $# -gt 0 ]; then
-        echo testing all of $1 report
-        echo "rspec spec/reports/$1_report_spec.rb"
-        rspec spec/reports/$1_report_spec.rb;
-      else
-        echo testing all reports
-        echo "rspec spec/reports/"
-        rspec spec/reports/;
-      fi
+    :class: report
+    :plural_class: reports
+    :file_suffix: report

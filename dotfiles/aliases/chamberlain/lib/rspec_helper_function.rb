@@ -6,10 +6,10 @@ class RspecHelperFunction
   end
 
   def initialize(opts = {})
-    name = opts[:name]
-    singular = opts[:class]
-    pluralized = opts[:class_pluralize]
-    file_suffix = set_file_suffix(opts[:file_suffix])
+    @name = opts[:name]
+    @singular = opts[:class]
+    @pluralized = opts[:plural_class]
+    @file_suffix = set_file_suffix(opts[:file_suffix])
   end
 
   def output
@@ -30,19 +30,19 @@ class RspecHelperFunction
 
   def command
     <<-eos
-    if [ $# -gt 1 ]; then
-      echo testing line $2 in $1 #{singular}
-      echo "rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb:$2;"
-      rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb:$2;
-    elif [ $# -gt 0 ]; then
-      echo testing all of $1 #{singular}
-      echo "rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb;"
-      rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb;
-    else
-      echo testing all of #{pluralized}
-      echo "rspec spec/#{pluralized}/;"
-      rspec spec/#{pluralized}/;
-    fi
+if [ $# -gt 1 ]; then
+  echo testing line $2 in $1 #{singular}
+  echo "rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb:$2;"
+  rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb:$2;
+elif [ $# -gt 0 ]; then
+  echo testing all of $1 #{singular}
+  echo "rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb;"
+  rspec spec/#{pluralized}/$1#{file_suffix}_spec.rb;
+else
+  echo testing all of #{pluralized}
+  echo "rspec spec/#{pluralized}/;"
+  rspec spec/#{pluralized}/;
+fi
     eos
   end
 end

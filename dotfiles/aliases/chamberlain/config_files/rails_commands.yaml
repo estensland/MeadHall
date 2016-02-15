@@ -11,7 +11,7 @@
     db; rake db:create; echo migrating db; rake db:migrate; echo seeding db; rake
     db:seed
   :clearpgpid: rm /usr/local/var/postgres/postmaster.pid
-  "clearserverpid: rm tmp/pids/server.pid
+  :clearserverpid: rm tmp/pids/server.pid
 :custom_functions:
   :rr:
     :helper_descrpition: rake route (| grep \$1)

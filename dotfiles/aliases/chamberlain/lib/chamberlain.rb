@@ -1,11 +1,12 @@
 require 'fileutils'
 require 'yaml'
 
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/custom_function.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/helper_function.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/list_collector.rb'
+require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/rspec_helper_function.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell.rb'
 require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/run_and_tell_quoted_inputs.rb'
-require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/helper_function.rb'
-require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/custom_function.rb'
-require '~/coding/MeadHall/dotfiles/aliases/chamberlain/lib/list_collector.rb'
 
 class Chamberlain
 
@@ -93,6 +94,21 @@ class Chamberlain
           name: function_name,
           echo_description: function_hash[:echo_description],
           command: function_hash[:command]
+        )
+        File.open('.aliases.sh', 'a') do |f|
+          print '.'
+          f.puts command
+        end
+      end
+
+      (list[:rspec_helper_functions] || []).each do |function_name, function_hash|
+        arrayed << [function_name, function_hash[:helper_descrpition]] if function_hash[:helper_descrpition]
+        puts function_name
+        command = RspecHelperFunction.generate(
+          name: function_name,
+          class: function_hash[:class],
+          plural_class: function_hash[:plural_class],
+          file_suffix: function_hash[:file_suffix]
         )
         File.open('.aliases.sh', 'a') do |f|
           print '.'
