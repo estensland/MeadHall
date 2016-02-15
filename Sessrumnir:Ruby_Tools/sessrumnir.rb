@@ -7,6 +7,7 @@ module Sessrumnir
 
   include StatisticsJunk
   include Rubymathics
+  include ArrayHelpers
   include SSN
   include ChanceDistribution
   include WordPrintOut
