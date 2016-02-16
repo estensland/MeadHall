@@ -65,9 +65,13 @@ class Chamberlain
   def initialize(opts = {})
     @profile = opts[:profile]
     @option = opts[:options]
-    @alias_lists = ListCollector.run(list: @profile)
+    @alias_lists = run_list_collector(opts[:profile])
     self.class.run
     write_aliases
+  end
+  
+  def run_list_collector(given_profile)
+    ListCollector.run(list: given_profile)
   end
 
   def write_aliases
