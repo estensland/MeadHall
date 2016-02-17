@@ -11,5 +11,5 @@ module Sessrumnir
   include ArrayHelpers
   include SSN
   include ChanceDistribution
-  include WordPrintOut
+  include StringFormatting
 end
