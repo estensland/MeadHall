@@ -1,3 +1,5 @@
+require_relative 'word_print_out'
+
 module StringFormatting
   include WordPrintOut
   
