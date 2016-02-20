@@ -12,7 +12,7 @@ class Chamberlain
 
   #### INSTANCE METHODS
 
-  def directory_path
+  def self.directory_path
     "/Users/Eric/coding/MeadHall/dotfiles/aliases/"
   end
 
@@ -92,7 +92,7 @@ class Chamberlain
     echo_tput_setaf
     @alias_lists.each do |list|
       File.open('.aliases.sh', 'a') do |f|
-        put_alias_list(f)
+        put_alias_list(f, list)
       end
 
       arrayed = []
@@ -101,7 +101,7 @@ class Chamberlain
         arrayed << [alias_name, alias_action]
         File.open('.aliases.sh', 'a') do |f|
           command = RunAndTell.generate_alias(alias_name: alias_name, alias_action: alias_action)
-          put_out_command(f)
+          put_out_command(f, command)
         end
       end
 
@@ -109,7 +109,7 @@ class Chamberlain
         File.open('.aliases.sh', 'a') do |f|
           arrayed << [alias_name, alias_action]
           command = RunAndTell.generate_alias(single_input: true, alias_name: alias_name, alias_action: alias_action)
-          put_out_command(f)
+          put_out_command(f, command)
         end
       end
 
@@ -117,7 +117,7 @@ class Chamberlain
         File.open('.aliases.sh', 'a') do |f|
           arrayed << [alias_name, alias_action]
           command = RunAndTellQuotedInputs.generate_alias(alias_name: alias_name, alias_action: alias_action)
-          put_out_command(f)
+          put_out_command(f, command)
         end
       end
 
@@ -129,13 +129,12 @@ class Chamberlain
           command: function_hash[:command]
         )
         File.open('.aliases.sh', 'a') do |f|
-          put_out_command(f)
+          put_out_command(f, command)
         end
       end
 
       (list[:rspec_helper_functions] || []).each do |function_name, function_hash|
         arrayed << [function_name, function_hash[:helper_descrpition]] if function_hash[:helper_descrpition]
-        puts function_name
         command = RspecHelperFunction.generate(
           name: function_name,
           class: function_hash[:class],
@@ -143,7 +142,7 @@ class Chamberlain
           file_suffix: function_hash[:file_suffix]
         )
         File.open('.aliases.sh', 'a') do |f|
-          put_out_command(f)
+          put_out_command(f, command)
         end
       end
 
@@ -164,13 +163,13 @@ class Chamberlain
     system "echo `tput sgr0`"
   end
 
-  def put_alias_list(f)
+  def put_alias_list(f, list)
     f.puts "\n\n"
     f.puts "# Alias List: #{list[:name]}\n"
     f.puts ""
   end
 
-  def put_out_command(f)
+  def put_out_command(f, command)
     print_dot
     f.puts command
   end

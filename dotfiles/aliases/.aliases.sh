@@ -93,7 +93,7 @@ function bundler-help(){
 
 
 function hop(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "sshing..." | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -144,7 +144,7 @@ alias gc="run_and_tell_quoted_inputs 'git commit -m'"
 
 
 function graft(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "git pull origin HEAD" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -164,7 +164,7 @@ function graft(){
 
 
 function gph(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "git push origin HEAD" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -392,7 +392,7 @@ alias choochoo="run_and_tell git push origin master --force"
 
 
 function gtimemachine(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "git checkout master; git branch -D time_machine; git checkout -b time_machine commit" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -492,7 +492,7 @@ function rails-help(){
 
 
 function rtc(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "rspec test controller ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -519,7 +519,7 @@ function rtc(){
 
 
 function rtm(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "rspec test model ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -546,7 +546,7 @@ function rtm(){
 
 
 function rtj(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "rspec test job ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -573,7 +573,7 @@ function rtj(){
 
 
 function rth(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "rspec test helper ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -600,7 +600,7 @@ function rth(){
 
 
 function rtf(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "rspec test feature ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -627,7 +627,7 @@ function rtf(){
 
 
 function rtw(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "rspec test worker ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -654,7 +654,7 @@ function rtw(){
 
 
 function rtr(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "rspec test report ($1) line ($2)" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -683,7 +683,7 @@ function rspec-help(){
   echo
   echo "Rspec Aliases"
   echo
-
+  
   echo
 }
 
@@ -700,7 +700,7 @@ alias gogit="run_and_tell open http://www.github.com/estensland"
 
 
 function gorepo(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "openning repo url" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
@@ -716,7 +716,7 @@ function gorepo(){
 
 
 function gopr(){
-
+  
   echo
   echo -e `tput setaf 215` Running: `tput sgr0` "opening new PR for branch" | awk '{ gsub(" ruby ", "[1;31m&[0m"); gsub("rails ", "[1;31m&[0m"); gsub("rake ", "[1;31m&[0m"); gsub("git ", "[1;32m&[0m"); gsub("cd ", "[1;33m&[0m"); gsub(" ls ", "[1;33m&[0m"); gsub("subl ", "[1;30m&[0m"); gsub("brew ", "[1;34m&[0m"); gsub("bundle ", "[1;31m&[0m"); print }'
   echo
