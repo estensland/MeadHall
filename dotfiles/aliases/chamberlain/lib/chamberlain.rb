@@ -12,26 +12,47 @@ class Chamberlain
 
   #### INSTANCE METHODS
 
+  def directory_path
+    "/Users/Eric/coding/MeadHall/dotfiles/aliases/"
+  end
+
   def self.run
-    # set path
-    path = "/Users/Eric/coding/MeadHall/dotfiles/aliases/"
+    
+    self.clear_and_move_files_to_last_pass
+    self.set_base_methods
 
-    FileUtils.cd("#{path}/chamberlain/last_pass/")
-
-    # move files to last_pass
+  end
+  
+  def self.clear_and_move_files_to_last_pass
+    self.clear_last_pass
+    self.move_to_last_pass
+  end
+  
+  def self.clear_last_pass
+    self.change_directory_to_last_pass
     Dir.entries(".").each do |file|
       next if file == '.' || file == '..' || File.directory?(file)
       FileUtils.rm(file)
     end
-
-    FileUtils.cd(path)
-    # move files to last_pass
+  end
+  
+  def self.change_directory_to_last_pass
+    FileUtils.cd("#{path}/chamberlain/last_pass/")
+  end
+  
+  def self.change_directory_to_directory_pass
+    FileUtils.cd(directory_path)
+  end
+  
+  def self.move_to_last_pass
+    self.change_directory_to_directory_pass
     Dir.entries(".").each do |file|
       next if file == '.' || file == '..' || File.directory?(file)
       FileUtils.mv(file, "chamberlain/last_pass/#{file}")
     end
-
-
+  end
+  
+  def self.set_base_methods
     # create file
     File.open('.aliases.sh', 'w') do |alias_file|
       alias_file.write(RunAndTell.base_function)
@@ -45,9 +66,13 @@ class Chamberlain
   def initialize(opts = {})
     @profile = opts[:profile]
     @option = opts[:options]
-    @alias_lists = ListCollector.run(list: @profile)
+    @alias_lists = run_list_collector(opts[:profile])
     self.class.run
     write_aliases
+  end
+  
+  def run_list_collector(given_profile)
+    ListCollector.run(list: given_profile)
   end
 
   def write_aliases

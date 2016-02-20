@@ -17,11 +17,11 @@ function run_and_tell(){
 
   def self.generate_alias(opts = {})
     row = self.new(opts)
-    if(opts[:single_input])
-      row.run_tell_single_input
-    else
-      row.run_tell_alias
-    end
+    row.send(self.run_tell_method(opts))
+  end
+  
+  def self.run_tell_method(opts = {})
+    opts[:single_input] ? :run_tell_single_input : :run_tell_alias
   end
 
 
