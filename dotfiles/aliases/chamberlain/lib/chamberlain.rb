@@ -17,41 +17,51 @@ class Chamberlain
   end
 
   def self.run
-    
     self.clear_and_move_files_to_last_pass
     self.set_base_methods
-
   end
-  
+
   def self.clear_and_move_files_to_last_pass
     self.clear_last_pass
     self.move_to_last_pass
   end
-  
+
   def self.clear_last_pass
     self.change_directory_to_last_pass
     Dir.entries(".").each do |file|
-      next if file == '.' || file == '..' || File.directory?(file)
+      next if non_applicable(file)
       FileUtils.rm(file)
     end
   end
-  
-  def self.change_directory_to_last_pass
-    FileUtils.cd("#{path}/chamberlain/last_pass/")
+
+  def self.non_applicable(file)
+    file == '.' || file == '..' || File.directory?(file)
   end
-  
+
+  def self.change_directory_to_last_pass
+    FileUtils.cd(self.last_pass_directory)
+  end
+
+  def self.last_pass_directory
+    "#{directory_path}/chamberlain/last_pass/"
+  end
+
   def self.change_directory_to_directory_pass
     FileUtils.cd(directory_path)
   end
-  
+
   def self.move_to_last_pass
     self.change_directory_to_directory_pass
     Dir.entries(".").each do |file|
-      next if file == '.' || file == '..' || File.directory?(file)
-      FileUtils.mv(file, "chamberlain/last_pass/#{file}")
+      next if self.non_applicable(file)
+      FileUtils.mv(file, self.move_to_location(file))
     end
   end
-  
+
+  def self.move_to_location(file)
+    "chamberlain/last_pass/#{file}"
+  end
+
   def self.set_base_methods
     # create file
     File.open('.aliases.sh', 'w') do |alias_file|
@@ -61,7 +71,10 @@ class Chamberlain
     end
   end
 
+
+
   #### INSTANCE METHODS
+
 
   def initialize(opts = {})
     @profile = opts[:profile]
@@ -70,18 +83,16 @@ class Chamberlain
     self.class.run
     write_aliases
   end
-  
+
   def run_list_collector(given_profile)
     ListCollector.run(list: given_profile)
   end
 
   def write_aliases
-    system "echo `tput setaf 2`"
+    echo_tput_setaf
     @alias_lists.each do |list|
       File.open('.aliases.sh', 'a') do |f|
-        f.puts "\n\n"
-        f.puts "# Alias List: #{list[:name]}\n"
-        f.puts ""
+        put_alias_list(f)
       end
 
       arrayed = []
@@ -90,8 +101,7 @@ class Chamberlain
         arrayed << [alias_name, alias_action]
         File.open('.aliases.sh', 'a') do |f|
           command = RunAndTell.generate_alias(alias_name: alias_name, alias_action: alias_action)
-          print '.'
-          f.puts command
+          put_out_command(f)
         end
       end
 
@@ -99,8 +109,7 @@ class Chamberlain
         File.open('.aliases.sh', 'a') do |f|
           arrayed << [alias_name, alias_action]
           command = RunAndTell.generate_alias(single_input: true, alias_name: alias_name, alias_action: alias_action)
-          print '.'
-          f.puts command
+          put_out_command(f)
         end
       end
 
@@ -108,8 +117,7 @@ class Chamberlain
         File.open('.aliases.sh', 'a') do |f|
           arrayed << [alias_name, alias_action]
           command = RunAndTellQuotedInputs.generate_alias(alias_name: alias_name, alias_action: alias_action)
-          print '.'
-          f.puts command
+          put_out_command(f)
         end
       end
 
@@ -121,8 +129,7 @@ class Chamberlain
           command: function_hash[:command]
         )
         File.open('.aliases.sh', 'a') do |f|
-          print '.'
-          f.puts command
+          put_out_command(f)
         end
       end
 
@@ -136,8 +143,7 @@ class Chamberlain
           file_suffix: function_hash[:file_suffix]
         )
         File.open('.aliases.sh', 'a') do |f|
-          print '.'
-          f.puts command
+          put_out_command(f)
         end
       end
 
@@ -147,6 +153,29 @@ class Chamberlain
       end
 
     end
+    echo_tput_sgr8
+  end
+
+  def echo_tput_setaf
+    system "echo `tput setaf 2`"
+  end
+
+  def echo_tput_sgr8
     system "echo `tput sgr0`"
+  end
+
+  def put_alias_list(f)
+    f.puts "\n\n"
+    f.puts "# Alias List: #{list[:name]}\n"
+    f.puts ""
+  end
+
+  def put_out_command(f)
+    print_dot
+    f.puts command
+  end
+
+  def print_dot
+    print '.'
   end
 end
