@@ -46,7 +46,7 @@ class Chamberlain
     self.dotfile?(file) || File.directory?(file)
   end
 
-  def self.dotfile?
+  def self.dotfile?(file)
     file == '.' || file == '..'
   end
 
@@ -87,15 +87,15 @@ class Chamberlain
   end
 
   def self.set_base_methods
-    self.open_new_aliases_file do |alias_file|
+    File.open(*self.alias_file_args) do |alias_file|
       self.write_run_and_tell_base_function(alias_file)
       self.write_new_lines(alias_file)
       self.write_run_tell_quoted_base_function(alias_file)
     end
   end
 
-  def self.open_new_aliases_file
-    File.open('.aliases.sh', 'w')
+  def self.alias_file_args
+    ['.aliases.sh', 'w']
   end
 
   def self.write_run_and_tell_base_function(alias_file)
