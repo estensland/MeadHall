@@ -28,14 +28,30 @@ class Chamberlain
 
   def self.clear_last_pass
     self.change_directory_to_last_pass
-    Dir.entries(".").each do |file|
+    remove_files_in_directory('.')
+  end
+
+  def self.remove_files_in_directory(dir)
+    self.files_in_directory(dir).each do |file|
       next if non_applicable(file)
-      FileUtils.rm(file)
+      remove_file(file)
     end
   end
 
+  def self.files_in_directory(dir)
+    Dir.entries(dir)
+  end
+
   def self.non_applicable(file)
-    file == '.' || file == '..' || File.directory?(file)
+    self.dotfile?(file) || File.directory?(file)
+  end
+
+  def self.dotfile?
+    file == '.' || file == '..'
+  end
+
+  def self.remove_file(file)
+    FileUtils.rm(file)
   end
 
   def self.change_directory_to_last_pass
@@ -52,10 +68,18 @@ class Chamberlain
 
   def self.move_to_last_pass
     self.change_directory_to_directory_pass
-    Dir.entries(".").each do |file|
+    self.move_files_to_last_pass('.')
+  end
+
+  def self.move_files_to_last_pass(from)
+    Dir.entries(from).each do |file|
       next if self.non_applicable(file)
-      FileUtils.mv(file, self.move_to_location(file))
+      self.move_file_to_last_pass(file)
     end
+  end
+
+  def self.move_file_to_last_pass(file)
+    FileUtils.mv(file, self.move_to_location(file))
   end
 
   def self.move_to_location(file)
@@ -63,12 +87,27 @@ class Chamberlain
   end
 
   def self.set_base_methods
-    # create file
-    File.open('.aliases.sh', 'w') do |alias_file|
-      alias_file.write(RunAndTell.base_function)
-      alias_file.write("\n\n")
-      alias_file.write(RunAndTellQuotedInputs.base_function)
+    self.open_new_aliases_file do |alias_file|
+      self.write_run_and_tell_base_function(alias_file)
+      self.write_new_lines(alias_file)
+      self.write_run_tell_quoted_base_function(alias_file)
     end
+  end
+
+  def self.open_new_aliases_file
+    File.open('.aliases.sh', 'w')
+  end
+
+  def self.write_run_and_tell_base_function(alias_file)
+    alias_file.write(RunAndTell.base_function)
+  end
+
+  def self.write_new_lines(alias_file)
+    alias_file.write("\n\n")
+  end
+
+  def self.write_run_tell_quoted_base_function(alias_file)
+    alias_file.write(RunAndTellQuotedInputs.base_function)
   end
 
 
