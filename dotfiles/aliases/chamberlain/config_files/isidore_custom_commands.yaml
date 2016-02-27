@@ -1,6 +1,7 @@
 ---
 :name: Isidore_Custom
 :aliases:
+  :chamberlain: "ruby ~/coding/MeadHall/dotfiles/aliases/chamberlain/shell_boot.rb; reshell"
   :coding: cd ~/coding
   :mh: cd ~/coding/MeadHall
   :rfiles: cd ~/coding/ruby_files
