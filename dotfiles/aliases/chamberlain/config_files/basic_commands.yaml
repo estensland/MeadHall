@@ -1,7 +1,6 @@
 :name: 'Basic'
 :aliases:
   :reshell: "source ~/.bash_profile"
-  :chamberlain: "ruby ~/coding/MeadHall/dotfiles/aliases/chamberlain/shell_boot.rb; reshell"
   ..: "cd .."
   ...: "cd ..."
   :lg: "ls -G"
