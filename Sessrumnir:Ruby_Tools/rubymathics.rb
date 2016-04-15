@@ -10,6 +10,15 @@ module Rubymathics
 
 
   ###################
+  # SUM OF DIGITS
+  ################
+
+  def sum_of_digits(num)
+    number_split(num).inject(:+)
+  end
+
+
+  ###################
   # REPEATING DECIMALS
   ################
 
@@ -55,7 +64,7 @@ module Rubymathics
   ##############
 
   def factorial(num)
-    (1..num).to_a.inject(&:*)
+    (1..num).inject(:*)
   end
 
 
@@ -75,8 +84,8 @@ module Rubymathics
     end
     sequence
   end
-  
-  
+
+
   ################
   # RIGHT TRIANGLE
   ##############
@@ -93,7 +102,7 @@ module Rubymathics
   ################
   # PANDIGITAL
   ##############
-  
+
   def pandigital?(number)
     splitted = number_split(number)
     split_uniq = splitted.uniq.reject(&:zero?)
@@ -136,7 +145,7 @@ module Rubymathics
     prev = 0
     fib = 1
     nums = []
-  
+
     until fib >= number
       store = fib
       fib += prev
@@ -204,44 +213,44 @@ module Rubymathics
     num = base ? num.to_s : num.to_s(base)
     num == num.reverse
   end
-  
+
   ##############
   # TRIANGLE NUMBER
   ############
-  
+
   def nth_triangle_number(num)
     (num * (num + 1 )) /2
   end
-  
+
   def triangle_num?(num)
     res = (num * 8 + 1) ** 0.5
     res % 1 ==0 && res % 2 != 0
   end
 
-  
+
   ##############
   # PENTAGONAL NUMBER
   ############
-  
+
   def nth_pentagonal_number(num)
-    (num * (3 * (num − 1))) / 2	
+    (num * (3 * (num − 1))) / 2
   end
-  
+
   def is_pentagonal_number?(num)
     top = 24 * num + 1
     top = Math.sqrt(top) + 1
     (top / 6) % 1 == 0
   end
-  
-  
+
+
   ##############
   # HEXAGONAL NUMBER
   ############
-  
+
   def nth_hexagonal_number(num)
     num * ((2 * num) -1)
   end
-  
+
   def is_hexagonal_number?(num)
     top = 8 * num + 1
     top = Math.sqrt(top) + 1
