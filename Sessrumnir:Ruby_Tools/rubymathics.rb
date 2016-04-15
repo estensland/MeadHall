@@ -64,7 +64,7 @@ module Rubymathics
   ##############
 
   def factorial(num)
-    (1..num).inject(:*)
+    (1..num).inject(:*) || 1 # or 1 is for 0 case
   end
 
 
