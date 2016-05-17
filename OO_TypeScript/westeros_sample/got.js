@@ -12,4 +12,18 @@ var House = (function () {
         this.members.push(member);
     };
     return House;
-}());
+})();
+var Character = (function () {
+    function Character(name, gender) {
+        this.name = name;
+        this.gender = gender;
+    }
+    return Character;
+})();
+///<reference path='models/house.ts'/>
+///<reference path='models/character.ts'/>
+var starks = new House('Stark', 'a direwolf', "'Winter is Coming'");
+console.log(starks.describe());
+var ned = new Character('Eddard', 'Male');
+starks.addMember(ned);
+console.log(ned);
