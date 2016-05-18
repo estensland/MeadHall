@@ -25,9 +25,10 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Lord = (function (_super) {
     __extends(Lord, _super);
-    function Lord(name, gender, house) {
+    function Lord(name, gender, house, territory) {
         _super.call(this, name, gender);
         this.house = house;
+        this.territory = territory;
     }
     return Lord;
 })(Character);
@@ -41,12 +42,21 @@ var Smallfolk = (function (_super) {
     }
     return Smallfolk;
 })(Character);
+var Territory = (function () {
+    function Territory(name, seat) {
+        this.name = name;
+        this.seat = seat;
+    }
+    return Territory;
+})();
 ///<reference path='models/house.ts'/>
 ///<reference path='models/lord.ts'/>
 ///<reference path='models/smallfolk.ts'/>
+///<reference path='models/territory.ts'/>
 var stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
+var theNorth = new Territory('The North', 'Winterfell');
 console.log(stark.describe());
-var ned = new Lord('Eddard', 'Male', stark);
+var ned = new Lord('Eddard', 'Male', stark, theNorth);
 var hotPie = new Smallfolk('Hot Pie', 'Male', 'Baker');
 console.log(ned);
 console.log(hotPie);

@@ -6,7 +6,7 @@ class Smallfolk extends Character {
 
 
   constructor(name: string, gender: string, occupation: string) {
-    super(name, gender)
+    super(name, gender);
 
     this.occupation = occupation;
   }
