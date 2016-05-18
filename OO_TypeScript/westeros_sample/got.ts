@@ -1,12 +1,14 @@
 ///<reference path='models/house.ts'/>
 ///<reference path='models/character.ts'/>
+///<reference path='models/lord.ts'/>
 
-let starks = new House('Stark', 'a direwolf', "'Winter is Coming'");
+let stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
 
 console.log(starks.describe());
 
-let ned = new Character('Eddard', 'Male');
+let ned = new Lord('Eddard', 'Male');
 
-starks.addMember(ned);
+ned.setHouse(stark)
+
 
 console.log(ned);
