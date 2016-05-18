@@ -5,7 +5,7 @@ class Lord extends Character {
   house: House;
 
   setHouse(house){
-    house = house
+    this.house = house;
   }
 }
 

@@ -29,14 +29,30 @@ var Lord = (function (_super) {
         _super.apply(this, arguments);
     }
     Lord.prototype.setHouse = function (house) {
-        house = house;
+        this.house = house;
     };
     return Lord;
 })(Character);
+///<reference path='house.ts'/>
+///<reference path='character.ts'/>
+var Smallfolk = (function (_super) {
+    __extends(Smallfolk, _super);
+    function Smallfolk() {
+        _super.apply(this, arguments);
+    }
+    Smallfolk.prototype.setOccupation = function (occupation) {
+        this.occupation = occupation;
+    };
+    return Smallfolk;
+})(Character);
 ///<reference path='models/house.ts'/>
-///<reference path='models/character.ts'/>
 ///<reference path='models/lord.ts'/>
-var starks = new House('Stark', 'a direwolf', "'Winter is Coming'");
-console.log(starks.describe());
+///<reference path='models/smallfolk.ts'/>
+var stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
+console.log(stark.describe());
 var ned = new Lord('Eddard', 'Male');
+var hotPie = new Smallfolk('Hot Pie', 'Male');
+ned.setHouse(stark);
+hotPie.setOccupation('Baker');
 console.log(ned);
+console.log(hotPie);
