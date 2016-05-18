@@ -6,13 +6,10 @@ let stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
 
 console.log(stark.describe());
 
-let ned = new Lord('Eddard', 'Male');
+let ned = new Lord('Eddard', 'Male', stark);
 
-let hotPie = new Smallfolk('Hot Pie', 'Male');
+let hotPie = new Smallfolk('Hot Pie', 'Male', 'Baker');
 
-ned.setHouse(stark)
-
-hotPie.setOccupation('Baker')
 
 
 console.log(ned);

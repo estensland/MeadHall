@@ -25,24 +25,20 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Lord = (function (_super) {
     __extends(Lord, _super);
-    function Lord() {
-        _super.apply(this, arguments);
-    }
-    Lord.prototype.setHouse = function (house) {
+    function Lord(name, gender, house) {
+        _super.call(this, name, gender);
         this.house = house;
-    };
+    }
     return Lord;
 })(Character);
 ///<reference path='house.ts'/>
 ///<reference path='character.ts'/>
 var Smallfolk = (function (_super) {
     __extends(Smallfolk, _super);
-    function Smallfolk() {
-        _super.apply(this, arguments);
-    }
-    Smallfolk.prototype.setOccupation = function (occupation) {
+    function Smallfolk(name, gender, occupation) {
+        _super.call(this, name, gender);
         this.occupation = occupation;
-    };
+    }
     return Smallfolk;
 })(Character);
 ///<reference path='models/house.ts'/>
@@ -50,9 +46,7 @@ var Smallfolk = (function (_super) {
 ///<reference path='models/smallfolk.ts'/>
 var stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
 console.log(stark.describe());
-var ned = new Lord('Eddard', 'Male');
-var hotPie = new Smallfolk('Hot Pie', 'Male');
-ned.setHouse(stark);
-hotPie.setOccupation('Baker');
+var ned = new Lord('Eddard', 'Male', stark);
+var hotPie = new Smallfolk('Hot Pie', 'Male', 'Baker');
 console.log(ned);
 console.log(hotPie);

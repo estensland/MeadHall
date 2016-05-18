@@ -5,8 +5,11 @@ class Smallfolk extends Character {
   occupation: string;
 
 
-  setOccupation(occupation) {
+  constructor(name: string, gender: string, occupation: string) {
+    super(name, gender)
+
     this.occupation = occupation;
   }
+
 }
 

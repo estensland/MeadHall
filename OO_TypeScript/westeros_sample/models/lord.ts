@@ -4,8 +4,11 @@
 class Lord extends Character {
   house: House;
 
-  setHouse(house){
+  constructor(name: string, gender: string, house: House) {
+    super(name, gender)
+
     this.house = house;
   }
+
 }
 
