@@ -9,6 +9,7 @@ This is a collection of code I reuse/random coding projects that I do not want t
 2. CustomRandomRails -> Some code I have used in rails that I haven saved for future use
 2. Fault_Finder -> Code that finds syntax errors in code, currently working on Ruby
 2. Go_Figure -> Ruby Code to solve a newspaper math puzzle
+3. OO_TypeScript -> Some basic Object Oriented with TypeScript
 2. Heorot-JS -> Some JS functions I have written and saved for reuse, but mostly just to explore more about JS
 3. Ruby_Battleship -> A Ruby Battleship console game I created long ago and am now rewriting from the ground up with my current knowledge (The new version does not yet work)
 4. Ruby_Benchmarker -> A set up Ruby Benchmarking suite
