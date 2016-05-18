@@ -9,6 +9,15 @@ var House = (function () {
     };
     return House;
 })();
+var Material;
+(function (Material) {
+    Material[Material["Bronze"] = 0] = "Bronze";
+    Material[Material["Iron"] = 1] = "Iron";
+    Material[Material["Steel"] = 2] = "Steel";
+    Material[Material["Obsidian"] = 3] = "Obsidian";
+    Material[Material["Valyrian_Steel"] = 4] = "Valyrian_Steel";
+})(Material || (Material = {}));
+///<reference path='material.ts'/>
 var Weapon = (function () {
     function Weapon(name, material) {
         this.name = name;
@@ -75,12 +84,14 @@ var Sword = (function (_super) {
 ///<reference path='models/territory.ts'/>
 ///<reference path='models/weapon.ts'/>
 ///<reference path='models/sword.ts'/>
+///<reference path='models/material.ts'/>
 var stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
 var theNorth = new Territory('The North', 'Winterfell');
-var ice = new Sword('Ice', 'Valyrian Steel');
+var ice = new Sword('Ice', Material[Material.Valyrian_Steel]);
 console.log(stark.describe());
 var ned = new Lord('Eddard', 'Male', stark, theNorth);
 ned.addWeapon(ice);
 var hotPie = new Smallfolk('Hot Pie', 'Male', 'Baker');
 console.log(ned);
 console.log(hotPie);
+var icey = new Sword('Ice', 'Valyrian_Steel');

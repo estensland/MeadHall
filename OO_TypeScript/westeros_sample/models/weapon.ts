@@ -1,3 +1,5 @@
+///<reference path='material.ts'/>
+
 class Weapon {
   name: string;
   material: string;
