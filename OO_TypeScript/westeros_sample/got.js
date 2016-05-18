@@ -9,11 +9,23 @@ var House = (function () {
     };
     return House;
 })();
+var Weapon = (function () {
+    function Weapon(name, material) {
+        this.name = name;
+        this.material = material;
+    }
+    return Weapon;
+})();
+///<reference path='weapon.ts'/>
 var Character = (function () {
     function Character(name, gender) {
         this.name = name;
         this.gender = gender;
+        this.weapons = [];
     }
+    Character.prototype.addWeapon = function (weapon) {
+        this.weapons.push(weapon);
+    };
     return Character;
 })();
 ///<reference path='house.ts'/>
@@ -49,14 +61,26 @@ var Territory = (function () {
     }
     return Territory;
 })();
+///<reference path='weapon.ts'/>
+var Sword = (function (_super) {
+    __extends(Sword, _super);
+    function Sword(name, material) {
+        _super.call(this, name, material);
+    }
+    return Sword;
+})(Weapon);
 ///<reference path='models/house.ts'/>
 ///<reference path='models/lord.ts'/>
 ///<reference path='models/smallfolk.ts'/>
 ///<reference path='models/territory.ts'/>
+///<reference path='models/weapon.ts'/>
+///<reference path='models/sword.ts'/>
 var stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
 var theNorth = new Territory('The North', 'Winterfell');
+var ice = new Sword('Ice', 'Valyrian Steel');
 console.log(stark.describe());
 var ned = new Lord('Eddard', 'Male', stark, theNorth);
+ned.addWeapon(ice);
 var hotPie = new Smallfolk('Hot Pie', 'Male', 'Baker');
 console.log(ned);
 console.log(hotPie);
