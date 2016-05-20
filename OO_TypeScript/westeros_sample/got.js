@@ -1,3 +1,27 @@
+var Book = (function () {
+    function Book(name) {
+        this.name = name;
+    }
+    return Book;
+})();
+function applyMixins(givenClass, givenMixins) {
+    givenMixins.forEach(function (mixin) {
+        Object.getOwnPropertyNames(mixin.prototype).forEach(function (name) {
+            givenClass.prototype[name] = mixin.prototype[name];
+        });
+    });
+}
+///<reference path='../models/book.ts'/>
+///<reference path='../lib/apply_mixins.ts'/>
+var BooksIn = (function () {
+    function BooksIn() {
+    }
+    BooksIn.prototype.addBooks = function (newBooks) {
+        this.books = this.books.concat(newBooks);
+    };
+    return BooksIn;
+})();
+///<reference path='../mixins/books_in.ts'/>
 var House = (function () {
     function House(name, sigil, motto) {
         this.name = name;
@@ -9,6 +33,7 @@ var House = (function () {
     };
     return House;
 })();
+applyMixins(House, [BooksIn]);
 var Material;
 (function (Material) {
     Material[Material["Bronze"] = 0] = "Bronze";
@@ -26,6 +51,7 @@ var Weapon = (function () {
     return Weapon;
 })();
 ///<reference path='weapon.ts'/>
+///<reference path='../mixins/books_in.ts'/>
 var Character = (function () {
     function Character(name, gender) {
         this.name = name;
@@ -37,6 +63,7 @@ var Character = (function () {
     };
     return Character;
 })();
+applyMixins(Character, [BooksIn]);
 ///<reference path='house.ts'/>
 ///<reference path='character.ts'/>
 var __extends = (this && this.__extends) || function (d, b) {

@@ -1,6 +1,7 @@
 ///<reference path='weapon.ts'/>
+///<reference path='../mixins/books_in.ts'/>
 
-class Character {
+class Character implements BooksIn {
   name: string;
   gender: string;
   weapons: Array<any>;
@@ -14,4 +15,9 @@ class Character {
   addWeapon(weapon: Weapon){
     this.weapons.push(weapon)
   }
+
+  books: Array<Book>;
+  addBooks: () => void;
 }
+
+applyMixins(Character, [BooksIn])

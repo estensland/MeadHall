@@ -1,4 +1,6 @@
-class House {
+///<reference path='../mixins/books_in.ts'/>
+
+class House implements BooksIn {
   name: string;
   sigil: string;
   motto: string;
@@ -13,4 +15,8 @@ class House {
     return "The sigil of House " + this.name + " is " + this.sigil + ", and its words are " + this.motto;
   }
 
+  books: Array<Book>;
+  addBooks: () => void;
 }
+
+applyMixins(House, [BooksIn])
