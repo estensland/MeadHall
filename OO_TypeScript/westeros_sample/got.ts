@@ -12,11 +12,14 @@ let theNorth = new Territory('The North', 'Winterfell');
 
 let ice = new Sword('Ice', Material[Material.Valyrian_Steel])
 
+let got = new Book('Game Of Thrones')
+
 
 console.log(stark.describe());
 
 let ned = new Lord('Eddard', 'Male', stark, theNorth);
 ned.addWeapon(ice)
+ned.addBooks([got])
 
 let hotPie = new Smallfolk('Hot Pie', 'Male', 'Baker');
 

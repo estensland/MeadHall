@@ -16,7 +16,7 @@ class House implements BooksIn {
   }
 
   books: Array<Book>;
-  addBooks: () => void;
+  addBooks: (newBooks: Array<Book>) => void;
 }
 
 applyMixins(House, [BooksIn])

@@ -10,6 +10,7 @@ class Character implements BooksIn {
     this.name = name;
     this.gender = gender;
     this.weapons = [];
+    this.books = []
   }
 
   addWeapon(weapon: Weapon){
@@ -17,7 +18,7 @@ class Character implements BooksIn {
   }
 
   books: Array<Book>;
-  addBooks: () => void;
+  addBooks: (newBooks: Array<Book>) => void;
 }
 
 applyMixins(Character, [BooksIn])

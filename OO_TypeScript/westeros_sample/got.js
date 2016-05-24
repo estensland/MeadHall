@@ -57,6 +57,7 @@ var Character = (function () {
         this.name = name;
         this.gender = gender;
         this.weapons = [];
+        this.books = [];
     }
     Character.prototype.addWeapon = function (weapon) {
         this.weapons.push(weapon);
@@ -115,9 +116,11 @@ var Sword = (function (_super) {
 var stark = new House('Stark', 'a direwolf', "'Winter is Coming'");
 var theNorth = new Territory('The North', 'Winterfell');
 var ice = new Sword('Ice', Material[Material.Valyrian_Steel]);
+var got = new Book('Game Of Thrones');
 console.log(stark.describe());
 var ned = new Lord('Eddard', 'Male', stark, theNorth);
 ned.addWeapon(ice);
+ned.addBooks([got]);
 var hotPie = new Smallfolk('Hot Pie', 'Male', 'Baker');
 console.log(ned);
 console.log(hotPie);
