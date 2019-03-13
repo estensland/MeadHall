@@ -1,5 +1,0 @@
-class RailsDatalist
-
-
-end
-
