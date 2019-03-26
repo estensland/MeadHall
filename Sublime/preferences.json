@@ -1,0 +1,24 @@
+{
+  "color_scheme": "Packages/User/real_pastels.sublime-theme",
+  "draw_white_space": "all",
+  "ensure_newline_at_eof_on_save": true,
+  "find_selected_text": true,
+  "font_size": 19,
+  "ignored_packages":
+  [
+    "Colorsublime",
+    "Colorsublime - Themes",
+    "Vintage"
+  ],
+  "rulers":
+  [
+    80,
+    110
+  ],
+  "save_on_focus_lost": true,
+  "tab_size": 2,
+  "theme": "Default.sublime-theme",
+  "trailing_spaces_trim_on_save": true,
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true
+}
