@@ -1,26 +1,26 @@
 module Rubymathics
 
-  ###################
+  ######################################
   # UTILITY METHODS
-  ################
+  ###################################
 
   def number_split(num)
     num.to_s.split(//).map(&:to_i)
   end
 
 
-  ###################
+  ######################################
   # SUM OF DIGITS
-  ################
+  ###################################
 
   def sum_of_digits(num)
     number_split(num).inject(:+)
   end
 
 
-  ###################
+  ######################################
   # REPEATING DECIMALS
-  ################
+  ###################################
 
   def repeating_decimal?(num)
     count = 0
@@ -59,18 +59,31 @@ module Rubymathics
   end
 
 
-  ################
+  ################################
   # FACTORIAL
-  ##############
+  ##############################
 
   def factorial(num)
     (1..num).inject(:*) || 1 # or 1 is for 0 case
   end
 
 
-  ################
+  ################################
+  # BINOMIAL COEFFICIENT
+  ##############################
+
+  #     n!
+  #  --------
+  #  k!(n-k)!
+
+  def binomial_coefficient(n, k)
+    factorial(n) / ( (factorial(k)) * factorial(n-k) )
+  end
+
+
+  ################################
   # COLLATZ SEQUENCE
-  ##############
+  ##############################
 
   def collatz_sequence(num)
     sequence = [num]
@@ -86,9 +99,9 @@ module Rubymathics
   end
 
 
-  ################
+  ################################
   # RIGHT TRIANGLE
-  ##############
+  ##############################
 
   def right_triangle?(a,b,c)
     (a**2 + b**2) == c ** 2
@@ -99,9 +112,9 @@ module Rubymathics
   end
 
 
-  ################
+  ################################
   # PANDIGITAL
-  ##############
+  ##############################
 
   def pandigital?(number)
     splitted = number_split(number)
@@ -111,9 +124,9 @@ module Rubymathics
   end
 
 
-  ##############
+  ############################
   # FIBONACCI
-  ############
+  ##########################
 
   def is_fibonacci?(i, prev = 0, fib = 1)
     return false if i.is_a?(String)
@@ -157,9 +170,9 @@ module Rubymathics
   end
 
 
-  ##############
+  ############################
   # PRIMES
-  ############
+  ##########################
 
   def all_permutations_prime?(num)
     digits = number_split(num)
@@ -197,9 +210,9 @@ module Rubymathics
   end
 
 
-  ##############
+  ############################
   # PALLINDROME
-  ############
+  ##########################
 
   def pallindrome_finder(low, high)
     pallindromes = []
@@ -214,9 +227,9 @@ module Rubymathics
     num == num.reverse
   end
 
-  ##############
+  ############################
   # TRIANGLE NUMBER
-  ############
+  ##########################
 
   def nth_triangle_number(num)
     (num * (num + 1 )) /2
@@ -228,9 +241,9 @@ module Rubymathics
   end
 
 
-  ##############
+  ############################
   # PENTAGONAL NUMBER
-  ############
+  ##########################
 
   def nth_pentagonal_number(num)
     (num * (3 * (num − 1))) / 2
@@ -243,9 +256,9 @@ module Rubymathics
   end
 
 
-  ##############
+  ############################
   # HEXAGONAL NUMBER
-  ############
+  ##########################
 
   def nth_hexagonal_number(num)
     num * ((2 * num) -1)
