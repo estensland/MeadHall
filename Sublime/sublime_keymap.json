@@ -1,5 +1,77 @@
 [
-  { "keys": ["alt+super+p"], "command": "insert", "args": {"characters": "binding.pry"} },
+  // { "keys": ["alt+super+p"], "command": "insert", "args": {"characters": "binding.pry"} },
+  {
+    "keys": ["alt+super+p"],
+    "command": "insert",
+    "args": {"characters": "binding.pry"},
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.ruby"
+      }
+    ]
+  },
+    {
+    "keys": ["alt+super+p"],
+    "command": "insert",
+    "args": {"characters": "binding.pry"},
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "text.haml"
+      }
+    ]
+  },
+  {
+    "keys": ["alt+super+o"],
+    "command": "insert",
+    "args": {"characters": "puts '----------------'"},
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.ruby"
+      }
+    ]
+  },
+  {
+    "keys": ["alt+super+p"],
+    "command": "insert",
+    "args": {"characters": "debugger"},
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.js"
+      }
+    ]
+  },
+  {
+    "keys": ["alt+super+l"],
+    "command": "insert",
+    "args": {"characters": "puts \"\\e[33mLooper\\e[0m\""},
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.ruby"
+      }
+    ]
+  },
+  {
+    "keys": ["alt+super+l"],
+    "command": "insert",
+    "args": {"characters": "console.log('%c Cheese', 'color: yellow; font-weight: bolder')"},
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.js"
+      }
+    ]
+  },
   {
     "keys": ["tab"],
     "command": "expand_abbreviation_by_tab",
