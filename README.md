@@ -3,7 +3,7 @@ MeadHall
 
 This is a collection of code I reuse/random coding projects that I do not want to take up a whole repo with
 
-###This repo contains:
+### This repo contains:
 
 2. ApiifyRake -> A rake task that creates an api controller for a rails app
 2. CustomRandomRails -> Some code I have used in rails that I haven saved for future use
