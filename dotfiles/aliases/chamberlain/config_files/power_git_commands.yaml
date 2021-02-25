@@ -58,3 +58,47 @@
               D) echo left ;;
           esac
       done
+  :gbnp:
+    :eacho_descrpition: simple git branch menu (pull into branch)
+    :helper_descrpition: simple git branch menu (pull into branch)
+    :command: |-
+      branches=()
+      eval "$(git for-each-ref --shell --format='branches+=(%(refname:short))' refs/heads/)"
+      currentBranch=$(git symbolic-ref HEAD --short)
+      menuCounter=0
+      while true
+      do
+          clear
+          for indexed in ${!branches[@]}; do
+            if [ $menuCounter -eq $indexed ]
+              then
+                if [ ${branches[indexed]} == $currentBranch ]
+                then
+                  echo ">*${branches[indexed]}"
+                else
+                  echo "> ${branches[indexed]}"
+                fi
+              else
+                if [ ${branches[indexed]} == $currentBranch ]
+                then
+                  echo " *${branches[indexed]}"
+                else
+                  echo "  ${branches[indexed]}"
+                fi
+              fi
+          done
+
+          read -r -sn1 t
+          # tput sc;
+          case $t in
+              A) let "menuCounter-=1";
+              if [ $menuCounter -lt 0 ]
+              then
+                menuCounter=0
+              fi
+                ;;
+              B) let "menuCounter+=1";;
+              C) git pull origin ${branches[$menuCounter]}; break ;;
+              D) echo left ;;
+          esac
+      done
