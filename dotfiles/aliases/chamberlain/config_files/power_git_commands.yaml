@@ -3,6 +3,7 @@
 :aliases:
   :mikedrop: git push origin master
   :choochoo: git push origin master --force
+  :kickit: gco master
 :custom_functions:
   :gtimemachine:
     :echo_description: git checkout master; git branch -D time_machine; git checkout -b time_machine commit
@@ -54,7 +55,7 @@
               fi
                 ;;
               B) let "menuCounter+=1";;
-              C) gco ${branches[$menuCounter]}; break ;;
+              C) run_and_tell gco ${branches[$menuCounter]}; break ;;
               D) echo left ;;
           esac
       done
@@ -98,7 +99,7 @@
               fi
                 ;;
               B) let "menuCounter+=1";;
-              C) git pull origin ${branches[$menuCounter]}; break ;;
+              C) run_and_tell git pull origin ${branches[$menuCounter]}; break ;;
               D) echo left ;;
           esac
       done

@@ -1,0 +1,5 @@
+---
+:name: JS
+:aliases:
+  :ys: yarn start
+  :yi: yarn install
