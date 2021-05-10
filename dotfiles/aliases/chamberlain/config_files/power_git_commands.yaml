@@ -26,17 +26,17 @@
       while true
       do
           clear
-          for indexed in ${!branches[@]}; do
+          for ((indexed = 1; indexed < $#branches; indexed++)); do
             if [ $menuCounter -eq $indexed ]
               then
-                if [ ${branches[indexed]} == $currentBranch ]
+                if [ ${branches[indexed]} = $currentBranch ]
                 then
                   echo ">*${branches[indexed]}"
                 else
                   echo "> ${branches[indexed]}"
                 fi
               else
-                if [ ${branches[indexed]} == $currentBranch ]
+                if [ ${branches[indexed]} = $currentBranch ]
                 then
                   echo " *${branches[indexed]}"
                 else
@@ -45,7 +45,7 @@
               fi
           done
 
-          read -r -sn1 t
+          read -rsk 1 t
           # tput sc;
           case $t in
               A) let "menuCounter-=1";
@@ -70,17 +70,17 @@
       while true
       do
           clear
-          for indexed in ${!branches[@]}; do
+          for ((indexed = 1; indexed < $#branches; indexed++)); do
             if [ $menuCounter -eq $indexed ]
               then
-                if [ ${branches[indexed]} == $currentBranch ]
+                if [ ${branches[indexed]} = $currentBranch ]
                 then
                   echo ">*${branches[indexed]}"
                 else
                   echo "> ${branches[indexed]}"
                 fi
               else
-                if [ ${branches[indexed]} == $currentBranch ]
+                if [ ${branches[indexed]} = $currentBranch ]
                 then
                   echo " *${branches[indexed]}"
                 else
@@ -89,7 +89,7 @@
               fi
           done
 
-          read -r -sn1 t
+          read -rsk 1 t
           # tput sc;
           case $t in
               A) let "menuCounter-=1";
