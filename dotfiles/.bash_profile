@@ -12,8 +12,12 @@ shopt -s checkwinsize
 
 source ~/coding/MeadHall/dotfiles/aliases/.aliases.sh
 
+# if [ -f ~/.bash_prompt ]; then
+#   source ~/coding/MeadHall/dotfiles/.bash_prompt
+# fi
+
 if [ -f ~/.bash_prompt ]; then
-  source ~/coding/MeadHall/dotfiles/.bash_prompt
+  source ~/coding/MeadHall/dotfiles/.zsh.prompt.sh
 fi
 
 if [ -f ~/.git-prompt.sh ]; then
