@@ -5,7 +5,7 @@
   :hi: heroku info
   :ho: heroku open
   :hr: heroku rake
-  :hcon: heroku console
+  :hcon: heroku run rails console
   :hnew: heroku create
   :hrestart: heroku restart
   :hlog: heroku logs

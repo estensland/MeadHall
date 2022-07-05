@@ -11,7 +11,7 @@ class ListCollector
   end
 
   def list
-    FileUtils.cd("/Users/Eric/coding/MeadHall/dotfiles/aliases/chamberlain/config_files/")
+    FileUtils.cd("/Users/ericstensland/coding/MeadHall/dotfiles/aliases/chamberlain/config_files/")
 
     collection = []
     Dir.entries(".").select{|file| file.match('.yaml')}.each do |file|

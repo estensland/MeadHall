@@ -13,7 +13,7 @@ class Chamberlain
   #### INSTANCE METHODS
 
   def self.directory_path
-    "/Users/Eric/coding/MeadHall/dotfiles/aliases/"
+    "/Users/ericstensland/coding/MeadHall/dotfiles/aliases/"
   end
 
   def self.run
