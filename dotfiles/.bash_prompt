@@ -1,13 +1,3 @@
-# GIT_PS1_SHOWDIRTYSTATE=true
-
-RED="\[\033[1;31m\]"
-YELLOW="\[\033[1;33m\]"
-GREEN="\[\033[1;32m\]"
-BLUE="\[\033[1;34m\]"
-CYN="\[\033[36m\]"
-WHITE="\[\033[1;37m\]"
-COLOR_RESET="\[\e[0m\]"
-
 function is_git_repository {
   git branch > /dev/null 2>&1
 }
@@ -15,54 +5,56 @@ function is_git_repository {
 function set_git_state {
   git_status="$(git status 2> /dev/null)"
 
-  if [[ ${git_status} =~ "working directory clean" ]]; then
-    GIT_STATE_COLOR="${GREEN}"
+  if [[ ${git_status} =~ "working tree clean" ]]; then
+    GIT_STATE_COLOR='green'
   elif [[ ${git_status} =~ "Changes to be committed" ]]; then
-    GIT_STATE_COLOR="${YELLOW}"
-  else
-    GIT_STATE_COLOR="${RED}"
-  fi
-
-  remote_pattern="# Your branch is (.*) of"
-  if [[ ${git_status} =~ ${remote_pattern} ]]; then
-    if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
-      GIT_REMOTE_STATE=" ↑"
+    if [[ ${git_status} =~ "Changes not staged" ]]; then
+      GIT_STATE_COLOR='orange'
     else
-      GIT_REMOTE_STATE=" ↓"
+      GIT_STATE_COLOR='yellow'
     fi
   else
-    GIT_REMOTE_STATE=""
-  fi
-
-  diverge_pattern="# Your branch and (.*) have diverged"
-  if [[ ${git_status} =~ ${diverge_pattern} ]]; then
-    GIT_REMOTE_STATE=" ↕"
+    GIT_STATE_COLOR='red'
   fi
 }
+
+
+function git_color {
+  git_status="$(git status 2> /dev/null)"
+
+  if [[ ${git_status} =~ "working tree clean" ]]; then
+    GIT_STATE_COLOR='green'
+  elif [[ ${git_status} =~ "Changes to be committed" ]]; then
+    if [[ ${git_status} =~ "Changes not staged" ]]; then
+      GIT_STATE_COLOR='#FFA500'
+    else
+      GIT_STATE_COLOR='yellow'
+    fi
+  else
+    GIT_STATE_COLOR='red'
+  fi
+
+  echo $GIT_STATE_COLOR
+
+  return $GIT_STATE_COLOR
+}
+
+function git_branch_name {
+  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+
+  if [[ $branch == "" ]];
+  then
+    :
+  else
+    echo '('$branch')'
+  fi
+}
+
+# Enable substitution in the prompt.
+setopt PROMPT_SUBST
 
 function set_bash_prompt () {
-  if is_git_repository ; then
-    set_git_state
-  else
-    GIT_STATE_COLOR="${WHITE}"
-  fi
-
-  PS1="${RED}\h:${COLOR_RESET} ${WHITE}\@${COLOR_RESET} ${CYN}\w${COLOR_RESET}\$(__git_ps1 ' ${GIT_STATE_COLOR}(%s)${GIT_REMOTE_STATE}${COLOR_RESET}') ${CYN}⌘${COLOR_RESET}  "
+  PROMPT='%F{red}Botros: %F{white}%T %F{cyan} $(pwd) %F{$(git_color)}$(git_branch_name) %F{#FFA500}⌘%F{reset} '
 }
 
-PROMPT_COMMAND=set_bash_prompt
-
-# LET'S TERMINAL OPEN IN SAME DIRECTORY IN A NEW TAB
-
-if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
-   update_terminal_cwd() {
-       # Identify the directory using a "file:" scheme URL,
-       # including the host name to disambiguate local vs.
-       # remote connections. Percent-escape spaces.
-       local SEARCH=' '
-       local REPLACE='%20'
-       local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
-       printf '\e]7;%s\a' "$PWD_URL"
-   }
-   PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
-fi
+set_bash_prompt
